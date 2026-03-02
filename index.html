@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command a Room — The Gap Between What You Know and How You Sound</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0f;
+            --bg-section: #101016;
+            --bg-card: #15151d;
+            --bg-card-hover: #1a1a24;
+            --gold: #c9a84c;
+            --gold-light: #dfc06a;
+            --gold-dim: rgba(201, 168, 76, 0.12);
+            --gold-glow: rgba(201, 168, 76, 0.06);
+            --text: #e8e8ec;
+            --text-secondary: #94949e;
+            --text-muted: #5c5c66;
+            --border: rgba(201, 168, 76, 0.1);
+            --border-light: rgba(255,255,255,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 2.5rem;
+            background: rgba(11, 11, 15, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+            transition: padding 0.3s;
+        }
+
+        nav.scrolled { padding: 0.75rem 2.5rem; }
+
+        .nav-wordmark {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+        }
+
+        .nav-right a {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-right a:hover { color: var(--gold); }
+
+        .nav-apply {
+            background: var(--gold) !important;
+            color: var(--bg) !important;
+            padding: 0.5rem 1.4rem;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
+        }
+
+        .nav-apply:hover {
+            background: var(--gold-light) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 20px;
+            height: 1.5px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 7rem 2rem 5rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.2s;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.25;
+            max-width: 720px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.4s;
+        }
+
+        .hero-body {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            line-height: 1.85;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.55s;
+        }
+
+        .hero-body-2 {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.65s;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Sora', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.8s;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold);
+            color: var(--bg);
+        }
+
+        .scroll-line {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 1s;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -2px;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: scrollDot 2.5s ease infinite;
+        }
+
+        /* SECTIONS */
+        .section-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 5.5rem 2rem;
+        }
+
+        .section-divider {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-divider hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-eyebrow {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+        }
+
+        /* DESIRES */
+        .desires-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .desires-header .section-subtitle {
+            margin: 0.8rem auto 0;
+        }
+
+        .desire-block {
+            display: grid;
+            grid-template-columns: 52px 1fr;
+            gap: 1.5rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .desire-block:first-of-type {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .desire-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-align: right;
+            padding-top: 2px;
+        }
+
+        .desire-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .desire-body p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 680px;
+        }
+
+        .desire-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            margin-top: 1.1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+            line-height: 1.7;
+        }
+
+        .desire-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .desire-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: var(--gold-dim);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+        }
+
+        /* TRANSITION */
+        .transition-block {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .transition-block p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+
+        /* PROBLEMS */
+        .problems-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .problems-header .section-subtitle {
+            margin: 0.8rem auto 0;
+        }
+
+        .problems-intro {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.75;
+        }
+
+        .problem-block {
+            display: grid;
+            grid-template-columns: 52px 1fr;
+            gap: 1.5rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            transition: padding-left 0.3s;
+        }
+
+        .problem-block:first-of-type {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .problem-block:hover { padding-left: 0.5rem; }
+
+        .problem-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-align: right;
+            padding-top: 2px;
+        }
+
+        .problem-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .problem-body p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            max-width: 700px;
+            margin-bottom: 0.8rem;
+        }
+
+        .problem-body p:last-child { margin-bottom: 0; }
+
+        .problem-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            margin-top: 1.1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+            line-height: 1.7;
+        }
+
+        .problem-callout {
+            font-size: 0.88rem;
+            color: var(--text);
+            font-weight: 500;
+            margin-top: 1rem;
+            padding: 1rem 1.2rem;
+            background: var(--gold-dim);
+            border-radius: 4px;
+            border-left: 2px solid var(--gold);
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .problem-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .problem-tag {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: var(--gold-dim);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+        }
+
+        /* CLOSING */
+        .closing-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .closing-section p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .closing-section p strong {
+            color: var(--text);
+        }
+
+        .closing-accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        /* BIO */
+        .bio-section {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3rem;
+        }
+
+        .bio-photo {
+            aspect-ratio: 3/4;
+            background: var(--bg-card);
+            border-radius: 5px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bio-photo-placeholder {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .bio-text p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .bio-text p em {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* CTA */
+        .final-cta {
+            text-align: center;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.95rem 2.8rem;
+            background: var(--gold);
+            color: var(--bg);
+            font-family: 'Sora', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scrollDot {
+            0% { transform: translateY(0); opacity: 1; }
+            80% { transform: translateY(42px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 0; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 0.9rem 1.5rem; }
+            .nav-right {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(11, 11, 15, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+            .nav-right.open { display: flex; }
+            .nav-right a { font-size: 0.9rem; }
+            .mobile-menu-btn { display: block; }
+
+            .desire-block,
+            .problem-block {
+                grid-template-columns: 36px 1fr;
+                gap: 1rem;
+            }
+
+            .bio-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .bio-photo {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-wrap { padding: 4rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+    <a href="#" class="nav-wordmark">Command a Room</a>
+    <div class="nav-right" id="navMenu">
+        <a href="#desires">The 5 Desires</a>
+        <a href="#problems">The 7 Problems</a>
+        <a href="/assessment">Free Assessment</a>
+        <a href="/apply" class="nav-apply">Apply Now</a>
+    </div>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-label">Michael Hewitt &middot; Executive Vocal Presence</div>
+    <h1>You know your stuff. But when you open your mouth, does the room know it?</h1>
+    <p class="hero-body">There's a gap between what you know and how you sound. Between the expert you are and the presence people experience.</p>
+    <p class="hero-body-2">Here's what that gap actually looks like &mdash; and what's on the other side of closing it.</p>
+    <a href="#desires" class="hero-cta">See If This Sounds Familiar</a>
+    <div class="scroll-line"></div>
+</section>
+
+<!-- DESIRES -->
+<div class="section-divider"><hr></div>
+
+<div class="section-wrap" id="desires">
+
+    <div class="desires-header reveal">
+        <div class="section-eyebrow">What You're Actually After</div>
+        <h2 class="section-title">The five things keeping you up at night</h2>
+        <p class="section-subtitle">You didn't search for a "voice coach." You searched for a way to stop feeling like the smartest person in the room who nobody listens to.</p>
+    </div>
+
+    <div class="desire-block reveal">
+        <div class="desire-num">01</div>
+        <div class="desire-body">
+            <h3>You want to be taken seriously.</h3>
+            <p>You've put in the years. You have the track record. But when you walk into a room full of gray-haired decision-makers or step onto a stage, something doesn't land. Your identity hasn't caught up to your resume. You have the expertise &mdash; you need the world to feel it the moment you speak.</p>
+            <div class="desire-quote">&ldquo;I don't think there's much of an issue internally. It's the outward-facing stuff that's a bit daunting.&rdquo;</div>
+        </div>
+    </div>
+
+    <div class="desire-block reveal">
+        <div class="desire-num">02</div>
+        <div class="desire-body">
+            <h3>You want to command a room.</h3>
+            <p>Not by being the loudest. Not by dominating. You want to walk in and have people feel something shift &mdash; that quiet authority that makes prospects lean in, that makes a panel audience put their phones down, that makes your team actually execute after the all-hands. Not knowing more. Being felt.</p>
+            <div class="desire-tags">
+                <span class="desire-tag">Conferences</span>
+                <span class="desire-tag">Podcasts</span>
+                <span class="desire-tag">Sales calls</span>
+                <span class="desire-tag">Boardrooms</span>
+                <span class="desire-tag">Investor meetings</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="desire-block reveal">
+        <div class="desire-num">03</div>
+        <div class="desire-body">
+            <h3>You want the results that follow.</h3>
+            <p>More meetings booked. More deals closed. More deal flow. A bigger personal brand that opens doors you didn't know existed. The financial upside is real &mdash; whether that's your sales team hitting a million-dollar target, your fund attracting new LPs, or your career trajectory bending toward the C-suite.</p>
+        </div>
+    </div>
+
+    <div class="desire-block reveal">
+        <div class="desire-num">04</div>
+        <div class="desire-body">
+            <h3>You want to fulfill something deeper.</h3>
+            <p>This isn't just about quarterly numbers. You want to step into the fullest version of yourself &mdash; the leader, the thinker, the person who inspires others. To leave something behind that's bigger than a job title. Speaking is the gateway to your full expression.</p>
+            <div class="desire-quote">&ldquo;I don't want 'marketer' on my tombstone. My full calling is to inspire people to radically love themselves.&rdquo;</div>
+        </div>
+    </div>
+
+    <div class="desire-block reveal">
+        <div class="desire-num">05</div>
+        <div class="desire-body">
+            <h3>You want to feel free.</h3>
+            <p>Imagine accepting every podcast invitation without scrambling to find something new and brilliant to say. Imagine a VP putting you on the spot at lunch and feeling calm &mdash; not panicked. Not a performative calm. A real, centered groundedness that lets you show up the same whether it's a one-on-one or a keynote.</p>
+            <div class="desire-tags">
+                <span class="desire-tag">No more scrambling</span>
+                <span class="desire-tag">No more spiraling</span>
+                <span class="desire-tag">No more hiding</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- TRANSITION -->
+<div class="section-divider"><hr></div>
+
+<div class="transition-block reveal">
+    <p>So if all of that resonates &mdash; if you know you're capable of more than what's coming across &mdash; the question is: <strong style="color:var(--text);">what's actually in the way?</strong></p>
+</div>
+
+<div class="section-divider"><hr></div>
+
+<!-- PROBLEMS -->
+<div class="section-wrap" id="problems">
+
+    <div class="problems-header reveal">
+        <div class="section-eyebrow">What's Actually In The Way</div>
+        <h2 class="section-title">Seven problems you probably recognize</h2>
+    </div>
+    <p class="problems-intro reveal">These aren't character flaws. They're skill gaps and patterns that almost nobody teaches you to fix &mdash; because most people don't even know they exist.</p>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">01</div>
+        <div class="problem-body">
+            <h3>Your voice doesn't match your expertise.</h3>
+            <p>You know the material cold. But when you deliver it, something gets lost. Vocal fry creeps in. Uptalk undercuts your authority. You ramble past your point. You go monotone when it matters most. These are the audible signals of timidity and apathy &mdash; and your audience hears them even when they can't name them.</p>
+            <p>Maybe you've always sounded this way and never noticed. Or maybe you used to be the charismatic one &mdash; and somewhere along the way, through years of playing a supporting role or not caring about the subject matter, that muscle went quiet. Either way, the gap between what you know and what people hear is costing you.</p>
+            <div class="problem-tags">
+                <span class="problem-tag">Vocal fry</span>
+                <span class="problem-tag">Uptalk</span>
+                <span class="problem-tag">Rambling</span>
+                <span class="problem-tag">Monotone</span>
+                <span class="problem-tag">Filler words</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">02</div>
+        <div class="problem-body">
+            <h3>You're stuck in your head.</h3>
+            <p>While someone is talking to you, you're already crafting the perfect response. You're thinking about how to sound smart instead of actually listening. And then the question you ask is redundant &mdash; because they already answered it while you were checked out. You're operating from cognition, not intuition, and it bottlenecks everything: the emotion, the connection, the trust.</p>
+            <div class="problem-callout">Sound familiar? You go five layers deep on an answer and don't realize you've lost the room until three minutes in.</div>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">03</div>
+        <div class="problem-body">
+            <h3>You haven't fully stepped into the identity your role demands.</h3>
+            <p>You got promoted. You earned the title. But somewhere inside, you still feel like the junior person at the table. You have a deep desire to be liked and respected in every interaction &mdash; and that neediness comes through. You haven't internalized that you belong in the room. And until you do, your voice will betray you.</p>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">04</div>
+        <div class="problem-body">
+            <h3>You don't have enough reps off-script.</h3>
+            <p>Give you a deck and you're solid. Give you a script and you'll deliver. But the moment it goes live &mdash; an unexpected question on a panel, a cold call that goes sideways, a podcast where the host pivots &mdash; you freeze, you ramble, or you default to filler. You haven't built the muscle of trusting yourself in unstructured, high-pressure moments.</p>
+            <div class="problem-callout">The root cause: You don't spend time writing to clarify your own thinking &mdash; so you can't be expected to do it off the cuff in a high-pressure situation.</div>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">05</div>
+        <div class="problem-body">
+            <h3>Fight-or-flight hijacks you when it matters most.</h3>
+            <p>A prospect says "No, I'm good" and your brain shuts off. A VP puts you on the spot and you start talking without knowing where you're headed. A debate gets heated and you fold instead of holding your ground. Your nervous system takes over, your clarity collapses, and you either over-talk, shut down, or default to the habits that got you here in the first place.</p>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">06</div>
+        <div class="problem-body">
+            <h3>You sound like everyone else.</h3>
+            <p>You tell people you're different. Your company tells people it's different. But when you pick up the phone, you sound the same as every other rep, every other founder, every other partner at every other firm. You get commoditized. And the deals, the opportunities, the attention &mdash; they go to the person who made them feel something.</p>
+            <div class="problem-quote">&ldquo;You call and you sound the same as somebody from Company X. You say the same words. No thanks, I'll pass.&rdquo;</div>
+        </div>
+    </div>
+
+    <div class="problem-block reveal">
+        <div class="problem-num">07</div>
+        <div class="problem-body">
+            <h3>Your charisma has atrophied.</h3>
+            <p>You weren't always like this. You used to light up a room. You used to be the person people listened to &mdash; not because of your title, but because you were <em>on</em>. Then you spent years in a supporting role, or years not caring about what you were selling, or years on autopilot &mdash; and the muscle went dormant. Now you're conscious of wanting it back, but you can't access it. You feel entitled for people to see the charisma in you, even though you've stopped showing it to them.</p>
+            <div class="problem-callout">The brutal truth: Less qualified people with weaker ideas are getting credit, rallying support, and winning &mdash; because they can still project what you've lost. And every day you stay flat, the gap widens.</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CLOSING -->
+<div class="section-divider"><hr></div>
+
+<div class="closing-section reveal">
+    <p>You have the knowledge. You have the credentials. You have the ambition.</p>
+    <p class="closing-accent">What's missing is the ability to embody all of that &mdash; to sound, feel, and show up as the person you actually are.</p>
+    <p>I help executives, founders, and sales professionals close the gap between their expertise and their presence &mdash; so the room hears what you already know to be true.</p>
+</div>
+
+<!-- BIO -->
+<div class="section-divider"><hr></div>
+
+<div class="bio-section reveal">
+    <div class="bio-photo">
+        <img src="/images/michael-hewitt.jpg" alt="Michael Hewitt" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="bio-text">
+        <p>I'm <strong style="color:var(--text)">Michael Hewitt</strong>. I spent my 20s training and performing on stages at the highest level, before a brief stint in my 30s selling cybersecurity software to enterprise CIOs. Now I work one-on-one with founders, investment partners, and senior leaders to rebuild the connection between who they are and how they sound.</p>
+        <p><em>No scripts. No surface-level tips. Just the real work of becoming the communicator your career demands.</em></p>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="final-cta reveal">
+    <a href="/apply" class="cta-button">Let's Talk</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Michael Hewitt &middot; Executive Vocal Presence Coach &middot; <a href="https://commandaroom.com">www.commandaroom.com</a></p>
+</footer>
+
+<script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

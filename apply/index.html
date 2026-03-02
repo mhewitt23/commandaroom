@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply — Command a Room</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#0b0b0f;--bg-card:#15151d;--bg-input:#111118;--gold:#c9a84c;--gold-light:#dfc06a;--gold-dim:rgba(201,168,76,0.12);--gold-glow:rgba(201,168,76,0.06);--text:#e8e8ec;--text-secondary:#94949e;--text-muted:#5c5c66;--border:rgba(201,168,76,0.1);--border-input:rgba(255,255,255,0.1)}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;background:rgba(11,11,15,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:padding 0.3s}
+        nav.scrolled{padding:0.75rem 2.5rem}
+        .nav-wordmark{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:0.3px}
+        .nav-right{display:flex;align-items:center;gap:2.2rem}
+        .nav-right a{font-size:0.72rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color 0.3s}
+        .nav-right a:hover{color:var(--gold)}
+        .mobile-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;z-index:1001}
+        .mobile-menu-btn span{display:block;width:20px;height:1.5px;background:var(--text);margin:5px 0;transition:all 0.3s}
+
+        .vsl-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8rem 2rem 4rem;position:relative}
+        .vsl-hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,var(--gold-glow) 0%,transparent 65%);pointer-events:none}
+        .vsl-hero-label{font-size:0.65rem;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp 0.7s ease forwards 0.2s}
+        .vsl-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.25;max-width:680px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.7s ease forwards 0.4s}
+        .vsl-video-wrap{width:100%;max-width:720px;aspect-ratio:16/9;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;opacity:0;animation:fadeUp 0.7s ease forwards 0.55s}
+        .video-placeholder-text{color:var(--text-muted);font-size:0.85rem;letter-spacing:1px}
+        .vsl-video-caption{font-size:0.92rem;color:var(--text-secondary);max-width:560px;line-height:1.8;margin-bottom:2rem;opacity:0;animation:fadeUp 0.7s ease forwards 0.65s}
+        .vsl-cta-top{display:inline-block;padding:0.85rem 2.4rem;background:transparent;border:1px solid var(--gold);color:var(--gold);font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:all 0.3s;opacity:0;animation:fadeUp 0.7s ease forwards 0.75s}
+        .vsl-cta-top:hover{background:var(--gold);color:var(--bg)}
+
+        .form-section{max-width:680px;margin:0 auto;padding:5rem 2rem}
+        .form-header{text-align:center;margin-bottom:3rem}
+        .form-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:0.6rem}
+        .form-header p{font-size:0.9rem;color:var(--text-secondary);line-height:1.7}
+        .form-group-label{font-size:0.62rem;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;margin-top:3rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
+        .form-group-label:first-of-type{margin-top:0}
+        .field{margin-bottom:1.5rem}
+        .field label{display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.4rem;color:var(--text)}
+        .field .field-hint{display:block;font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem;line-height:1.5;font-style:italic}
+        .field input[type="text"],.field input[type="email"],.field input[type="tel"],.field input[type="url"],.field textarea{width:100%;padding:0.75rem 1rem;background:var(--bg-input);border:1px solid var(--border-input);border-radius:4px;color:var(--text);font-family:'Sora',sans-serif;font-size:0.88rem;line-height:1.6;transition:border-color 0.3s;outline:none}
+        .field input:focus,.field textarea:focus{border-color:var(--gold)}
+        .field textarea{min-height:100px;resize:vertical}
+
+        .checkbox-group{margin-bottom:1.5rem}
+        .checkbox-group>label{display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.4rem;color:var(--text)}
+        .checkbox-option{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 1rem;background:var(--bg-input);border:1px solid var(--border-input);border-radius:4px;margin-bottom:0.5rem;cursor:pointer;transition:all 0.3s}
+        .checkbox-option:hover{border-color:rgba(201,168,76,0.3);background:var(--bg-card)}
+        .checkbox-option.selected{border-color:var(--gold);background:var(--gold-dim)}
+        .checkbox-option input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;min-width:18px;border:1.5px solid var(--border-input);border-radius:3px;background:transparent;margin-top:2px;cursor:pointer;position:relative;transition:all 0.3s}
+        .checkbox-option input[type="checkbox"]:checked{background:var(--gold);border-color:var(--gold)}
+        .checkbox-option input[type="checkbox"]:checked::after{content:'';position:absolute;top:2px;left:5px;width:5px;height:9px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+        .checkbox-label{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;cursor:pointer}
+
+        .radio-group{margin-bottom:1.5rem}
+        .radio-group>label{display:block;font-size:0.88rem;font-weight:600;margin-bottom:0.75rem;color:var(--text)}
+        .radio-option{display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1rem;background:var(--bg-input);border:1px solid var(--border-input);border-radius:4px;margin-bottom:0.5rem;cursor:pointer;transition:all 0.3s}
+        .radio-option:hover{border-color:rgba(201,168,76,0.3);background:var(--bg-card)}
+        .radio-option.selected{border-color:var(--gold);background:var(--gold-dim)}
+        .radio-option input[type="radio"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;min-width:18px;border:1.5px solid var(--border-input);border-radius:50%;background:transparent;cursor:pointer;position:relative;transition:all 0.3s}
+        .radio-option input[type="radio"]:checked{border-color:var(--gold)}
+        .radio-option input[type="radio"]:checked::after{content:'';position:absolute;top:3.5px;left:3.5px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+        .radio-label{font-size:0.85rem;color:var(--text-secondary);cursor:pointer}
+
+        .form-footer{margin-top:2.5rem;text-align:center}
+        .form-footer-note{font-size:0.8rem;color:var(--text-muted);line-height:1.7;max-width:480px;margin:0 auto 1.5rem;font-style:italic}
+        .submit-btn{display:inline-block;padding:0.95rem 2.8rem;background:var(--gold);color:var(--bg);font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:all 0.3s}
+        .submit-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.25)}
+        .submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;box-shadow:none}
+
+        footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
+        footer p{font-size:0.72rem;color:var(--text-muted);letter-spacing:0.5px}
+        footer a{color:var(--gold);text-decoration:none}
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+        .reveal{opacity:0;transform:translateY(24px);transition:all 0.65s cubic-bezier(0.22,1,0.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        @media(max-width:768px){nav{padding:0.9rem 1.5rem}.nav-right{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(11,11,15,0.98);flex-direction:column;justify-content:center;align-items:center;gap:2rem}.nav-right.open{display:flex}.nav-right a{font-size:0.9rem}.mobile-menu-btn{display:block}.form-section{padding:4rem 1.25rem}}
+    </style>
+</head>
+<body>
+
+<nav id="nav">
+    <a href="/" class="nav-wordmark">Command a Room</a>
+    <div class="nav-right" id="navMenu">
+        <a href="/">The Presentation</a>
+        <a href="/assessment">Free Assessment</a>
+    </div>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="vsl-hero">
+    <div class="vsl-hero-label">Michael Hewitt &middot; Executive Vocal Presence</div>
+    <h1>You already know what you&rsquo;re capable of. Let&rsquo;s make sure the room knows it too.</h1>
+    <div class="vsl-video-wrap"><span class="video-placeholder-text">Video coming soon</span></div>
+    <p class="vsl-video-caption">Watch the 2-minute video above, then apply below. I review every application personally &mdash; and if it looks like we&rsquo;re a fit, you&rsquo;ll book your intro call immediately after.</p>
+    <a href="#application" class="vsl-cta-top">Apply Now</a>
+</section>
+
+<div class="form-section" id="application">
+    <div class="form-header reveal">
+        <h2>Let&rsquo;s see if we&rsquo;re a fit.</h2>
+        <p>This takes about 3 minutes. After you submit, you&rsquo;ll be taken to book an intro call.</p>
+    </div>
+
+    <div id="applicationForm">
+        <div class="form-group-label reveal">About You</div>
+        <div class="field reveal"><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
+        <div class="field reveal"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+        <div class="field reveal"><label for="phone">Phone number</label><input type="tel" id="phone" name="phone" required></div>
+        <div class="field reveal"><label for="role">What&rsquo;s your role?</label><span class="field-hint">Title + company, or a brief description of what you do.</span><input type="text" id="role" name="role" required></div>
+        <div class="field reveal"><label for="linkedin">LinkedIn or website (optional)</label><input type="url" id="linkedin" name="linkedin" placeholder="https://"></div>
+        <div class="field reveal"><label for="location">Where are you based?</label><input type="text" id="location" name="location" required></div>
+
+        <div class="form-group-label reveal">Your Situation</div>
+        <div class="field reveal"><label for="challenge">What&rsquo;s the main communication challenge you&rsquo;re facing right now?</label><span class="field-hint">Be specific. A situation, a pattern, a moment that keeps happening.</span><textarea id="challenge" name="challenge" required></textarea></div>
+
+        <div class="checkbox-group reveal">
+            <label>Which of these resonate with you? (Select all that apply)</label>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="voice_confidence"><span class="checkbox-label">My voice doesn&rsquo;t project the confidence or authority I actually have</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="rambling"><span class="checkbox-label">I ramble, go on tangents, or talk past my point in high-pressure moments</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="anxiety"><span class="checkbox-label">I experience anxiety or nervous energy before/during speaking situations</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="identity"><span class="checkbox-label">I&rsquo;ve been promoted or stepped into a bigger role, but I don&rsquo;t fully feel like &ldquo;that person&rdquo; yet</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="off_script"><span class="checkbox-label">I&rsquo;m fine with a script or deck, but struggle when things go off-book or improvisational</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="commoditized"><span class="checkbox-label">I sound too similar to everyone else in my space &mdash; I don&rsquo;t stand out</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="stuck_in_head"><span class="checkbox-label">I&rsquo;m so focused on what to say next that I stop listening and connecting</span></div>
+            <div class="checkbox-option" onclick="toggleCheck(this)"><input type="checkbox" name="resonates" value="charisma_atrophy"><span class="checkbox-label">I used to be more charismatic and engaging, but years of disengagement or playing a supporting role have dulled my presence</span></div>
+        </div>
+
+        <div class="form-group-label reveal">What&rsquo;s At Stake</div>
+        <div class="field reveal"><label for="event">Is there a specific event, milestone, or moment coming up that you want to be exceptional for?</label><span class="field-hint">A conference talk, a fundraise, a podcast tour, a new role, a team you need to lead differently &mdash; anything with a deadline.</span><textarea id="event" name="event"></textarea></div>
+        <div class="field reveal"><label for="impact">What would change in your career or business if your communication matched your expertise?</label><span class="field-hint">Think results, not just feelings. Revenue, opportunities, reputation, trajectory.</span><textarea id="impact" name="impact" required></textarea></div>
+
+        <div class="form-group-label reveal">Fit &amp; Readiness</div>
+
+        <div class="radio-group reveal">
+            <label>Have you worked with a coach before? (Speaking, executive, performance &mdash; any kind)</label>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="coach_history" value="yes_helpful"><span class="radio-label">Yes, and it was helpful</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="coach_history" value="yes_not_fit"><span class="radio-label">Yes, but it wasn&rsquo;t the right fit</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="coach_history" value="no_first_time"><span class="radio-label">No, this would be my first time</span></div>
+        </div>
+
+        <div class="radio-group reveal">
+            <label>What does your availability look like for weekly sessions?</label>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="availability" value="2_weeks"><span class="radio-label">I can start within the next 2 weeks</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="availability" value="month"><span class="radio-label">Within the next month</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="availability" value="exploring"><span class="radio-label">I&rsquo;m exploring &mdash; no specific timeline yet</span></div>
+        </div>
+
+        <div class="radio-group reveal">
+            <label>Is this investment coming from you personally, or would your company/firm sponsor it?</label>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="investment" value="personal"><span class="radio-label">Personal investment</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="investment" value="company"><span class="radio-label">Company / firm expense</span></div>
+            <div class="radio-option" onclick="selectRadio(this)"><input type="radio" name="investment" value="not_sure"><span class="radio-label">Not sure yet &mdash; depends on the conversation</span></div>
+        </div>
+
+        <div class="field reveal"><label for="anything_else">Anything else you want me to know?</label><span class="field-hint">Optional. Context helps. Maybe it&rsquo;s a link to a talk, a voice note, or just something on your mind.</span><textarea id="anything_else" name="anything_else"></textarea></div>
+
+        <div class="form-footer reveal">
+            <p class="form-footer-note">After you submit, you&rsquo;ll be taken to book an intro call. I review every application beforehand so we can make the most of our time together.</p>
+            <button type="button" class="submit-btn" id="submitBtn" onclick="submitApplication()">Submit &amp; Book Your Call</button>
+        </div>
+    </div>
+</div>
+
+<footer><p>Michael Hewitt &middot; Executive Vocal Presence Coach &middot; <a href="https://commandaroom.com">www.commandaroom.com</a></p></footer>
+
+<script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+    const menuBtn=document.getElementById('menuBtn'),navMenu=document.getElementById('navMenu');
+    menuBtn.addEventListener('click',()=>navMenu.classList.toggle('open'));
+    navMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navMenu.classList.remove('open')));
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    function toggleCheck(el){const cb=el.querySelector('input[type="checkbox"]');cb.checked=!cb.checked;el.classList.toggle('selected',cb.checked)}
+    function selectRadio(el){const radio=el.querySelector('input[type="radio"]');el.parentElement.querySelectorAll('.radio-option').forEach(opt=>opt.classList.remove('selected'));radio.checked=true;el.classList.add('selected')}
+
+    function submitApplication(){
+        const btn=document.getElementById('submitBtn');
+        btn.disabled=true;btn.textContent='Submitting...';
+        const data={
+            name:document.getElementById('name').value,
+            email:document.getElementById('email').value,
+            phone:document.getElementById('phone').value,
+            role:document.getElementById('role').value,
+            linkedin:document.getElementById('linkedin').value,
+            location:document.getElementById('location').value,
+            challenge:document.getElementById('challenge').value,
+            resonates:Array.from(document.querySelectorAll('input[name="resonates"]:checked')).map(cb=>cb.value).join(', '),
+            event:document.getElementById('event').value,
+            impact:document.getElementById('impact').value,
+            coach_history:document.querySelector('input[name="coach_history"]:checked')?.value||'',
+            availability:document.querySelector('input[name="availability"]:checked')?.value||'',
+            investment:document.querySelector('input[name="investment"]:checked')?.value||'',
+            anything_else:document.getElementById('anything_else').value,
+            submitted_at:new Date().toISOString()
+        };
+        fetch('https://script.google.com/macros/s/AKfycbzFB4edJ8df3vKHBtAVvokloESL45n5IW4XFk5mVZJmKJYFSOfxy5zpn4DdtMhxTxpMpw/exec',{
+            method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+        }).then(()=>{
+            window.location.href='https://calendly.com/commandaroom/intro';
+        }).catch(()=>{
+            window.location.href='https://calendly.com/commandaroom/intro';
+        });
+    }
+</script>
+</body>
+</html>
