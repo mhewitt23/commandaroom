@@ -13,6 +13,10 @@ app.use('/images', express.static(path.join(__dirname, 'images'), {
     immutable: true
 }));
 
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use('/assets', express.static(path.join(__dirname, 'images')));
+app.use('/assets', express.static(path.join(__dirname, 'apply')));
+
 app.use(express.static(__dirname, {
     extensions: ['html']
 }));
