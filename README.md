@@ -1,20 +1,17 @@
-[README.txt](https://github.com/user-attachments/files/33346544/README.txt)
-Command a Room, the website files
-=================================
+Command a Room, the website
+===========================
 
-What is in this folder
-- index.html            the homepage
-- apply/index.html      the application page (posts to your Google Sheet, then sends people to Calendly)
-- assets/               photos, diagrams, the signature, the share image, and the two small scripts
-- favicon.ico, favicon.png, apple-touch-icon.png
-- robots.txt, sitemap.xml
-- 404.html              a page for addresses that do not exist
+Live at https://www.commandaroom.com. Railway deploys this repo automatically every time `main` changes.
 
-How to go live
-Upload everything in this folder to the place your current site is served from, keeping the folder
-structure exactly as it is here. On Railway that means either committing these files to the GitHub
-repo the service deploys from, or replacing the files in your project folder and running
-"railway up". Your domain and DNS do not change.
+What is where
+- `public/`                 the website itself
+  - `index.html`            the homepage
+  - `apply/index.html`      the application page (posts to the Google Sheet, then opens Calendly)
+  - `assets/`               photos, diagrams, testimonial screenshots, the share image, and the two scripts
+  - `404.html`              the page for addresses that do not exist
+  - icons, `robots.txt`, `sitemap.xml`
+- `server.js`               the small server Railway runs: serves `public/` and redirects `/assessment`
+- `package.json`            tells Railway to run `node server.js`
 
-All links on the site are root-relative (/apply/, /assets/...), so the files must sit at the root of
-the site, not in a subfolder.
+Updating the site
+Replace the contents of `public/` with the new build, keeping the same folder structure, and commit to `main`.

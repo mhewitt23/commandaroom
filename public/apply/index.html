@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Apply · Command a Room</title>
+<title>Command a Room: Apply</title>
 <meta name="description" content="Tell a bit about what’s going on via the form below, and then pick a time for us to talk.">
 <link rel="canonical" href="https://www.commandaroom.com/apply/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Command a Room">
-<meta property="og:title" content="Apply · Command a Room">
+<meta property="og:title" content="Command a Room: Apply">
 <meta property="og:description" content="Tell a bit about what’s going on via the form below, and then pick a time for us to talk.">
 <meta property="og:url" content="https://www.commandaroom.com/apply/">
 <meta property="og:image" content="https://www.commandaroom.com/assets/og.jpg">
@@ -16,9 +16,9 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F3EEE4">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../favicon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
@@ -29,8 +29,20 @@ a{color:#1A1714;text-underline-offset:0.25em;text-decoration-thickness:1px}
 a:hover{color:#7A2E22}
 .d{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-weight:400;margin:0;color:#1A1714}
 .t{font-family:'Libre Caslon Text',Georgia,serif;margin:0}
-.lbl{margin:0;font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#7A2E22}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#1A1714;color:#F3EEE4;text-decoration:none;font:inherit;font-size:16px;font-weight:500;cursor:pointer}
+.rh{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-style:italic;font-size:21px;line-height:1.3;color:#1A1714}
+.step{margin:0;font-size:14px;line-height:1.4;color:#5C554C}
+.skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#1A1714;color:#F3EEE4;font-size:15px;text-decoration:none}
+.skip:focus{top:12px}
+.rv{animation:rv .8s cubic-bezier(.2,.7,.2,1) both}
+.rv-2{animation-delay:.1s}.rv-3{animation-delay:.2s}
+@keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-title{font-size:clamp(38px,6.7vw,96px);line-height:0.98;letter-spacing:-0.022em;text-wrap:balance;max-width:14.2em}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:stretch}
+.hero-copy{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.hero-copy>div{display:flex;flex-direction:column;gap:22px}
+.lead{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(20px,1.9vw,26px);line-height:1.42;color:#1A1714;max-width:30em}
+@media (max-width: 959px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#1A1714;color:#F3EEE4;text-decoration:none;font:inherit;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s ease}
 .btn:hover{background:#7A2E22;color:#F3EEE4}
 :focus-visible{outline:2px solid #7A2E22;outline-offset:4px}
 #top{overflow-x:clip}
@@ -42,7 +54,8 @@ legend{padding:0}
 .help{margin:0;font-size:14px;line-height:1.5;color:#5C554C}
 .in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 0;border:0;border-bottom:1px solid rgba(26,23,20,0.4);border-radius:0;background:transparent;font:inherit;font-size:17px;line-height:1.5;color:#1A1714;-webkit-appearance:none;appearance:none}
 .in::placeholder{color:#8E877B}
-.in:focus{outline:none;border-bottom:2px solid #7A2E22;padding-bottom:9px}
+.in:focus{outline:none;border-bottom:2px solid #1A1714;padding-bottom:9px}
+.in:focus-visible{outline:none}
 textarea.in{min-height:116px;resize:vertical}
 .opt{display:flex;align-items:flex-start;gap:14px;min-height:44px;padding:8px 0;font-size:16px;line-height:1.5;color:#1A1714;cursor:pointer}
 .opt input{flex-shrink:0;width:18px;height:18px;margin:3px 0 0;accent-color:#7A2E22;cursor:pointer}
@@ -51,38 +64,43 @@ textarea.in{min-height:116px;resize:vertical}
 @media (max-width: 639px){
 .btn{width:100%}
 .two{grid-template-columns:minmax(0,1fr)}
-.hero-wrap{gap:32px!important;padding-top:28px!important;padding-bottom:44px!important}
-.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 12%!important}
+.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 10%!important}
 }
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{animation:none}.btn{transition:none}}
 img{max-width:100%;height:auto}
 [hidden]{display:none!important}
 </style>
-<script src="/assets/apply.js" defer></script>
+<script src="../assets/apply.js" defer></script>
 </head>
 <body>
 <div id="top" style="width: 100%; min-height: 100vh; background: #F3EEE4; color: #1A1714; font-family: 'Hanken Grotesk', 'Helvetica Neue', system-ui, sans-serif; -webkit-font-smoothing: antialiased;">
+<a class="skip" href="#application">Skip to the application</a>
 
 <header style="position: sticky; top: 0; z-index: 60; background: #F3EEE4; border-bottom: 1px solid rgba(26,23,20,0.16);">
 <div style="max-width: 1280px; height: 64px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px); display: flex; justify-content: space-between; align-items: center; gap: 24px;">
-<a class="d" href="/" style="font-size: clamp(21px, 2vw, 24px); padding: 8px 0; text-decoration: none; white-space: nowrap;">Command a Room</a>
-<p class="lbl" style="margin: 0;">Apply</p>
+<a class="d" href="../" style="font-size: clamp(21px, 2vw, 24px); padding: 10px 0; text-decoration: none; white-space: nowrap;">Command a Room</a>
+<p class="rh" style="font-size: 19px;">Apply</p>
 </div>
 </header>
 
 <section aria-labelledby="apply-hero-title">
-<div class="hero-wrap" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(48px, 7vw, 104px) clamp(20px, 5vw, 64px) clamp(56px, 7vw, 104px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(48px, 6vw, 88px);">
-<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 26px;">
-<p class="lbl">Michael Hewitt · Executive Voice Coaching</p>
-<h1 id="apply-hero-title" class="d" style="font-size: clamp(34px, 4.8vw, 68px); line-height: 1.06; letter-spacing: -0.015em; text-wrap: balance;">You already know what you’re capable of. Let’s make sure the room knows it too.</h1>
-<p class="t" style="max-width: 32em; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; color: #1A1714;">Tell a bit about what’s going on via the form below, and then pick a time for us to talk.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; padding-top: 4px;">
-<a class="btn" href="#application">Apply Now</a>
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(40px, 6vw, 88px) clamp(20px, 5vw, 64px) clamp(48px, 6vw, 88px); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 56px);">
+<div class="rv" style="display: flex; flex-direction: column; gap: clamp(18px, 2vw, 28px);">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3D3832;">Michael Hewitt, Executive Voice Coaching.</p>
+<h1 id="apply-hero-title" class="d hero-title">You already know what you’re capable of. Let’s make sure the room knows it too.</h1>
 </div>
-</div>
-<figure style="flex: 1 1 340px; max-width: 440px; min-width: 0; margin: 0;">
-<img width="1072" height="1240" fetchpriority="high" class="hero-photo" src="/assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 1072 / 1240; object-fit: cover; background: #E6DFD2;">
+<div class="hero-grid">
+<figure class="rv rv-3" style="margin: 0; min-width: 0;">
+<img width="1072" height="1240" fetchpriority="high" class="hero-photo" src="../assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; background: #E6DFD2;">
 </figure>
+<div class="rv rv-2 hero-copy">
+<div>
+<p class="lead">Tell a bit about what’s going on via the form below, and then pick a time for us to talk.</p>
+<div style="padding-top: 4px;"><a class="btn" href="#application">Apply Now</a></div>
+</div>
+<p class="t" style="font-style: italic; font-size: 19px; line-height: 1.45; color: #1A1714; max-width: 30em;">This takes about 3 minutes. After you submit, you’ll be taken to book an intro call.</p>
+</div>
+</div>
 </div>
 </section>
 
@@ -93,26 +111,26 @@ img{max-width:100%;height:auto}
 
 <div style="display: flex; flex-direction: column; gap: 16px;">
 <h2 id="application-title" class="d" style="font-size: clamp(32px, 4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;">Let’s see if we’re a fit.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3832;">This takes about 3 minutes. After you submit, you’ll be taken to book an intro call.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3832;">Every field is required unless it says optional.</p>
 </div>
 
 <form id="applicationForm" action="/apply/" method="post" novalidate="false" style="display: flex; flex-direction: column; gap: clamp(48px, 6vw, 72px);">
 
 <fieldset style="display: flex; flex-direction: column; gap: 28px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="lbl">01</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">About You</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">1 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">About You</span></legend>
 <div class="two">
 <div class="fld"><label class="fld-l" for="name">Full name</label><input class="in" id="name" name="name" type="text" autocomplete="name" required></div>
 <div class="fld"><label class="fld-l" for="email">Email</label><input class="in" id="email" name="email" type="email" autocomplete="email" required></div>
 <div class="fld"><label class="fld-l" for="phone">Phone number</label><input class="in" id="phone" name="phone" type="tel" autocomplete="tel" required></div>
 <div class="fld"><label class="fld-l" for="location">Where are you based?</label><input class="in" id="location" name="location" type="text" autocomplete="address-level2" required></div>
 </div>
-<div class="fld"><label class="fld-l" for="role">What’s your role?</label><p class="help">Title + company, or a brief description of what you do.</p><input class="in" id="role" name="role" type="text" autocomplete="organization-title" required></div>
+<div class="fld"><label class="fld-l" for="role">What’s your role?</label><p class="help" id="role-help">Title + company, or a brief description of what you do.</p><input class="in" id="role" aria-describedby="role-help" name="role" type="text" autocomplete="organization-title" required></div>
 <div class="fld"><label class="fld-l" for="linkedin">LinkedIn or website (optional)</label><input class="in" id="linkedin" name="linkedin" type="url" autocomplete="url" placeholder="https://"></div>
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="lbl">02</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Your Situation</span></legend>
-<div class="fld"><label class="fld-l" for="challenge">What’s the main communication challenge you’re facing right now?</label><p class="help">Be specific. A situation, a pattern, a moment that keeps happening.</p><textarea class="in" id="challenge" name="challenge" rows="4" required></textarea></div>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">2 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Your Situation</span></legend>
+<div class="fld"><label class="fld-l" for="challenge">What’s the main communication challenge you’re facing right now?</label><p class="help" id="challenge-help">Be specific. A situation, a pattern, a moment that keeps happening.</p><textarea class="in" id="challenge" aria-describedby="challenge-help" name="challenge" rows="4" required></textarea></div>
 <fieldset style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">Which of these resonate with you? (Select all that apply)</legend>
 <label class="opt"><input type="checkbox" name="resonates" value="voice_confidence">My voice doesn’t project the confidence or authority I actually have</label>
@@ -127,13 +145,13 @@ img{max-width:100%;height:auto}
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="lbl">03</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">What’s At Stake</span></legend>
-<div class="fld"><label class="fld-l" for="event">Is there a specific event, milestone, or moment coming up that you want to be exceptional for?</label><p class="help">A conference talk, a fundraise, a podcast tour, a new role, a team you need to lead differently — anything with a deadline.</p><textarea class="in" id="event" name="event" rows="3"></textarea></div>
-<div class="fld"><label class="fld-l" for="impact">What would change in your career or business if your communication matched your expertise?</label><p class="help">Think results, not just feelings. Revenue, opportunities, reputation, trajectory.</p><textarea class="in" id="impact" name="impact" rows="3" required></textarea></div>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">3 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">What’s At Stake</span></legend>
+<div class="fld"><label class="fld-l" for="event">Is there a specific event, milestone, or moment coming up that you want to be exceptional for?</label><p class="help" id="event-help">A conference talk, a fundraise, a podcast tour, a new role, a team you need to lead differently — anything with a deadline.</p><textarea class="in" id="event" aria-describedby="event-help" name="event" rows="3"></textarea></div>
+<div class="fld"><label class="fld-l" for="impact">What would change in your career or business if your communication matched your expertise?</label><p class="help" id="impact-help">Think results, not just feelings. Revenue, opportunities, reputation, trajectory.</p><textarea class="in" id="impact" aria-describedby="impact-help" name="impact" rows="3" required></textarea></div>
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="lbl">04</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Fit &amp; Readiness</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">4 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Fit &amp; Readiness</span></legend>
 <fieldset style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">Have you worked with a coach before? (Speaking, executive, performance — any kind)</legend>
 <label class="opt"><input type="radio" name="coach_history" value="yes_helpful">Yes, and it was helpful</label>
@@ -152,7 +170,7 @@ img{max-width:100%;height:auto}
 <label class="opt"><input type="radio" name="investment" value="company">Company / firm expense</label>
 <label class="opt"><input type="radio" name="investment" value="not_sure">Not sure yet — depends on the conversation</label>
 </fieldset>
-<div class="fld"><label class="fld-l" for="anything_else">Anything else you want me to know?</label><p class="help">Optional. Context helps. Maybe it’s a link to a talk, a voice note, or just something on your mind.</p><textarea class="in" id="anything_else" name="anything_else" rows="3"></textarea></div>
+<div class="fld"><label class="fld-l" for="anything_else">Anything else you want me to know?</label><p class="help" id="anything_else-help">Optional. Context helps. Maybe it’s a link to a talk, a voice note, or just something on your mind.</p><textarea class="in" id="anything_else" aria-describedby="anything_else-help" name="anything_else" rows="3"></textarea></div>
 </fieldset>
 
 <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 8px;">
@@ -173,10 +191,10 @@ img{max-width:100%;height:auto}
 <p style="margin: 0;">© 2026 Executive Influence Systems LLC. New York.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 0 24px;">
-<a href="mailto:michael@michaelhewitt.com" style="padding: 12px 0;">michael@michaelhewitt.com</a>
-<a href="https://www.linkedin.com/in/michaelhewitt23/" style="padding: 12px 0;">LinkedIn</a>
-<a href="https://podcasts.apple.com/us/podcast/the-sound-of-leadership-self-actualize-through/id1725026646" style="padding: 12px 0;">The Sound of Leadership</a>
-<a href="https://www.michaelhewitt.com" style="padding: 12px 0;">michaelhewitt.com</a>
+<a href="mailto:michael@michaelhewitt.com" style="padding: 13px 0;">michael@michaelhewitt.com</a>
+<a href="https://www.linkedin.com/in/michaelhewitt23/" style="padding: 13px 0;">LinkedIn</a>
+<a href="https://podcasts.apple.com/us/podcast/the-sound-of-leadership-self-actualize-through/id1725026646" style="padding: 13px 0;">The Sound of Leadership</a>
+<a href="https://www.michaelhewitt.com" style="padding: 13px 0;">michaelhewitt.com</a>
 </div>
 </div>
 </footer>
