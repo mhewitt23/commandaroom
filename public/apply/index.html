@@ -89,6 +89,16 @@ textarea.in{min-height:116px;resize:vertical}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
 .ot-ribbon>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .colophon{margin:0;max-width:46em;font-size:13px;line-height:1.55;color:#5C554C}
+/* photos with clients, in black and white like the hero portrait: beside Eric's name, under Ben's review */
+.cs-ph{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"q q" "ph by" "ph go";column-gap:18px;row-gap:14px;align-content:start;align-items:start}
+.cs-ph>.t{grid-area:q}
+.cs-ph>.cs-photo{grid-area:ph}
+.cs-ph>.by{grid-area:by}
+.cs-ph>div{grid-area:go}
+.cs-photo,.rv-note>img{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
+.rv-note{margin:0;display:flex;align-items:flex-start;gap:18px}
+.rv-note>.cap{margin:0}
+@media (min-width: 1100px){.reviews-feat>.rv-note{grid-column:1;grid-row:2}.reviews-feat>#rv-brian-m-lockheed{grid-column:2;grid-row:1}}
 img{max-width:100%;height:auto}
 [hidden]{display:none!important}
 </style>
