@@ -253,6 +253,16 @@ summary .lbl-show{display:none}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
 .ot-ribbon>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .colophon{margin:0;max-width:46em;font-size:13px;line-height:1.55;color:#5C554C}
+/* photos with clients, in black and white like the hero portrait: beside Eric's name, under Ben's review */
+.cs-ph{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"q q" "ph by" "ph go";column-gap:18px;row-gap:14px;align-content:start;align-items:start}
+.cs-ph>.t{grid-area:q}
+.cs-ph>.cs-photo{grid-area:ph}
+.cs-ph>.by{grid-area:by}
+.cs-ph>div{grid-area:go}
+.cs-photo,.rv-note>img{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
+.rv-note{margin:0;display:flex;align-items:flex-start;gap:18px}
+.rv-note>.cap{margin:0}
+@media (min-width: 1100px){.reviews-feat>.rv-note{grid-column:1;grid-row:2}.reviews-feat>#rv-brian-m-lockheed{grid-column:2;grid-row:1}}
 img{max-width:100%;height:auto}
 .mtab{color:#5C554C;border-bottom-color:rgba(26,23,20,0.2)}
 .mtab.is-on{color:#1A1714;border-bottom-color:#1A1714}
@@ -485,8 +495,9 @@ body.modal-open{overflow:hidden}
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(44px, 6vw, 72px);">
 <h2 id="results-title" class="d h2">Client Experiences and Transformations</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px clamp(32px, 4vw, 56px);">
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 14px;">
+<figure class="cs-ph" style="margin: 0;">
 <p class="t" style="font-size: clamp(22px, 1.87vw, 25px); line-height: 1.4;">He was rambling on partnership calls, including one with Visa. He closed the next three deals.</p>
+<img loading="lazy" decoding="async" class="cs-photo" src="assets/eric-and-michael.jpg" alt="Eric and Michael Hewitt" width="800" height="640">
 <figcaption class="by"><span class="vname">Eric</span>DeFi Business Development</figcaption>
 <div><button type="button" class="linkbtn" data-video="eric"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>Watch Eric’s video</button></div>
 </figure>
@@ -514,6 +525,7 @@ body.modal-open{overflow:hidden}
 </div>
 <button type="button" class="rv-open" data-read="r:0" aria-label="Read the full review from Ben Marx"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
 </figure>
+<figure class="rv-note"><img loading="lazy" decoding="async" src="assets/ben-marx-and-michael.jpg" alt="Ben Marx and Michael Hewitt at the Aptos Experience" width="800" height="640"><figcaption class="cap">Ben Marx and Michael</figcaption></figure>
 <figure class="review is-crop" id="rv-brian-m-lockheed">
 <div class="rv-win">
 <img loading="lazy" decoding="async" width="1100" height="1190" class="review-img" src="assets/review-brian-m-lockheed.jpg" alt="">
