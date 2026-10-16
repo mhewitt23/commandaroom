@@ -1,4 +1,5 @@
 (function () {
+  // the menu
   var header = document.querySelector('header');
   var btn = document.getElementById('menu-btn');
   var menu = document.getElementById('mobile-menu');
@@ -8,44 +9,48 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     header.classList.toggle('menu-open', open);
   }
-  btn.addEventListener('click', function () { setMenu(menu.hidden); });
-  scrim.addEventListener('click', function () { setMenu(false); });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-close-menu]'), function (a) {
-    a.addEventListener('click', function () { setMenu(false); });
-  });
-
-  var tabs = document.querySelectorAll('.mtab');
-  var panels = document.querySelectorAll('.mpanel');
-  function showTab(key) {
-    Array.prototype.forEach.call(tabs, function (t) {
-      var on = t.getAttribute('data-tab') === key;
-      t.classList.toggle('is-on', on); t.setAttribute('aria-expanded', on ? 'true' : 'false');
+  if (btn && menu && scrim) {
+    btn.addEventListener('click', function () { setMenu(menu.hidden); });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-close-menu]'), function (link) {
+      link.addEventListener('click', function () { setMenu(false); });
     });
-    Array.prototype.forEach.call(panels, function (p) { p.hidden = p.getAttribute('data-panel') !== key; });
   }
-  Array.prototype.forEach.call(tabs, function (t) {
-    t.addEventListener('click', function () {
-      showTab(t.getAttribute('data-tab'));
-      if (t.getBoundingClientRect().top < 72) { t.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
-    });
-  });
 
-  var links = document.querySelectorAll('[data-nav]');
-  if ('IntersectionObserver' in window) {
+  // the homepage: Results and About light up while you read them
+  var navLinks = document.querySelectorAll('[data-nav]');
+  if (navLinks.length && 'IntersectionObserver' in window) {
     var seen = {};
     var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+      entries.forEach(function (entry) { seen[entry.target.id] = entry.isIntersecting; });
       var on = '';
-      ['method', 'results', 'about'].forEach(function (id) { if (seen[id]) { on = id; } });
-      Array.prototype.forEach.call(links, function (a) {
-        var hit = a.getAttribute('data-nav') === on;
-        a.classList.toggle('is-on', hit);
-        if (hit) { a.setAttribute('aria-current', 'location'); } else { a.removeAttribute('aria-current'); }
+      ['results', 'about'].forEach(function (id) { if (seen[id]) { on = id; } });
+      Array.prototype.forEach.call(navLinks, function (link) {
+        var hit = link.getAttribute('data-nav') === on;
+        link.classList.toggle('is-on', hit);
+        if (hit) { link.setAttribute('aria-current', 'location'); } else { link.removeAttribute('aria-current'); }
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
-    ['method', 'results', 'about'].forEach(function (id) { var el = document.getElementById(id); if (el) { spy.observe(el); } });
+    ['results', 'about'].forEach(function (id) { var el = document.getElementById(id); if (el) { spy.observe(el); } });
   }
 
+  function setInert(keep, on) {
+    Array.prototype.forEach.call(keep.parentNode.children, function (el) {
+      if (el === keep || el.tagName === 'SCRIPT') { return; }
+      if (on) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); }
+    });
+  }
+  // keep Tab inside an open dialog
+  function trapFocus(box, ev) {
+    var stops = Array.prototype.filter.call(box.querySelectorAll('button, a[href]'), function (el) { return el.getClientRects().length > 0; });
+    if (!stops.length) { return; }
+    var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
+    if (ev.shiftKey && (active === first || active === box)) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && active === last) { ev.preventDefault(); first.focus(); }
+    else if (!box.contains(active)) { ev.preventDefault(); first.focus(); }
+  }
+
+  // the video player
   var videos = {"spencer": {"name": "Spencer Applebaum","role": "General Partner and Co-Head of Venture, Multicoin Capital","src": "vimeo.com/1234419726","ratio": ""},"marina": {"name": "Marina","role": "Solutions Architect (Applied AI), Vellum AI","src": "vimeo.com/1234455607","ratio": ""},"raj": {"name": "Raj","role": "COO, Investor, Entrepreneur","src": "youtube.com/watch?v=0ZH5UG2Orns","ratio": ""},"michael": {"name": "Michael","role": "VC-backed CEO and Founder","src": "youtube.com/watch?v=bZ8Ccua4Zow","ratio": ""},"adam": {"name": "Adam","role": "CEO","src": "youtube.com/shorts/pqJYumeCXtk","ratio": ""},"scott": {"name": "Scott","role": "CEO","src": "youtube.com/watch?v=rCVyUGVXSt0","ratio": ""},"scottvoice": {"name": "Scott","role": "CEO (public speaking coaching)","src": "youtube.com/watch?v=RdjPj-9mam0","ratio": ""},"kellen": {"name": "Kellen","role": "Founder, Chief Growth Officer","src": "youtube.com/watch?v=9yFwKjzwC-M","ratio": ""},"andres": {"name": "Andres","role": "Founder","src": "vimeo.com/1234517384","ratio": ""},"riley": {"name": "Riley","role": "Founder","src": "vimeo.com/1231514012","ratio": ""},"jimmy": {"name": "Jimmy","role": "Executive","src": "youtube.com/watch?v=KZNo-HRSkOQ","ratio": ""},"brian": {"name": "Brian","role": "VP of Sales","src": "vimeo.com/1231514017","ratio": ""},"salesleader": {"name": "Sales Leader","role": "","src": "youtube.com/watch?v=5vhKC7Qepic","ratio": ""},"rose": {"name": "Rose","role": "Entrepreneur","src": "vimeo.com/1231514018","ratio": ""},"jonathan": {"name": "Jonathan","role": "Associate General Counsel, Director of Sales","src": "youtube.com/watch?v=E1kEzJ4mrsU","ratio": ""},"bryan": {"name": "Bryan","role": "Insurance Broker","src": "vimeo.com/1234517383","ratio": ""},"eric": {"name": "Eric","role": "DeFi Business Development","src": "vimeo.com/1231514014","ratio": ""},"strategicae": {"name": "Fortune 1000 Strategic AE","role": "","src": "youtube.com/watch?v=oLAwVyTCoDY","ratio": ""},"sakul": {"name": "Sakul","role": "Enterprise AE","src": "vimeo.com/1231514016","ratio": ""},"nelly": {"name": "Nelly","role": "BDR","src": "vimeo.com/1231514013","ratio": ""},"sdr": {"name": "SDR","role": "","src": "youtube.com/shorts/S_n-x5PmyvU","ratio": ""},"mark": {"name": "Mark","role": "Coach","src": "vimeo.com/1231514015","ratio": ""},"jay": {"name": "Jay","role": "TV News Anchor","src": "vimeo.com/1235620079?h=ee53050bee","ratio": "4/5"},"sam": {"name": "Sam","role": "Corporate Sales, Entrepreneur","src": "vimeo.com/1235620269?h=9273ba5922","ratio": "4/5"},"dylan": {"name": "Dylan","role": "@serialsales, Workshop Attendee and Organizer","src": "vimeo.com/1235620080?h=751d20f79b","ratio": "4/5"},"adampartner": {"name": "Adam","role": "Client and Partner","src": "vimeo.com/1235620212?h=f7d157124d","ratio": "4/5"},"chris": {"name": "Chris","role": "Software Engineer","src": "vimeo.com/1235620196?h=87aa392ef3","ratio": "4/5"},"eddy": {"name": "Eddy","role": "Entrepreneur","src": "vimeo.com/1235623564?h=27e9cfaedc","ratio": "4/5"},"doug": {"name": "Doug","role": "CPA, Entrepreneur","src": "vimeo.com/1235624688?h=8dbeec75ec","ratio": "4/5"},"presentation": {"name": "Client","role": "Presentation Skills","src": "vimeo.com/1235624692?h=e7613d22d4","ratio": "4/5"},"brendan": {"name": "Brendan","role": "Sales, Content Creator","src": "vimeo.com/1235624690?h=39fdb9e61a","ratio": "4/5"},"christy": {"name": "Christy","role": "Hypnotherapist, Entrepreneur","src": "vimeo.com/1235624691?h=8cb0d453c1","ratio": "4/5"},"paul": {"name": "Paul","role": "Sales and Marketing","src": "vimeo.com/1235623739?h=ed95ee970e","ratio": "4/5"},"kade": {"name": "Kade","role": "Top 1% TikTok Shop","src": "vimeo.com/1235669158?h=14266f6db4","ratio": "4/5"},"edlatimore": {"name": "Ed Latimore","role": "Author and Speaker","src": "vimeo.com/1235973059?h=9dc614cd63","ratio": "4/5"},"harrison": {"name": "Harrison","role": "Executive Recruitment Firm Principal","src": "vimeo.com/1235972915?h=fec7184a62","ratio": "4/5"},"max": {"name": "Max","role": "Real Estate Development","src": "vimeo.com/1235973159?h=44b5564bd6","ratio": "4/5"},"natalie": {"name": "Natalie","role": "Group Workshop Facilitator","src": "vimeo.com/1235973058?h=b885391bda","ratio": "4/5"},"trevor": {"name": "Trevor","role": "Group Workshop Participant","src": "vimeo.com/1235973053?h=9eb5913814","ratio": "4/5"},"danny": {"name": "Danny","role": "Insurance Sales","src": "vimeo.com/1235972914?h=c6c005fdfd","ratio": "4/5"},"patrick": {"name": "Patrick","role": "Coach and Parent","src": "vimeo.com/1235972913?h=ee0dfeb114","ratio": "4/5"},"john": {"name": "John","role": "Sales","src": "vimeo.com/1235972912?h=436369cc5f","ratio": "4/5"},"debbie": {"name": "Debbie","role": "","src": "vimeo.com/1235973060?h=7bc09908a2","ratio": "4/5"},"jared": {"name": "Jared","role": "","src": "vimeo.com/1235973140?h=a639bc9fa9","ratio": "4/5"}};
   var modal = document.getElementById('video-modal');
   var player = document.getElementById('video-player');
@@ -55,40 +60,31 @@
   var closeBtn = document.getElementById('video-close');
   var lastFocus = null;
   function embedUrl(src) {
-    var m;
-    if ((m = src.match(/vimeo\.com\/(\d+)(?:\/([0-9a-f]{6,})|\?h=([0-9a-f]+))?/))) { var h = m[2] || m[3]; return { url: 'https://player.vimeo.com/video/' + m[1] + '?' + (h ? 'h=' + h + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0', tall: false }; }
-    if ((m = src.match(/youtube\.com\/shorts\/([\w-]+)/))) { return { url: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0', tall: true }; }
-    if ((m = src.match(/[?&]v=([\w-]+)/))) { return { url: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0', tall: false }; }
+    var match = src.match(/vimeo\.com\/(\d+)(?:\/([0-9a-f]{6,})|\?h=([0-9a-f]+))?/);
+    if (match) {
+      var hash = match[2] || match[3];
+      return { url: 'https://player.vimeo.com/video/' + match[1] + '?' + (hash ? 'h=' + hash + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0', tall: false };
+    }
+    match = src.match(/youtube\.com\/shorts\/([\w-]+)/);
+    if (match) { return { url: 'https://www.youtube-nocookie.com/embed/' + match[1] + '?autoplay=1&rel=0', tall: true }; }
+    match = src.match(/[?&]v=([\w-]+)/);
+    if (match) { return { url: 'https://www.youtube-nocookie.com/embed/' + match[1] + '?autoplay=1&rel=0', tall: false }; }
     return null;
   }
-  function setInert(keep, on) {
-    Array.prototype.forEach.call(keep.parentNode.children, function (el) {
-      if (el === keep || el.tagName === 'SCRIPT') { return; }
-      if (on) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); }
-    });
-  }
-  function trap(box, ev) {
-    var f = Array.prototype.filter.call(box.querySelectorAll('button, a[href]'), function (x) { return x.getClientRects().length > 0; });
-    if (!f.length) { return; }
-    var a = document.activeElement;
-    if (ev.shiftKey && (a === f[0] || a === box)) { ev.preventDefault(); f[f.length - 1].focus(); }
-    else if (!ev.shiftKey && a === f[f.length - 1]) { ev.preventDefault(); f[0].focus(); }
-    else if (!box.contains(a)) { ev.preventDefault(); f[0].focus(); }
-  }
   function openVideo(key, back) {
-    var v = videos[key]; if (!v) { return; }
-    var e = embedUrl(v.src); if (!e) { return; }
+    var video = videos[key]; if (!video || !modal) { return; }
+    var embed = embedUrl(video.src); if (!embed) { return; }
     lastFocus = back || document.activeElement;
-    nameEl.textContent = v.name; roleEl.textContent = v.role ? ', ' + v.role : '';
-    modal.setAttribute('aria-label', 'Video: ' + v.name);
-    var shape = v.ratio === '4/5' ? 'r-45' : (e.tall ? 'r-916' : '');
+    nameEl.textContent = video.name; roleEl.textContent = video.role ? ', ' + video.role : '';
+    modal.setAttribute('aria-label', 'Video: ' + video.name);
+    var shape = video.ratio === '4/5' ? 'r-45' : (embed.tall ? 'r-916' : '');
     player.className = shape; frame.className = shape;
     player.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = e.url; f.title = 'Video: ' + v.name;
-    f.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-    f.setAttribute('allowfullscreen', '');
-    player.appendChild(f);
+    var iframe = document.createElement('iframe');
+    iframe.src = embed.url; iframe.title = 'Video: ' + video.name;
+    iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    player.appendChild(iframe);
     modal.hidden = false; document.body.classList.add('modal-open'); setInert(modal, true);
     closeBtn.focus();
   }
@@ -96,129 +92,179 @@
     modal.hidden = true; player.innerHTML = ''; document.body.classList.remove('modal-open'); setInert(modal, false);
     if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
   }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-video]'), function (el) {
-    el.addEventListener('click', function () { openVideo(el.getAttribute('data-video')); });
-  });
-  closeBtn.addEventListener('click', closeVideo);
-  modal.addEventListener('click', function (ev) { if (ev.target === modal) { closeVideo(); } });
+  if (modal) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-video]'), function (el) {
+      el.addEventListener('click', function () { openVideo(el.getAttribute('data-video')); });
+    });
+    closeBtn.addEventListener('click', closeVideo);
+    modal.addEventListener('click', function (ev) { if (ev.target === modal) { closeVideo(); } });
+  }
 
-  // video list: See all / Show fewer
-  var vlist = document.getElementById('video-list');
-  var vmore = document.getElementById('vids-more');
-  var vlabel = vmore.textContent;
-  vmore.addEventListener('click', function () {
-    var first = null;
-    if (vlist.classList.contains('is-short')) {
-      first = Array.prototype.filter.call(vlist.children, function (li) { return getComputedStyle(li).display === 'none'; })[0] || null;
+  // the carousel of written testimonials (homepage)
+  var track = document.getElementById('cq-track');
+  if (track) {
+    var prev = document.getElementById('cq-prev');
+    var next = document.getElementById('cq-next');
+    var count = document.getElementById('cq-count');
+    var slides = track.children.length;
+    var at = 0, end = false, frameId = 0;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var phone = window.matchMedia('(max-width: 759px)');
+    function slideStep() { return slides > 1 ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth; }
+    function syncCarousel() {
+      frameId = 0;
+      at = Math.max(0, Math.min(slides - 1, Math.round(track.scrollLeft / (slideStep() || 1))));
+      end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      count.textContent = (at + 1) + ' of ' + slides;
+      prev.setAttribute('aria-disabled', at > 0 ? 'false' : 'true');
+      next.setAttribute('aria-disabled', end ? 'true' : 'false');
     }
-    var open = !vlist.classList.toggle('is-short');
-    vmore.setAttribute('aria-expanded', open ? 'true' : 'false');
-    vmore.textContent = open ? 'Show fewer videos' : vlabel;
-    if (first) { first.querySelector('button').focus({ preventScroll: true }); }
-    else if (!open && vmore.getBoundingClientRect().top < 72) { vmore.scrollIntoView({ block: 'center' }); }
-  });
+    function syncOnNextFrame() { if (!frameId) { frameId = window.requestAnimationFrame(syncCarousel); } }
+    function moveCarousel(direction) {
+      if ((direction < 0 && at === 0) || (direction > 0 && end)) { return; }
+      track.scrollBy({ left: direction * slideStep(), behavior: still.matches ? 'auto' : 'smooth' });
+    }
+    track.addEventListener('scroll', syncOnNextFrame, { passive: true });
+    prev.addEventListener('click', function () { moveCarousel(-1); });
+    next.addEventListener('click', function () { moveCarousel(1); });
+    // phones: a long review is clamped and opens in place; one that fits loses its button
+    var more = track.querySelectorAll('[data-cq-more]');
+    function markReviewsThatFit() {
+      Array.prototype.forEach.call(more, function (button) {
+        var slide = button.closest('.cq-slide'), quote = slide.querySelector('.cq-q');
+        if (slide.classList.contains('is-open')) { return; }
+        slide.classList.remove('is-fit');
+        slide.classList.toggle('is-fit', !phone.matches || quote.scrollHeight <= quote.clientHeight + 2);
+      });
+    }
+    Array.prototype.forEach.call(more, function (button) {
+      var slide = button.closest('.cq-slide');
+      button.addEventListener('click', function () {
+        var open = slide.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.textContent = open ? 'Show less' : 'Read the full review';
+        if (!open && slide.getBoundingClientRect().top < 72) { slide.scrollIntoView({ block: 'start' }); }
+      });
+    });
+    window.addEventListener('resize', function () { syncOnNextFrame(); markReviewsThatFit(); });
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { syncCarousel(); markReviewsThatFit(); }); }
+    syncCarousel(); markReviewsThatFit();
+  }
 
-  // testimonial cards: fade only where the text runs past the card
+  // testimonial cards (Wall of Love): fade only where the text runs past the card
   var wins = document.querySelectorAll('.rv-win');
-  function fitWins() {
-    Array.prototype.forEach.call(wins, function (w) {
-      if (!w.getClientRects().length) { return; }
-      w.classList.toggle('is-fit', w.scrollHeight <= w.clientHeight + 2);
+  function markCardsThatFit() {
+    Array.prototype.forEach.call(wins, function (win) {
+      if (!win.getClientRects().length) { return; }
+      win.classList.toggle('is-fit', win.scrollHeight <= win.clientHeight + 2);
     });
   }
-  fitWins();
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitWins); }
-  var fitT = null;
-  window.addEventListener('resize', function () { clearTimeout(fitT); fitT = setTimeout(fitWins, 150); });
-  var allReviews = document.getElementById('testimonials');
-  if (allReviews) { allReviews.addEventListener('toggle', fitWins); }
+  if (wins.length) {
+    markCardsThatFit();
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(markCardsThatFit); }
+    var fitTimer = null;
+    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(markCardsThatFit, 150); });
+  }
 
-  // the reader: one testimonial at a time, full size, with previous and next
-  var reads = {"r":[{"id":"rv-ben-marx","name":"Ben Marx","role":"Head of Engineering, Malbec Labs","src":"assets/review-ben-marx.jpg","w":1100,"h":1129,"alt":"","video":"","first":"","link":""},{"id":"rv-brian-m-lockheed","name":"Brian M.","role":"Subcontract Program Manager, Lockheed Martin","src":"assets/review-brian-m-lockheed.jpg","w":1100,"h":1190,"alt":"","video":"","first":"","link":""},{"id":"rv-wifimoneyguy","name":"@WiFiMoneyGuy","role":"","src":"assets/review-wifimoneyguy.jpg","w":1100,"h":757,"alt":"","video":"","first":"","link":""},{"id":"rv-sakul-nathwani","name":"Sakul Nathwani","role":"Enterprise Account Executive","src":"assets/review-sakul-nathwani.jpg","w":1100,"h":1047,"alt":"","video":"sakul","first":"Sakul","link":""},{"id":"rv-arijan-horvat","name":"Arijan Horvat","role":"","src":"assets/review-arijan-horvat.jpg","w":1100,"h":591,"alt":"","video":"","first":"","link":""},{"id":"rv-joshua-steinman","name":"Joshua Steinman","role":"CEO and co-founder, Galvanick","src":"assets/review-joshua-steinman.jpg","w":1100,"h":467,"alt":"","video":"","first":"","link":""},{"id":"rv-anon-twitter","name":"ANON from Twitter","role":"","src":"assets/review-anon-twitter.jpg","w":1100,"h":467,"alt":"","video":"","first":"","link":""},{"id":"rv-joseph-johnston","name":"Joseph Johnston","role":"Speaker; CEO, Initiate Connections","src":"assets/review-joseph-johnston.jpg","w":1100,"h":467,"alt":"","video":"","first":"","link":""},{"id":"rv-steve-english","name":"Steve English","role":"","src":"assets/review-steve-english.jpg","w":1100,"h":716,"alt":"","video":"","first":"","link":""},{"id":"rv-frank","name":"Frank","role":"","src":"assets/review-frank.jpg","w":1100,"h":467,"alt":"","video":"","first":"","link":""},{"id":"rv-rommel","name":"Rommel","role":"","src":"assets/review-rommel.jpg","w":1100,"h":674,"alt":"","video":"","first":"","link":""},{"id":"rv-ashley-perez","name":"Ashley Perez","role":"","src":"assets/review-ashley-perez.jpg","w":1100,"h":1005,"alt":"","video":"","first":"","link":""},{"id":"rv-ryan-alvarez","name":"Ryan Alvarez","role":"","src":"assets/review-ryan-alvarez.jpg","w":1100,"h":550,"alt":"","video":"","first":"","link":""},{"id":"rv-brandon-lariz","name":"Brandon Lariz","role":"Enterprise SDR, Abnormal AI","src":"assets/review-brandon-lariz.jpg","w":1100,"h":840,"alt":"","video":"","first":"","link":""},{"id":"rv-bowtiednightowl","name":"BowTiedNightOwl","role":"","src":"assets/review-bowtiednightowl.jpg","w":1100,"h":550,"alt":"","video":"","first":"","link":""},{"id":"rv-jackson","name":"Jackson","role":"","src":"assets/review-jackson.jpg","w":1100,"h":1957,"alt":"","video":"","first":"","link":""},{"id":"rv-spartanpsyche","name":"SP","role":"","src":"assets/review-spartanpsyche.jpg","w":1100,"h":591,"alt":"","video":"","first":"","link":""},{"id":"rv-lia-the-trader","name":"Lia the Trader","role":"","src":"assets/review-lia-the-trader.jpg","w":1100,"h":509,"alt":"","video":"","first":"","link":""},{"id":"rv-jay","name":"Jay","role":"","src":"assets/review-jay.jpg","w":1100,"h":1171,"alt":"","video":"","first":"","link":"https://testimonial.to/share/tonality-training/t/MRj52Zwoa6xjwRODYxWkdO3eE"},{"id":"rv-jatin-naran","name":"Jatin Naran","role":"","src":"assets/review-jatin-naran.jpg","w":1100,"h":426,"alt":"","video":"","first":"","link":""},{"id":"rv-brent-deterding","name":"Brent Deterding","role":"","src":"assets/review-brent-deterding.jpg","w":1100,"h":426,"alt":"","video":"","first":"","link":""},{"id":"rv-divy-kandala","name":"Divy Kandala","role":"","src":"assets/review-divy-kandala.jpg","w":1100,"h":509,"alt":"","video":"","first":"","link":""},{"id":"rv-quoll","name":"Quoll","role":"SDR at a startup","src":"","w":0,"h":0,"alt":"","video":"","first":"","link":"https://testimonial.to/share/tonality-training/t/OA0Ekvge5Ydlbo52YKqRLpWxX"},{"id":"rv-sam-weist","name":"Sam Weist","role":"","src":"","w":0,"h":0,"alt":"","video":"","first":"","link":"https://testimonial.to/share/tonality-training/t/0Mn5r3E1XY0yjGaozWPoD9kg7"}],"s":[{"id":"sh-1","name":"Zach Pogrob","role":"on Instagram","src":"assets/testimonial-zach-pogrob-instagram.jpg","w":1000,"h":1617,"alt":"Instagram story from Zach Pogrob, shown writing on a wall of handwritten quotes. His captions read: Strong voice session today with @michaelhewitt23. Becoming a powerful speaker, online/offline, in events and just in life, is a huge goal of mine. And massively important to the mission of spreading Obsession. For anyone leading a movement it’s maybe the most important skill. Recommend learning from / booking session with him if you talk to humans.","video":"","first":"","link":""},{"id":"sh-2","name":"A client","role":"by text","src":"assets/testimonial-client-text-quota.jpg","w":1000,"h":687,"alt":"Text message from a client: Hey dude guess what. Second month into my AE role and I hit 125% of quota! Just wanted to thank you for the mentorship and coaching and for helping me feel more confident in my voice and how I interact with people!! Michael’s reply: DUDE","video":"","first":"","link":""},{"id":"sh-3","name":"Gabe Pluguez","role":"on X","src":"assets/testimonial-gabe-pluguez-x.jpg","w":1000,"h":774,"alt":"Post on X from Gabe Pluguez: Our brother @MichaelHewitt23 just did a live training for DK on how to make your voice sound more masculine (without sounding weird) and it was awesome. Every man who’s in any kind of leadership role could benefit from what he teaches. Highly recommend.","video":"","first":"","link":""},{"id":"sh-4","name":"A client","role":"by text","src":"assets/testimonial-client-text-amens.jpg","w":1000,"h":762,"alt":"Text thread with a client. Client: Appreciate that response dude. Felt a lot better today and got some audible amens while up there, which is usually a good sign. Still gotta get it to be more of a daily habit. Michael: NICE! That ever happened before? How’d that feel? Client: Has not happened before. Felt good, more calm. Not calm in general, but more than before.","video":"","first":"","link":""}]};
-  var PLAY = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>';
+  // the reader (Wall of Love): one testimonial at a time, full size, with previous and next
   var rdEl = document.getElementById('reader');
+  var readsEl = document.getElementById('reads');
+  var readerSets = null;   // {r: the written reviews, s: the texts and posts}, from the JSON on the page
+  var PLAY = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>';
   var rdBody = document.getElementById('rd-body');
   var rdName = document.getElementById('rd-name');
   var rdRole = document.getElementById('rd-role');
   var rdCount = document.getElementById('rd-count');
   var rdLive = document.getElementById('rd-live');
-  var rdSet = 'r', rdI = 0, rdBack = null;
-  var phone = window.matchMedia('(max-width: 759px)');
-  function rdShow() {
-    var list = reads[rdSet], it = list[rdI], n = list.length;
-    rdName.textContent = it.name;
-    rdRole.textContent = it.role ? ', ' + it.role : '';
-    rdCount.textContent = (rdI + 1) + ' of ' + n;
-    rdLive.textContent = it.name + ', ' + (rdI + 1) + ' of ' + n;
-    rdBody.className = 'rd-body ' + (rdSet === 's' ? 'is-shot' : (it.src ? 'is-img' : 'is-text'));
-    rdBody.style.width = rdSet === 's' ? 'min(100%, 640px, calc((100vh - 190px) * ' + (it.w / it.h).toFixed(4) + '))' : '';
+  var rdSet = 'r', rdIndex = 0, rdBack = null;
+  var narrow = window.matchMedia('(max-width: 759px)');
+  function renderReader() {
+    var list = readerSets[rdSet], item = list[rdIndex], total = list.length;
+    rdName.textContent = item.name;
+    rdRole.textContent = item.role ? ', ' + item.role : '';
+    rdCount.textContent = (rdIndex + 1) + ' of ' + total;
+    rdLive.textContent = item.name + ', ' + (rdIndex + 1) + ' of ' + total;
+    rdBody.className = 'rd-body ' + (rdSet === 's' ? 'is-shot' : (item.src ? 'is-img' : 'is-text'));
+    rdBody.style.width = rdSet === 's' ? 'min(100%, 640px, calc((100vh - 190px) * ' + (item.width / item.height).toFixed(4) + '))' : '';
     rdBody.innerHTML = '';
-    if (it.src) {
-      var im = document.createElement('img');
-      im.className = 'rd-img'; im.alt = it.alt || ''; im.width = it.w; im.height = it.h;
-      im.loading = 'lazy'; im.decoding = 'async'; im.src = it.src;
-      rdBody.appendChild(im);
+    if (item.src) {
+      var img = document.createElement('img');
+      img.className = 'rd-img'; img.alt = item.alt || ''; img.width = item.width; img.height = item.height;
+      img.loading = 'lazy'; img.decoding = 'async'; img.src = item.src;
+      rdBody.appendChild(img);
     }
     if (rdSet === 'r') {
-      var t = document.querySelector('#' + it.id + ' .review-txt');
-      if (t) { var d = document.createElement('div'); d.className = 'rd-txt'; d.innerHTML = t.innerHTML; rdBody.appendChild(d); }
-      if (it.video || it.link) {
+      var source = document.querySelector('#' + item.id + ' .review-txt');
+      if (source) { var copy = document.createElement('div'); copy.className = 'rd-txt'; copy.innerHTML = source.innerHTML; rdBody.appendChild(copy); }
+      if (item.video || item.link) {
         var row = document.createElement('div'); row.className = 'rd-links';
-        if (it.video) {
-          var vb = document.createElement('button');
-          vb.type = 'button'; vb.className = 'linkbtn'; vb.innerHTML = PLAY + 'Watch ' + it.first + '\u2019s video';
-          vb.addEventListener('click', function () { var back = rdBack; rdHide(false); openVideo(it.video, back); });
-          row.appendChild(vb);
+        if (item.video) {
+          var watch = document.createElement('button');
+          watch.type = 'button'; watch.className = 'linkbtn'; watch.innerHTML = PLAY + 'Watch ' + item.first + '\u2019s video';
+          watch.addEventListener('click', function () { var back = rdBack; closeReader(false); openVideo(item.video, back); });
+          row.appendChild(watch);
         }
-        if (it.link) {
-          var a = document.createElement('a');
-          a.href = it.link; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'View on Testimonial.to';
-          row.appendChild(a);
+        if (item.link) {
+          var link = document.createElement('a');
+          link.href = item.link; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'View on Testimonial.to';
+          row.appendChild(link);
         }
         rdBody.appendChild(row);
       }
     }
     rdEl.scrollTop = 0;
-    if (!(rdSet === 'r' && phone.matches)) {
-      [-1, 1].forEach(function (k) { var nb = list[(rdI + k + n) % n]; if (nb.src) { var p = new Image(); p.src = nb.src; } });
+    if (!(rdSet === 'r' && narrow.matches)) {   // fetch the neighbors' images ahead of a swipe
+      [-1, 1].forEach(function (step) {
+        var neighbor = list[(rdIndex + step + total) % total];
+        if (neighbor.src) { var preload = new Image(); preload.src = neighbor.src; }
+      });
     }
   }
-  function rdOpen(set, i) {
-    rdBack = document.activeElement; rdSet = set; rdI = i;
-    rdShow();
+  function openReader(set, index) {
+    rdBack = document.activeElement; rdSet = set; rdIndex = index;
+    renderReader();
     rdEl.hidden = false; document.body.classList.add('modal-open'); setInert(rdEl, true);
     rdEl.focus();
   }
-  function rdHide(restore) {
+  function closeReader(restore) {
     rdEl.hidden = true; rdBody.innerHTML = ''; document.body.classList.remove('modal-open'); setInert(rdEl, false);
     if (restore !== false && rdBack && rdBack.focus) { rdBack.focus(); }
   }
-  function rdStep(k) { var n = reads[rdSet].length; rdI = (rdI + k + n) % n; rdShow(); }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-read]'), function (el) {
-    el.addEventListener('click', function () { var v = el.getAttribute('data-read').split(':'); rdOpen(v[0], +v[1]); });
-  });
-  document.getElementById('rd-close').addEventListener('click', function () { rdHide(); });
-  document.getElementById('rd-prev').addEventListener('click', function () { rdStep(-1); });
-  document.getElementById('rd-next').addEventListener('click', function () { rdStep(1); });
-  rdEl.addEventListener('click', function (ev) { if (ev.target === rdEl) { rdHide(); } });
-  var tx = null, ty = 0;
-  rdEl.addEventListener('touchstart', function (ev) {
-    if (ev.touches.length === 1) { tx = ev.touches[0].clientX; ty = ev.touches[0].clientY; } else { tx = null; }
-  }, { passive: true });
-  rdEl.addEventListener('touchend', function (ev) {
-    if (tx === null) { return; }
-    var t = ev.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty; tx = null;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > 1.6 * Math.abs(dy)) { rdStep(dx < 0 ? 1 : -1); }
-  }, { passive: true });
+  function stepReader(step) { var total = readerSets[rdSet].length; rdIndex = (rdIndex + step + total) % total; renderReader(); }
+  if (rdEl && readsEl) {
+    // a list that can't be read leaves the cards as they are, and the rest of the page keeps working
+    try { readerSets = JSON.parse(readsEl.textContent); }
+    catch (err) { if (window.console) { console.warn('wall: the reader list could not be read', err); } }
+  }
+  if (readerSets) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-read]'), function (el) {
+      el.addEventListener('click', function () { var parts = el.getAttribute('data-read').split(':'); openReader(parts[0], +parts[1]); });
+    });
+    document.getElementById('rd-close').addEventListener('click', function () { closeReader(); });
+    document.getElementById('rd-prev').addEventListener('click', function () { stepReader(-1); });
+    document.getElementById('rd-next').addEventListener('click', function () { stepReader(1); });
+    rdEl.addEventListener('click', function (ev) { if (ev.target === rdEl) { closeReader(); } });
+    var touchX = null, touchY = 0;   // a sideways swipe moves to the next or previous testimonial
+    rdEl.addEventListener('touchstart', function (ev) {
+      if (ev.touches.length === 1) { touchX = ev.touches[0].clientX; touchY = ev.touches[0].clientY; } else { touchX = null; }
+    }, { passive: true });
+    rdEl.addEventListener('touchend', function (ev) {
+      if (touchX === null) { return; }
+      var touch = ev.changedTouches[0], deltaX = touch.clientX - touchX, deltaY = touch.clientY - touchY; touchX = null;
+      if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > 1.6 * Math.abs(deltaY)) { stepReader(deltaX < 0 ? 1 : -1); }
+    }, { passive: true });
+  }
 
   document.addEventListener('keydown', function (ev) {
-    if (!rdEl.hidden) {
-      if (ev.key === 'Escape') { rdHide(); }
-      else if (ev.key === 'ArrowRight') { ev.preventDefault(); rdStep(1); }
-      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); rdStep(-1); }
-      else if (ev.key === 'Tab') { trap(rdEl, ev); }
+    if (rdEl && !rdEl.hidden) {
+      if (ev.key === 'Escape') { closeReader(); }
+      else if (ev.key === 'ArrowRight') { ev.preventDefault(); stepReader(1); }
+      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); stepReader(-1); }
+      else if (ev.key === 'Tab') { trapFocus(rdEl, ev); }
       return;
     }
-    if (ev.key === 'Escape') { if (!modal.hidden) { closeVideo(); } else if (!menu.hidden) { setMenu(false); } }
+    if (ev.key === 'Escape') {
+      if (modal && !modal.hidden) { closeVideo(); } else if (menu && !menu.hidden) { setMenu(false); }
+    }
   });
 })();
