@@ -55,7 +55,6 @@ summary::-webkit-details-marker{display:none}
 #top{overflow-x:clip}
 [id]{scroll-margin-top:80px}
 section[id]{scroll-margin-top:64px}
-#gap{scroll-margin-top:96px}
 .menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-right:-8px;padding:0 8px;border:0;background:transparent;color:#1A1714;font:inherit;font-size:16px;font-weight:500;cursor:pointer}
 .menu-btn:hover{color:#7A2E22}
 .mlink{display:flex;align-items:center;min-height:60px;border-bottom:1px solid rgba(26,23,20,0.16);color:#1A1714;text-decoration:none;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:23px}
@@ -70,7 +69,7 @@ section[id]{scroll-margin-top:64px}
 @media (max-width: 559px){.l-full{display:none}.l-short{display:inline}}
 @media (max-width: 419px){.mb-t{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.menu-btn{padding:0 10px}}
 @media (max-width: 349px){.hcta{display:none}}
-@media (min-width: 960px){.mnav,.menu-scrim{display:none!important}.duo{grid-template-columns:repeat(2,minmax(0,1fr))!important}.gap-link{display:none!important}}
+@media (min-width: 960px){.mnav,.menu-scrim{display:none!important}.duo{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 /* hero */
 .hero-title{font-size:clamp(33px,5.9vw,84px);line-height:0.98;letter-spacing:-0.022em;text-wrap:balance;max-width:14.2em}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:stretch}
@@ -78,7 +77,9 @@ section[id]{scroll-margin-top:64px}
 .hero-copy>div{display:flex;flex-direction:column;gap:22px}
 .hero-photo{display:block;width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:50% 12%;background:#E6DFD2}
 .rv{animation:rv .8s cubic-bezier(.2,.7,.2,1) both}
-.rv-2{animation-delay:.1s}.rv-3{animation-delay:.2s}.rv-4{animation-delay:.3s}
+.rv-2{animation-delay:.1s}
+.rv-3{animation-delay:.2s}
+.rv-4{animation-delay:.3s}
 @keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 /* credits strip */
 .creds{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px clamp(32px,5vw,72px)}
@@ -89,31 +90,18 @@ section[id]{scroll-margin-top:64px}
 .stage-gallery{display:flex;flex-direction:column;gap:20px}
 .stage-row{display:flex;gap:20px;align-items:flex-start}
 .stage-row>figure{min-width:0;margin:0}
-.sp-l{flex:1.5 1 0}.sp-v{flex:0.7082 1 0}.sp-w{flex:1.7787 1 0}.sp-k{flex:1.3333 1 0}.sp-p{flex:0.6667 1 0}
+.sp-l{flex:1.5 1 0}
+.sp-v{flex:0.7082 1 0}
+.sp-w{flex:1.7787 1 0}
+.sp-k{flex:1.3333 1 0}
+.sp-p{flex:0.6667 1 0}
 /* lists */
 .rows{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column}
 .rows>li{padding:16px 0;border-top:1px solid rgba(26,23,20,0.16);font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(21px,1.87vw,25px);line-height:1.35;color:#1A1714}
 .rows>li:last-child{border-bottom:1px solid rgba(26,23,20,0.16)}
 /* method tabs */
 .mtabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:clamp(16px,3vw,40px)}
-.mtab-h{grid-row:1;margin:0;display:flex}
-.mtabs>.mpanel{grid-row:2;grid-column:1/-1}
-.mpanel{padding-top:clamp(32px,4vw,48px);animation:fade .2s ease-out both}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.mtab{width:100%;box-sizing:border-box;display:flex;align-items:center;gap:12px;padding:6px 0 18px;border:0;border-bottom:2px solid;background:transparent;font:inherit;text-align:left;cursor:pointer;transition:color .15s ease,border-color .15s ease}
-.mtab:hover{color:#1A1714!important}
-.mtab-l{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(18px,1.67vw,24px);line-height:1.15}
-.mtab-ic{display:none;flex-shrink:0;margin-left:auto;transition:transform .2s}
-.method-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:44px clamp(32px,4vw,56px)}
-.mcol{display:flex;flex-direction:column;gap:10px;padding-top:20px;border-top:2px solid #1A1714}
-.mcol h4{font-size:clamp(26px,3.17vw,40px);line-height:1}
-.mcol .sub{font-style:italic;font-size:21px;color:#7A2E22}
-.mcol dl{margin:10px 0 0;display:flex;flex-direction:column}
-.mcol dl>div{padding:12px 0;border-top:1px solid rgba(26,23,20,0.16)}
-.mcol dt{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:21px;margin:0}
-.mcol dd{margin:4px 0 0;font-size:16px;line-height:1.55;color:#5C554C}
-.mcol .ex{margin:10px 0 0;padding-top:12px;border-top:1px solid rgba(26,23,20,0.16);font-size:15px;line-height:1.5;color:#5C554C}
-.mcol .ex .t{font-style:italic;font-size:19px;color:#1A1714}
 /* proof + results */
 .quote{font-size:clamp(21px,2.55vw,35px);line-height:1.18}
 .by{display:flex;flex-direction:column;gap:2px;font-size:16px;line-height:1.5;color:#5C554C}
@@ -128,12 +116,6 @@ section[id]{scroll-margin-top:64px}
 .vname{font-weight:600;color:#1A1714}
 .vrole{color:#5C554C;font-size:15px}
 .vwrap{container-type:inline-size;overflow-anchor:none}
-.vlist.is-short>li:nth-child(n+17){display:none}
-@container (width < 1136px){.vlist.is-short>li:nth-child(n+16){display:none}}
-@container (width < 844px){.vlist.is-short>li:nth-child(n+13){display:none}}
-@container (width < 552px){.vlist.is-short>li:nth-child(n+9){display:none}}
-.more-btn{display:flex;align-items:center;width:100%;min-height:44px;margin:0;padding:16px 0;border:0;background:none;color:#7A2E22;font:inherit;font-size:16px;font-weight:500;text-align:left;cursor:pointer}
-.more-btn:hover{text-decoration:underline;text-underline-offset:0.25em;text-decoration-thickness:1px}
 .cs{margin:0;padding:28px 0;border-top:1px solid rgba(26,23,20,0.16);display:flex;flex-direction:column;gap:14px}
 .cs-title{margin:0;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-weight:400;font-size:23px;line-height:1.35;color:#1A1714;text-wrap:balance}
 .cs-q{margin:0;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.65;color:#3D3832}
@@ -152,11 +134,9 @@ section[id]{scroll-margin-top:64px}
 .shot-ic{position:absolute;top:10px;right:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(26,23,20,0.74);color:#F3EEE4;transition:background-color .15s ease}
 .shot:hover .shot-win,.review:hover{border-color:rgba(26,23,20,0.5)}
 .shot:hover .shot-ic,.shot-open:focus-visible .shot-ic{background:#7A2E22}
-.reviews-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,3vw,40px);align-items:stretch}
 .reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,3vw,40px);padding:20px 0 8px;align-items:stretch}
 .review{position:relative;margin:0;min-width:0;box-sizing:border-box;padding-bottom:48px;background:#FFFFFF;border:1px solid rgba(26,23,20,0.14);transition:border-color .15s ease}
 .rv-win{position:relative;overflow:hidden;aspect-ratio:1100 / 473}
-.reviews-feat .rv-win{aspect-ratio:1100 / 682}
 .rv-win::after{content:"";position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(rgba(255,255,255,0),#FFFFFF 88%);pointer-events:none;display:none}
 .review.is-crop .rv-win::after,.review.is-text .rv-win::after{display:block}
 .rv-win.is-fit::after{display:none!important}
@@ -194,54 +174,24 @@ section[id]{scroll-margin-top:64px}
 .rd-nav{position:fixed;top:50%;z-index:4;width:52px;height:52px;margin-top:-26px}
 .rd-prev{left:max(16px,calc(50% - 420px))}
 .rd-next{right:max(16px,calc(50% - 420px))}
-@media (max-width: 1099px){.reviews-feat,.reviews{grid-template-columns:minmax(0,1fr);max-width:680px}}
+@media (max-width: 1099px){.reviews{grid-template-columns:minmax(0,1fr);max-width:680px}}
 @media (max-width: 899px){.reader{padding-bottom:100px}.reader::after{content:"";position:fixed;left:0;right:0;bottom:0;z-index:3;height:84px;background:#161412;border-top:1px solid rgba(243,238,228,0.16)}.rd-nav{top:auto;bottom:16px;margin-top:0}.rd-prev{left:16px}.rd-next{right:16px}}
-@media (max-width: 759px){.review-img{display:none}.review .review-txt{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal;padding:18px 18px 0;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3D3832}.rv-win,.reviews-feat .rv-win{aspect-ratio:auto;max-height:236px}.reviews-feat .rv-win{max-height:316px}.rv-win::after{display:block}.rv-open{padding:0 18px 14px}.reviews-feat,.reviews{gap:16px}.rd-body.is-img .rd-img{display:none}.rd-body.is-img .rd-txt{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal;padding:22px 20px 20px;background:#FFFFFF;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3D3832;gap:14px;font-size:17px;line-height:1.65}}
+@media (max-width: 759px){.review-img{display:none}.review .review-txt{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal;padding:18px 18px 0;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3D3832}.rv-win{aspect-ratio:auto;max-height:236px}.rv-win::after{display:block}.rv-open{padding:0 18px 14px}.reviews{gap:16px}.rd-body.is-img .rd-img{display:none}.rd-body.is-img .rd-txt{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal;padding:22px 20px 20px;background:#FFFFFF;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3D3832;gap:14px;font-size:17px;line-height:1.65}}
 .facts dt{font-size:15px;color:#C9C1B4}
 .facts dd{font-size:22px;text-align:right}
-@media (max-width: 759px){
-.mtabs{grid-template-columns:minmax(0,1fr)!important;border-bottom:0}
-.mtab-h,.mtabs>.mpanel{grid-row:auto;grid-column:auto}
-.mtab{padding:16px 0;margin:0;border-bottom:1px solid rgba(26,23,20,0.16)!important;color:#1A1714!important}
-.mtab-ic{display:block}
-.mpanel{padding:24px 0 16px}
-.swipe,.stage-gallery,.shots{display:flex!important;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * clamp(20px, 5vw, 64px));padding:0 clamp(20px, 5vw, 64px) 6px;scroll-padding-inline:clamp(20px, 5vw, 64px);scrollbar-width:none;overscroll-behavior-x:contain}
-.swipe::-webkit-scrollbar,.stage-gallery::-webkit-scrollbar,.shots::-webkit-scrollbar{display:none}
-.shots{gap:14px;align-items:flex-start}
-.shot{flex:0 0 80%;scroll-snap-align:start}
-.swipe{gap:14px!important}
-.swipe>*{flex:0 0 84%;min-width:0;scroll-snap-align:start}
-.stage-gallery{gap:14px}
-.stage-row{display:contents}
-.stage-row>figure{flex:0 0 auto!important;scroll-snap-align:start;max-width:80vw}
-.stage-row img{width:auto!important;height:240px!important;max-width:80vw;object-fit:cover}
-.creds{grid-template-columns:minmax(0,1fr);gap:18px}
-}
+@media (max-width: 759px){.swipe,.stage-gallery,.shots{display:flex!important;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * clamp(20px, 5vw, 64px));padding:0 clamp(20px, 5vw, 64px) 6px;scroll-padding-inline:clamp(20px, 5vw, 64px);scrollbar-width:none;overscroll-behavior-x:contain}.swipe::-webkit-scrollbar,.stage-gallery::-webkit-scrollbar,.shots::-webkit-scrollbar{display:none}.shots{gap:14px;align-items:flex-start}.shot{flex:0 0 80%;scroll-snap-align:start}.swipe{gap:14px!important}.swipe>*{flex:0 0 84%;min-width:0;scroll-snap-align:start}.stage-gallery{gap:14px}.stage-row{display:contents}.stage-row>figure{flex:0 0 auto!important;scroll-snap-align:start;max-width:80vw}.stage-row img{width:auto!important;height:240px!important;max-width:80vw;object-fit:cover}.creds{grid-template-columns:minmax(0,1fr);gap:18px}}
 .diagram-note{display:none!important}
-@media (max-width: 959px){
-.shots{grid-template-columns:repeat(2,minmax(0,1fr))}
-.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
-.hero-photo{aspect-ratio:4 / 3;object-position:50% 6%}
-}
-@media (max-width: 639px){
-.diagram-note{display:flex!important}
-.btn,.btn-l{width:100%;justify-content:center;box-sizing:border-box}
-.facts>div{flex-direction:column;align-items:flex-start!important;gap:4px!important;padding:14px 0!important}
-.facts dd{text-align:left!important;font-size:20px!important}
-summary .lbl-show{display:none}
-}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.mtab-ic,.btn,.btn-l,.hcta,.vplay,.mtab,.review,.shot-win,.shot-ic,.rd-x,.rd-nav{transition:none}.rv,.mnav,.mpanel,.reader,.rd-body{animation:none}}
-
+@media (max-width: 959px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}.hero-photo{aspect-ratio:4 / 3;object-position:50% 6%}}
+@media (max-width: 639px){.diagram-note{display:flex!important}.btn,.btn-l{width:100%;justify-content:center;box-sizing:border-box}.facts>div{flex-direction:column;align-items:flex-start!important;gap:4px!important;padding:14px 0!important}.facts dd{text-align:left!important;font-size:20px!important}summary .lbl-show{display:none}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.btn-l,.hcta,.vplay,.review,.shot-win,.shot-ic,.rd-x,.rd-nav{transition:none}.rv,.mnav,.reader,.rd-body{animation:none}}
 /* type pass: Bodoni Moda and Jost, as on the business cards */
 .d{letter-spacing:-0.012em}
 .h2{letter-spacing:-0.018em}
 .hero-title{font-size:clamp(36px,6.37vw,91px);letter-spacing:-0.02em;line-height:1.02}
 .btn,.btn-l{font-size:16px}
 @media (min-width: 900px){.hero-title{font-variation-settings:'opsz' 60;letter-spacing:-0.024em}}
-.t,.lead,.rh,.rows>li,.cs-title,.mcol dt,.mcol .sub,.facts dd{font-variation-settings:'opsz' 28;letter-spacing:-0.01em}
-.mtab-h{font-weight:400}
-.mtab-l{font-size:clamp(19px,1.7vw,24px);font-weight:400;letter-spacing:-0.01em}
-.body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by,.colophon{text-wrap:pretty}
+.t,.lead,.rh,.rows>li,.cs-title,.facts dd{font-variation-settings:'opsz' 28;letter-spacing:-0.01em}
+.body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by{text-wrap:pretty}
 .nw{white-space:nowrap}
 .quote{text-indent:-0.42em}
 .lockup{display:inline-flex;align-items:baseline;gap:16px;padding:10px 0;color:#1A1714;text-decoration:none;white-space:nowrap}
@@ -252,21 +202,96 @@ summary .lbl-show{display:none}
 @media (max-width: 559px){.lockup{flex-direction:column;align-items:flex-start;gap:6px;padding:8px 0}.lk-name{font-size:20px}.lk-mark{font-size:10.5px;letter-spacing:0.28em}}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
 .ot-ribbon>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.colophon{margin:0;max-width:46em;font-size:13px;line-height:1.55;color:#5C554C}
 /* photos with clients, in black and white like the hero portrait: beside Eric's name, under Ben's review */
 .cs-ph{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"q q" "ph by" "ph go";column-gap:18px;row-gap:14px;align-content:start;align-items:start}
 .cs-ph>.t{grid-area:q}
 .cs-ph>.cs-photo{grid-area:ph}
 .cs-ph>.by{grid-area:by}
 .cs-ph>div{grid-area:go}
-.cs-photo,.rv-note>img{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
-.rv-note{margin:0;display:flex;align-items:flex-start;gap:18px}
-.rv-note>.cap{margin:0}
-@media (min-width: 1100px){.reviews-feat>.rv-note{grid-column:1;grid-row:2}.reviews-feat>#rv-brian-m-lockheed{grid-column:2;grid-row:1}}
+.cs-photo{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
+/* content pass: a label over every headline, the paradox, results led by firms, one carousel, the method page, the wall */
+.dark .rh,.dark .lead{color:#F3EEE4}
+.hang{text-indent:-0.42em}
+.rows-q>li{text-indent:-0.4em}
+@media (min-width: 960px){.duo .h2{min-height:2.08em}}
+.sig-body{display:flex;flex-direction:column;gap:18px}
+@media (min-width: 900px){.sig-body{padding-left:50%}}
+.sig-h{font-size:clamp(32px,5.6vw,80px);line-height:1;letter-spacing:-0.022em}
+.sig-h>span{display:block}
+.sig-note{margin:0;font-size:17px;line-height:1.6;color:#C9C1B4;max-width:34em;text-wrap:pretty}
+@media (min-width: 900px){.sig-h{font-variation-settings:'opsz' 60;letter-spacing:-0.024em}}
+.m-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:36px clamp(40px,5vw,80px);align-items:start}
+.m-video{position:relative;margin:0;aspect-ratio:16 / 9;background:#1A1714;overflow:hidden}
+.m-video>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.mframes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"h a b" "f f f";column-gap:clamp(16px,3vw,40px)}
+.mf-h,.mf-a{display:flex;align-items:center;gap:12px;margin:0;padding:6px 0 18px;border-bottom:2px solid;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-weight:400;font-size:clamp(19px,1.7vw,24px);line-height:1.15;letter-spacing:-0.01em;font-variation-settings:'opsz' 28}
+.mf-h{grid-area:h;color:#1A1714;border-bottom-color:#1A1714}
+.mf-a{justify-content:space-between;color:#5C554C;border-bottom-color:rgba(26,23,20,0.2);text-decoration:none;transition:color .15s ease,border-color .15s ease}
+.mf-a:hover{color:#1A1714;border-bottom-color:#1A1714}
+.mf-a>svg{flex-shrink:0}
+.mf-a1{grid-area:a}
+.mf-a2{grid-area:b}
+.mf-fig{grid-area:f;margin:0;padding-top:clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:16px}
+@media (max-width: 959px){.m-intro{grid-template-columns:minmax(0,1fr)}}
+@media (max-width: 759px){.mframes{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "f" "a" "b"}.mf-h,.mf-a{padding:16px 0;border-bottom-width:1px}.mf-h{border-bottom-color:rgba(26,23,20,0.16)}.mf-a{color:#1A1714;border-bottom-color:rgba(26,23,20,0.16)}.mf-fig{padding:20px 0 24px}}
+.firms{display:flex;flex-direction:column;gap:14px;padding:22px 0 24px;border-top:1px solid rgba(26,23,20,0.16);border-bottom:1px solid rgba(26,23,20,0.16)}
+.firms-l{margin:0;font-size:15px;line-height:1.4;color:#5C554C;white-space:nowrap}
+.firms-list{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:10px clamp(24px,3vw,40px)}
+@media (min-width: 1100px){.firms-list{justify-content:space-between}}
+.firms-list>li{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(19px,1.6vw,23px);line-height:1.2;color:#1A1714;letter-spacing:-0.01em;font-variation-settings:'opsz' 28;white-space:nowrap}
+@media (max-width: 759px){.firms-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}.firms-list>li{white-space:normal}}
+.thesis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px clamp(40px,6vw,96px);align-items:start}
+.th{margin:0;display:flex;flex-direction:column;gap:18px}
+.th blockquote{margin:0}
+.th-q{font-size:clamp(23px,2.34vw,32px);line-height:1.24;letter-spacing:-0.012em;text-indent:-0.42em;text-wrap:pretty}
+.th-ph{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"q q" "ph by";column-gap:18px;row-gap:18px;align-items:start}
+.th-ph>blockquote{grid-area:q}
+.th-ph>img{grid-area:ph}
+.th-ph>.by{grid-area:by}
+.cq{display:flex;flex-direction:column;gap:20px;--cq-gap:clamp(20px,2.4vw,32px)}
+.cq-head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.cq-ctrl{display:flex;align-items:center;gap:10px}
+.cq-count{margin:0 6px 0 0;font-size:15px;color:#5C554C;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cq-btn{width:48px;height:48px;display:flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(26,23,20,0.45);background:transparent;color:#1A1714;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.cq-btn:hover{background:#1A1714;color:#F3EEE4}
+.cq-btn[aria-disabled="true"]{opacity:0.35;cursor:default;background:transparent;color:#1A1714}
+.cq-track{display:flex;gap:var(--cq-gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none}
+.cq-track::-webkit-scrollbar{display:none}
+.cq-slide{flex:0 0 calc((100% - var(--cq-gap)) / 2);min-width:0;margin:0;box-sizing:border-box;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:28px 30px 26px;background:#FFFFFF;border:1px solid rgba(26,23,20,0.14)}
+.cq-q{margin:0;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.65;color:#3D3832}
+.cq-q p{margin:0}
+.cq-q mark{background:#FBF0C8;color:#1A1714;font-weight:600;padding:0 0.1em}
+.cq-title{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:23px;line-height:1.25;color:#1A1714;letter-spacing:-0.01em;font-variation-settings:'opsz' 28}
+.cq-slide.is-short .cq-q{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(21px,1.8vw,25px);line-height:1.42;color:#1A1714;letter-spacing:-0.01em;font-variation-settings:'opsz' 28}
+.cq-slide.is-short .cq-q mark{font-weight:500}
+.cq-by{display:flex;flex-direction:column;gap:2px;padding-top:16px;border-top:1px solid rgba(26,23,20,0.12);font-size:15px;line-height:1.45;color:#5C554C}
+.cq-by .vname{font-size:17px}
+@media (max-width: 1099px){.cq-slide{flex-basis:min(600px,86%)}}
+.cq-more{display:none}
+@media (max-width: 759px){.cq-track{margin-inline:calc(-1 * clamp(20px,5vw,64px));padding-inline:clamp(20px,5vw,64px);scroll-padding-inline:clamp(20px,5vw,64px)}.cq-slide{flex-basis:86%;padding:22px 20px 20px;justify-content:flex-start}.cq-btn{width:44px;height:44px}.cq-by{margin-top:auto}.cq-slide.is-long .cq-q{position:relative;max-height:calc(1.65em * 13);overflow:hidden}.cq-slide.is-long .cq-q::after{content:"";position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(rgba(255,255,255,0),#FFFFFF 88%);pointer-events:none}.cq-slide.is-open .cq-q,.cq-slide.is-fit .cq-q{max-height:none}.cq-slide.is-open .cq-q::after,.cq-slide.is-fit .cq-q::after{display:none}.cq-more{display:inline-flex;align-self:flex-start}.cq-slide.is-fit .cq-more{display:none}}
+@media (max-width: 479px){.cq-count{display:none}}
+.page-title{font-size:clamp(34px,4.9vw,70px);line-height:1.02;letter-spacing:-0.02em;text-wrap:balance;max-width:16em}
+@media (min-width: 900px){.page-title{font-variation-settings:'opsz' 60;letter-spacing:-0.022em}}
+.toc{display:flex;flex-wrap:wrap;gap:0 28px;font-size:16px}
+.toc a{display:inline-block;padding:12px 0;font-weight:500}
+.skills{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));gap:0 clamp(32px,5vw,72px)}
+.skills>li{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:18px;align-content:start;padding:24px 0 28px;border-top:1px solid rgba(26,23,20,0.16)}
+.sk-n{grid-row:1 / span 2;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(36px,3.2vw,46px);line-height:0.9;color:#7A2E22;font-variation-settings:'opsz' 60;min-width:0.9em}
+.sk-h{margin:0;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-weight:400;font-size:clamp(24px,2.1vw,29px);line-height:1.1;color:#1A1714;letter-spacing:-0.012em;font-variation-settings:'opsz' 28}
+.skills p{margin:10px 0 0;font-size:17px;line-height:1.6;color:#3D3832;text-wrap:pretty}
+.mm-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px clamp(32px,4vw,56px);align-items:start}
+.mm-h{margin:0 0 14px;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-weight:400;font-size:clamp(26px,2.4vw,34px);line-height:1.05;color:#1A1714;letter-spacing:-0.012em}
+.mm-dl{margin:0;display:flex;flex-direction:column}
+.mm-dl>div{padding:14px 0;border-top:1px solid rgba(26,23,20,0.16)}
+.mm-dl dt{margin:0;font-size:15px;line-height:1.4;color:#5C554C}
+.mm-dl dd{margin:4px 0 0;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(20px,1.75vw,23px);line-height:1.35;color:#1A1714;letter-spacing:-0.01em;font-variation-settings:'opsz' 28}
+.mm-dl dd p{margin:0 0 6px}
+.mm-dl dd b{font-weight:500}
+.mm-steps{margin:0;padding:0;list-style:none;counter-reset:mm;display:flex;flex-direction:column}
+.mm-steps>li{counter-increment:mm;display:grid;grid-template-columns:1.6em minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid rgba(26,23,20,0.16);font-size:17px;line-height:1.55;color:#1A1714}
+.mm-steps>li::before{content:counter(mm);font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:21px;line-height:1.25;color:#7A2E22}
+@media (prefers-reduced-motion: reduce){.cq-track{scroll-behavior:auto}.cq-btn,.mf-a{transition:none}}
 img{max-width:100%;height:auto}
-.mtab{color:#5C554C;border-bottom-color:rgba(26,23,20,0.2)}
-.mtab.is-on{color:#1A1714;border-bottom-color:#1A1714}
-.mtab.is-on .mtab-ic{transform:rotate(180deg)}
 .mb-closed,.mb-open{display:contents}
 .mb-open{display:none}
 header.menu-open .mb-closed{display:none}
@@ -290,7 +315,7 @@ body.modal-open{overflow:hidden}
 <div style="max-width: 1280px; height: 64px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px); display: flex; justify-content: space-between; align-items: center; gap: 24px;">
 <a class="lockup" href="#top" data-close-menu=""><span class="lk-name">Michael Hewitt</span><span class="lk-mark">Command a Room</span></a>
 <nav class="dnav" aria-label="Primary" style="display: flex; align-items: center; gap: 28px; font-size: 16px;">
-<a class="nav" data-nav="method" href="#method">The Method</a>
+<a class="nav" href="method/">The Method</a>
 <a class="nav" data-nav="results" href="#results">Results</a>
 <a class="nav" data-nav="about" href="#about">About</a>
 <a class="btn" href="apply/" style="min-height: 44px; padding: 0 22px; font-size: 16px;">Schedule a consultation</a>
@@ -302,7 +327,7 @@ body.modal-open{overflow:hidden}
 </div>
 <nav id="mobile-menu" hidden class="mnav" aria-label="Menu" style="position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100vh - 65px); overflow-y: auto; background: #F3EEE4; border-bottom: 1px solid rgba(26,23,20,0.16); box-shadow: 0 24px 48px rgba(26,23,20,0.16);">
 <div style="box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px) 28px; display: flex; flex-direction: column;">
-<a class="mlink" data-nav="method" href="#method" data-close-menu="">The Method</a>
+<a class="mlink" href="method/" data-close-menu="">The Method</a>
 <a class="mlink" data-nav="results" href="#results" data-close-menu="">Results</a>
 <a class="mlink" data-nav="about" href="#about" data-close-menu="">About</a>
 <a class="btn" href="apply/" data-close-menu="" style="margin-top: 24px; justify-content: center;">Schedule a consultation</a>
@@ -337,7 +362,7 @@ body.modal-open{overflow:hidden}
 </div>
 <div class="hero-grid">
 <figure class="rv rv-3" style="margin: 0; min-width: 0;">
-<img width="1067" height="1600" fetchpriority="high" class="hero-photo" src="assets/michael-hewitt.jpg" alt="Michael Hewitt">
+<img fetchpriority="high" width="1067" height="1600" class="hero-photo" src="assets/michael-hewitt.jpg" alt="Michael Hewitt">
 </figure>
 <div class="rv rv-2 hero-copy">
 <div>
@@ -345,7 +370,6 @@ body.modal-open{overflow:hidden}
 <p class="body">One-on-one coaching for founders, GPs, and senior operators whose next rooms are decided by how they sound. Leadership teams, too.</p>
 <div style="padding-top: 4px;"><a class="btn" href="apply/">Schedule a consultation</a></div>
 </div>
-<p class="t" style="font-style: italic; font-size: 21px; line-height: 1.45; color: #1A1714; max-width: 30em;">Command is not volume. Command is signal. Signal is direction and specificity.</p>
 </div>
 </div>
 </div>
@@ -372,20 +396,38 @@ body.modal-open{overflow:hidden}
 <div style="background: #FAF7F1;">
 <div class="duo" style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 8vw, 112px) clamp(20px, 5vw, 64px); display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); align-items: start; gap: 56px clamp(48px, 6vw, 96px);">
 <section id="desires" aria-labelledby="desires-title" style="display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<p class="rh">What I hear</p>
 <h2 id="desires-title" class="d h2">The five things keeping you up at night</h2>
-<ul class="rows">
-<li>You want to be taken seriously.</li><li>You want to command a room.</li><li>You want to become the communicator your ambition requires.</li><li>You want to leave a mark bigger than your title.</li><li>You want to be confident and relaxed in planned or impromptu speaking opportunities.</li>
+</div>
+<ul class="rows rows-q">
+<li>“I find myself in the boardroom not being taken as seriously as somebody in my position, with my background, would be.”</li><li>“I don’t feel the nervousness that my voice communicates.”</li><li>“If I’m going on a bit of a ramble for a minute or two, by the end I’ve lost a bit of that pizzazz I probably opened with.”</li><li>“If I’m very prepared, I’m great. If I’m not, or I have no time to prepare…”</li><li>“As an investor, if you’re not known, you’re kind of dead.”</li>
 </ul>
-<a class="t gap-link" href="#gap" style="align-self: flex-start; padding: 10px 0; font-style: italic; font-size: 22px; color: #7A2E22;">What’s actually in the way?</a>
 </section>
 <section id="gap" aria-labelledby="gap-title" style="display: flex; flex-direction: column; gap: 24px;">
-<h2 id="gap-title" class="d h2">The gap between what you know and how you sound</h2>
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<p class="rh">Underneath</p>
+<h2 id="gap-title" class="d h2">What’s actually in the way?</h2>
+</div>
 <ul class="rows">
-<li>The voice that got you here is the one holding you back.</li><li>You’re stuck in your head.</li><li>You don’t have enough reps off-script.</li><li>Your nervous system takes over before your expertise can.</li><li>You sound like everyone else.</li><li>Your charisma has atrophied.</li>
+<li>The voice that got you here is the one holding you back.</li><li>You’re stuck in your head.</li><li>You don’t have enough reps off-script.</li><li>Your nervous system takes over before your expertise can.</li><li>You sound like everyone else.</li>
 </ul>
 </section>
 </div>
 </div>
+
+<section id="signal" class="dark" aria-labelledby="signal-title" style="background: #1A1714; color: #F3EEE4;">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(64px, 10vw, 144px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
+<div style="display: flex; flex-direction: column; gap: 22px;">
+<p class="rh">The lines at the top of the page</p>
+<h2 id="signal-title" class="d sig-h" style="color: #F3EEE4;"><span>Command is not volume.</span> <span>Command is signal.</span></h2>
+</div>
+<div class="sig-body">
+<p class="lead">Tone is the signal that’s present in what is otherwise noise.</p>
+<p class="sig-note">The lines at the top of the page are the overtones of a sung low G. The red band is the singer’s formant, the resonance that carries an unamplified voice over a full orchestra.</p>
+</div>
+</div>
+</section>
 
 <section id="proof" aria-labelledby="proof-title">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(52px, 8vw, 112px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px);">
@@ -406,17 +448,42 @@ body.modal-open{overflow:hidden}
 </section>
 
 <section id="method" aria-labelledby="method-title" style="background: #FAF7F1;">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(48px, 6vw, 80px);">
 <div style="display: flex; flex-direction: column; gap: 22px; max-width: 880px;">
 <p class="rh">The method</p>
 <h2 id="method-title" class="d h2">Your voice tells the world who you are. When you speak, you lead.</h2>
+</div>
+<div class="m-intro">
+<div style="display: flex; flex-direction: column; gap: 22px;">
 <p class="lead" style="font-size: clamp(21px, 1.65vw, 23px); color: #3D3832;">But when you perform something instead of embodying it, your frame collapses internally and externally. A solid voice goes nowhere without a relevant message built on true confidence.</p>
 <p class="body-s" style="max-width: 44em;">Asking yourself better questions is only part of the equation. There is also the courage and honesty with which you answer, and the urgency and accountability with which you take action on those answers. This, in addition to the coordination of your voice, is what creates your sound.</p>
 </div>
-<div class="mtabs">
-<h3 class="mtab-h"><button type="button" class="mtab is-on" id="mtab-res" data-tab="res" aria-expanded="true" aria-controls="mpanel-res"><span class="mtab-l">The Three Resonances</span><svg class="mtab-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg></button></h3>
-<div class="mpanel" id="mpanel-res" data-panel="res" role="region" aria-labelledby="mtab-res">
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px;">
+<div class="m-video" id="method-video" aria-hidden="true">
+<svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+<line x1="0" y1="940.0" x2="1000" y2="940.0" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="722.5" x2="1000" y2="722.5" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="595.3" x2="1000" y2="595.3" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="505.0" x2="1000" y2="505.0" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="435.0" x2="1000" y2="435.0" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="377.8" x2="1000" y2="377.8" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="329.4" x2="1000" y2="329.4" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="287.5" x2="1000" y2="287.5" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="250.5" x2="1000" y2="250.5" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="217.5" x2="1000" y2="217.5" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="187.6" x2="1000" y2="187.6" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="160.3" x2="1000" y2="160.3" stroke="#9C3B2C" stroke-width="1.4" stroke-opacity="0.95" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="135.2" x2="1000" y2="135.2" stroke="#9C3B2C" stroke-width="1.4" stroke-opacity="0.95" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="111.9" x2="1000" y2="111.9" stroke="#9C3B2C" stroke-width="1.4" stroke-opacity="0.95" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="90.3" x2="1000" y2="90.3" stroke="#9C3B2C" stroke-width="1.4" stroke-opacity="0.95" vector-effect="non-scaling-stroke"></line>
+<line x1="0" y1="70.0" x2="1000" y2="70.0" stroke="#F3EEE4" stroke-width="1" stroke-opacity="0.2" vector-effect="non-scaling-stroke"></line>
+</svg>
+</div>
+</div>
+<div class="mframes">
+<h3 class="mf-h">The Three Resonances</h3>
+<a class="mf-a mf-a1" href="method/#skills"><span>The Seven Skills of Tonality</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
+<a class="mf-a mf-a2" href="method/#message"><span>The Message and The Mission</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
+<figure class="mf-fig">
 <img loading="lazy" decoding="async" width="3840" height="2160" src="assets/the-three-resonances.png" alt="The Three Resonances. Resonance is two sources creating something new. Three overlapping circles: The Voice, how you sound, through vocal vibration and the vocal tract that shapes the sound; The Thought, what you say, through an expressed idea and relevance to the audience; and The Life, how you live, through what you say and what you do. Where all three meet is The Frequency of Truth." style="display: block; width: 100%; height: auto; border: 1px solid rgba(26,23,20,0.12);">
 <figcaption class="diagram-note" style="display: flex; flex-direction: column; gap: 6px; font-size: 16px; line-height: 1.5; color: #3D3832;">
 <p style="margin: 0;"><span class="t" style="font-size: 19px; color: #1A1714;">The Voice,</span> how you sound: vocal vibration and the vocal tract that shapes the sound.</p>
@@ -426,75 +493,90 @@ body.modal-open{overflow:hidden}
 </figcaption>
 </figure>
 </div>
-<h3 class="mtab-h"><button type="button" class="mtab" id="mtab-skills" data-tab="skills" aria-expanded="false" aria-controls="mpanel-skills"><span class="mtab-l">The Seven Skills of Tonality</span><svg class="mtab-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg></button></h3>
-<div class="mpanel" id="mpanel-skills" data-panel="skills" hidden role="region" aria-labelledby="mtab-skills" style="display: flex; flex-direction: column; gap: 28px;">
-<p class="d" style="font-size: clamp(21px, 2.11vw, 28px); line-height: 1.2;">Voice, Thought, and Life: how the seven skills fit together</p>
-<div class="method-cols">
-<div class="mcol">
-<h4 class="d">Voice.</h4>
-<p class="t sub">How you sound.</p>
-<p class="body" style="font-size: 17px;">Think of this as the fabric of your suit.</p>
-<dl>
-<div><dt>Resonance</dt><dd>A deeper, more commanding voice, without sounding like you’re trying too hard.</dd></div>
-<div><dt>Articulation</dt><dd>Combined with Resonance, this signals competence and ensures every word is heard.</dd></div>
-<div><dt>Imagination</dt><dd>Internal mapping of the coordination of sound production so you can sound how you want, when and where you want.</dd></div>
-</dl>
-</div>
-<div class="mcol">
-<h4 class="d">Thought.</h4>
-<p class="t sub">What you say.</p>
-<p class="body" style="font-size: 17px;">This is the cut of your suit.</p>
-<dl>
-<div><dt>Intention</dt><dd>Speaking to be validated makes you needy and self-conscious, which makes people act weird. Instead, speak only to help others win.</dd></div>
-<div><dt>Subtext</dt><dd>The message embedded in your sound, without adding any extra words.</dd></div>
-</dl>
-</div>
-<div class="mcol">
-<h4 class="d">Life.</h4>
-<p class="t sub">How you live.</p>
-<p class="body" style="font-size: 17px;">Whether you wear the suit or the suit wears you.</p>
-<dl>
-<div><dt>Mindset</dt><dd>The transcription of the dialogue in your brain.</dd></div>
-<div><dt>Stakes</dt><dd>The great clarifier: what happens if you don’t get the outcome you’re leading people towards?</dd></div>
-</dl>
-</div>
-</div>
-</div>
-<h3 class="mtab-h"><button type="button" class="mtab" id="mtab-mm" data-tab="mm" aria-expanded="false" aria-controls="mpanel-mm"><span class="mtab-l">The Message and The Mission</span><svg class="mtab-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"></path></svg></button></h3>
-<div class="mpanel" id="mpanel-mm" data-panel="mm" hidden role="region" aria-labelledby="mtab-mm" style="display: flex; flex-direction: column; gap: 28px;">
-<p class="d" style="font-size: clamp(21px, 2.46vw, 33px); line-height: 1.2; max-width: 900px;">A congruent message that is distinctly your own, that builds culture, anchors you in open-ended conversation, and filters your responses on the fly.</p>
-<figure style="margin: 0;">
-<img loading="lazy" decoding="async" width="3840" height="2000" src="assets/the-message-and-the-mission.png" alt="The Message and The Mission, drawn as a house. The roof is The Message, the belief through which you see the world. The beam is The Mission, the results you deliver. Three pillars hold the house, the way you deliver the results: each a saying you live by, proven by its rooms: the story, the picture, and the next question." style="display: block; width: 100%; height: auto; border: 1px solid rgba(26,23,20,0.12);">
-</figure>
-<div class="method-cols">
-<div class="mcol">
-<h4 class="d">Message.</h4>
-<p class="t sub">The roof.</p>
-<p class="body" style="font-size: 17px;">The belief through which you see the world.</p>
-<p class="ex">Michael’s: <span class="t">“Your voice tells the world who you are.”</span></p>
-</div>
-<div class="mcol">
-<h4 class="d">Mission.</h4>
-<p class="t sub">The beam.</p>
-<p class="body" style="font-size: 17px;">The results you deliver.</p>
-<p class="ex">Michael’s: <span class="t">“Helping people reclaim agency they’ve lost so they can do what they’re built to do.”</span></p>
-</div>
-<div class="mcol">
-<h4 class="d">Pillars.</h4>
-<p class="t sub">What holds it up.</p>
-<p class="body" style="font-size: 17px;">The way you deliver the results.</p>
-<p class="ex">Some of Michael’s: <span class="t">“Create from a state of play.” “Excellence is fun.” “Elegance takes effort.”</span></p>
-</div>
-</div>
-</div>
-</div>
 </div>
 </section>
 
 <section id="results" aria-labelledby="results-title">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(44px, 6vw, 72px);">
-<h2 id="results-title" class="d h2">Client Experiences and Transformations</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px clamp(32px, 4vw, 56px);">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
+<p class="rh">Results</p>
+<h2 id="results-title" class="d h2 hang">“You can command a room with your presence alone.”</h2>
+<p class="lead hang" style="max-width: 36em;">“I came to Michael to learn about the mechanics of voice… but through our conversations gained a deeper appreciation and insight into human psychology.”</p>
+<p class="by"><span class="vname">Brian M.</span>Subcontract Program Manager, Lockheed Martin</p>
+</div>
+<div class="firms">
+<p class="firms-l">Clients from</p>
+<ul class="firms-list"><li>Lockheed Martin</li><li>Multicoin Capital</li><li>Abnormal AI</li><li>Vellum AI</li><li>Malbec Labs</li><li>Galvanick</li></ul>
+</div>
+<div class="thesis">
+<figure class="th">
+<blockquote><p class="d th-q">“Initially I thought it was just going to be… public speaking, but you’ve basically become an executive coach.”</p></blockquote>
+<figcaption class="by"><span class="vname">Spencer Applebaum</span>General Partner and Co-Head of Venture, Multicoin Capital</figcaption>
+</figure>
+<figure class="th th-ph">
+<blockquote><p class="d th-q">“He treats the voice as an instrument to be practiced, exercised, and refined yielding a more confident, more present individual.”</p></blockquote>
+<img loading="lazy" decoding="async" class="cs-photo" src="assets/ben-marx-and-michael.jpg" alt="Ben Marx and Michael Hewitt at the Aptos Experience" width="800" height="640">
+<figcaption class="by"><span class="vname">Ben Marx</span>Head of Engineering, Malbec Labs</figcaption>
+</figure>
+</div>
+<div class="cq" role="region" aria-roledescription="carousel" aria-labelledby="cq-title">
+<div class="cq-head">
+<p class="rh" id="cq-title">Read the testimonials</p>
+<div class="cq-ctrl">
+<p class="cq-count" id="cq-count" aria-hidden="true">1 of 5</p>
+<button type="button" class="cq-btn" id="cq-prev" aria-label="Previous testimonial" aria-controls="cq-track" aria-disabled="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<button type="button" class="cq-btn" id="cq-next" aria-label="Next testimonial" aria-controls="cq-track" aria-disabled="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+</div>
+<div class="cq-track" id="cq-track" role="group" aria-label="Written testimonials" tabindex="0">
+<figure class="cq-slide is-long" id="cq-brian-m-lockheed" role="group" aria-roledescription="slide" aria-label="1 of 5">
+<blockquote class="cq-q" id="cq-q-brian-m-lockheed">
+<p class="cq-title">Winning becomes easy</p>
+<p>Michael is <mark>able cut to the heart of an issue with surgical precision.</mark> He is able to rapidly assess a person, what unique needs they have and from there works with them to craft a solution. <mark>Winning becomes easy.</mark></p>
+<p>I’m a young professional in a program management leadership role within one of our nation’s largest defense companies. My job is to deliver results to the our customer, and that means performing at the highest level to earn their business. With a portfolio over $800m, my customers are our nation’s warfighters, and involves a diverse set of customers within the DOW &amp; IC. They are the best of the best and demand excellence from industry. <mark>Working with Michael helped ensure I meet the mark.</mark></p>
+<p>Michael is unique in that his breadth of knowledge spans multiple disciplines. I came to Michael to learn about the mechanics of voice (ex. “how do I project to a large audience without “yelling”?) but through our conversations gained a deeper appreciation and insight into human psychology (you can command a room with your presence alone).</p>
+<p>I would recommend anyone who already has the deep burning need to be the best version of themselves to work with him.</p>
+</blockquote>
+<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brian-m-lockheed">Read the full review</button>
+<figcaption class="cq-by"><span class="vname">Brian M.</span><span>Subcontract Program Manager, Lockheed Martin</span><span>Dec 5, 2025</span></figcaption>
+</figure>
+<figure class="cq-slide is-long" id="cq-ben-marx" role="group" aria-roledescription="slide" aria-label="2 of 5">
+<blockquote class="cq-q" id="cq-q-ben-marx">
+<p>My name is Ben Marx and I’m head of engineering at Malbec Labs. I’ve actually been giving talks for over a decade, but <mark>working with Michael has exponentially improved how I can speak when giving a talk but also when having a conversation or meeting someone for the first time.</mark> I’ve always been an introvert and generally dreaded speaking in public but <mark>Michael has given me tools that I use to help me speak more confidently and with a greater stage presence than ever before.</mark></p>
+<p><mark>Working with him is so effective</mark> because he teaches to use your instrument like a voice and how to exercise and understand it. <mark>He approaches his teaching in a holistic and disciplined fashion</mark> which has worked really well for me because now that I have the tools I can recalibrate in real-time. To give a real example, instead of speaking quickly like I normally do, I can use the breath work and pacing he’s taught to actually tell a narrative and keep the audience---and me---engaged. <mark>It has helped ground me and these effects ripple throughout every facet of my life.</mark></p>
+<p>Vocal communication is the core of so much of what we do as people that anyone could benefit from Michael’s teaching because he treats the voice as an instrument to be practiced, exercised, and refined <mark>yielding a more confident, more present individual.</mark></p>
+</blockquote>
+<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-ben-marx">Read the full review</button>
+<figcaption class="cq-by"><span class="vname">Ben Marx</span><span>Head of Engineering, Malbec Labs</span><span>Nov 15, 2025</span></figcaption>
+</figure>
+<figure class="cq-slide is-long" id="cq-brandon-lariz" role="group" aria-roledescription="slide" aria-label="3 of 5">
+<blockquote class="cq-q" id="cq-q-brandon-lariz">
+<p>Michael having experience in the cyber security space initially piqued my interest and led me to reach out.</p>
+<p>I am an Enterprise SDR at a fast growing start up. I have always had issues with imposter syndrome or lack of accountability. Michael helped me make little perspective and workflow tweaks that went a long way.</p>
+<p>After my first session with Michael <mark>I booked my first cold call at my new company</mark>. After my <mark>second session with Michael I booked 5 meetings that week, 3 of which were C-level execs.</mark></p>
+<p>I know if I continue to implement Michael’s workflows and mindset I will flourish. I highly recommend working with Michael.</p>
+</blockquote>
+<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brandon-lariz">Read the full review</button>
+<figcaption class="cq-by"><span class="vname">Brandon Lariz</span><span>Enterprise SDR, Abnormal AI</span><span>Jul 6, 2023</span></figcaption>
+</figure>
+<figure class="cq-slide is-short" id="cq-joshua-steinman" role="group" aria-roledescription="slide" aria-label="4 of 5">
+<blockquote class="cq-q" id="cq-q-joshua-steinman">
+<p>Michael was great to work with.</p>
+<p>His experience both in the performing arts and tech sales is unique, and <mark>helped us focus our efforts on storytelling for our prospective customers.</mark></p>
+</blockquote>
+<figcaption class="cq-by"><span class="vname">Joshua Steinman</span><span>CEO and co-founder, Galvanick</span><span>May 23, 2024</span></figcaption>
+</figure>
+<figure class="cq-slide is-short" id="cq-joseph-johnston" role="group" aria-roledescription="slide" aria-label="5 of 5">
+<blockquote class="cq-q" id="cq-q-joseph-johnston">
+<p>Michael came and spoke to our community of professional speakers and knocked the roof off the place! He gave a very clear avenue to properly conveying their message as professional speakers to the world and when on stage. Thanks so much would HIGHLY recommend Michael to anyone looking to up their game!</p>
+</blockquote>
+<figcaption class="cq-by"><span class="vname">Joseph Johnston</span><span>Speaker; CEO, Initiate Connections</span><span>Jan 17, 2024</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="vwrap" style="display: flex; flex-direction: column; gap: 18px;">
+<p class="rh">Watch the testimonials</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px clamp(32px, 4vw, 56px); padding-bottom: 28px;">
 <figure class="cs-ph" style="margin: 0;">
 <p class="t" style="font-size: clamp(22px, 1.87vw, 25px); line-height: 1.4;">He was rambling on partnership calls, including one with Visa. He closed the next three deals.</p>
 <img loading="lazy" decoding="async" class="cs-photo" src="assets/eric-and-michael.jpg" alt="Eric and Michael Hewitt" width="800" height="640">
@@ -507,386 +589,29 @@ body.modal-open{overflow:hidden}
 <div><button type="button" class="linkbtn" data-video="brian"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>Watch Brian’s video</button></div>
 </figure>
 </div>
-<div style="display: flex; flex-direction: column; gap: 18px;">
-<p class="rh">Read the testimonials</p>
-<div class="reviews-feat">
-<figure class="review is-crop" id="rv-ben-marx">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1129" class="review-img" src="assets/review-ben-marx.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Ben Marx</p>
-<p class="rv-role">Head of Engineering, Malbec Labs</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>My name is Ben Marx and I’m head of engineering at Malbec Labs. I’ve actually been giving talks for over a decade, but <mark>working with Michael has exponentially improved how I can speak when giving a talk but also when having a conversation or meeting someone for the first time.</mark> I’ve always been an introvert and generally dreaded speaking in public but <mark>Michael has given me tools that I use to help me speak more confidently and with a greater stage presence than ever before.</mark></p>
-<p><mark>Working with him is so effective</mark> because he teaches to use your instrument like a voice and how to exercise and understand it. <mark>He approaches his teaching in a holistic and disciplined fashion</mark> which has worked really well for me because now that I have the tools I can recalibrate in real-time. To give a real example, instead of speaking quickly like I normally do, I can use the breath work and pacing he’s taught to actually tell a narrative and keep the audience---and me---engaged. <mark>It has helped ground me and these effects ripple throughout every facet of my life.</mark></p>
-<p>Vocal communication is the core of so much of what we do as people that anyone could benefit from Michael’s teaching because he treats the voice as an instrument to be practiced, exercised, and refined <mark>yielding a more confident, more present individual.</mark></p>
-<p class="rv-date">Nov 15, 2025</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:0" aria-label="Read the full review from Ben Marx"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="rv-note"><img loading="lazy" decoding="async" src="assets/ben-marx-and-michael.jpg" alt="Ben Marx and Michael Hewitt at the Aptos Experience" width="800" height="640"><figcaption class="cap">Ben Marx and Michael</figcaption></figure>
-<figure class="review is-crop" id="rv-brian-m-lockheed">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1190" class="review-img" src="assets/review-brian-m-lockheed.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Brian M.</p>
-<p class="rv-role">Subcontract Program Manager, Lockheed Martin</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p class="rv-title">Winning becomes easy</p>
-<p>Michael is <mark>able cut to the heart of an issue with surgical precision.</mark> He is able to rapidly assess a person, what unique needs they have and from there works with them to craft a solution. <mark>Winning becomes easy.</mark></p>
-<p>I’m a young professional in a program management leadership role within one of our nation’s largest defense companies. My job is to deliver results to the our customer, and that means performing at the highest level to earn their business. With a portfolio over $800m, my customers are our nation’s warfighters, and involves a diverse set of customers within the DOW &amp; IC. They are the best of the best and demand excellence from industry. <mark>Working with Michael helped ensure I meet the mark.</mark></p>
-<p>Michael is unique in that his breadth of knowledge spans multiple disciplines. I came to Michael to learn about the mechanics of voice (ex. “how do I project to a large audience without “yelling”?) but through our conversations gained a deeper appreciation and insight into human psychology (you can command a room with your presence alone).</p>
-<p>I would recommend anyone who already has the deep burning need to be the best version of themselves to work with him.</p>
-<p class="rv-date">Dec 5, 2025</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:1" aria-label="Read the full review from Brian M."><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-</div>
-<details id="testimonials" style="border-top: 1px solid rgba(26,23,20,0.16);">
-<summary style="cursor: pointer; padding: 16px 0; min-height: 44px; display: flex; align-items: center; gap: 14px; font-size: 16px; font-weight: 500; color: #7A2E22;">See all 24 written testimonials</summary>
-<div class="reviews">
-<figure class="review is-crop" id="rv-wifimoneyguy">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="757" class="review-img" src="assets/review-wifimoneyguy.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">@WiFiMoneyGuy</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I am known as @WiFiMoneyGuy on Twitter.</p>
-<p>Michael has been one of the best assets for TikTok Shop creators in our community.</p>
-<p>We teach our creators how to monetize TikTok Shop and <mark>one of our secret weapons is Michael.</mark> We could teach them everything about content creation but <mark>if they can’t find their authentic voice, no one would buy from them.</mark></p>
-<p>If you’re a creator trying to uplevel your skills, don’t neglect your voice. Michael is the man for the job.</p>
-<p class="rv-date">Jan 5, 2026</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:2" aria-label="Read the full review from @WiFiMoneyGuy"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-sakul-nathwani">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1047" class="review-img" src="assets/review-sakul-nathwani.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Sakul Nathwani</p>
-<p class="rv-role">Enterprise Account Executive</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael was supposed to help me speak more clearly and communicate more concisely. He did exactly that, but not in the way I expected.</p>
-<p>Rather than just giving me tactical advice on how to improve my speaking skills, <mark>he diagnosed the root problem that was preventing me from being the best speaker possible.</mark></p>
-<p>Many of these problems were not just related to how I pronounced things; they were at the level of my unconscious mind, and <mark>he helped me understand how I feel and react to certain scenarios.</mark></p>
-<p><em>Through working with Michael, I was able to make progress in other areas of life.</em></p>
-<p>Improving my speaking skills were a natural byproduct of the deeper work.</p>
-<p>I recognize that this sounds woo woo, but I can confidently say that working with Michael helped change who I am as a person. <mark>Cannot recommend him highly enough.</mark></p>
-<p class="rv-date">Dec 8, 2025</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:3" aria-label="Read the full review from Sakul Nathwani"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-arijan-horvat">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="591" class="review-img" src="assets/review-arijan-horvat.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Arijan Horvat</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I took a few sessions with Michael and my voice has completely changed. He’s helped me find the perfect flow for my voice through different exercise methods. English is not my first language so he’s helped me find the same frequency in English as in my native tongue, which has helped tremendously with my projection and confidence. I find myself humming and looking for that tickle in my mouth almost daily which allows me project my voice more strongly for speeches and working with clients!</p>
-<p class="rv-date">Dec 3, 2025</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:4" aria-label="Read the full review from Arijan Horvat"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-joshua-steinman">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="467" class="review-img" src="assets/review-joshua-steinman.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Joshua Steinman</p>
-<p class="rv-role">CEO and co-founder, Galvanick</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael was great to work with.</p>
-<p>His experience both in the performing arts and tech sales is unique, and <mark>helped us focus our efforts on storytelling for our prospective customers.</mark></p>
-<p class="rv-date">May 23, 2024</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:5" aria-label="Read the full review from Joshua Steinman"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-anon-twitter">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="467" class="review-img" src="assets/review-anon-twitter.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">ANON from Twitter</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>MONEY.. WELL.. SPENT. I was brought onto angles and a thought process I previously did not think mattered with speaking. This one call shaped and opened my mind to this vastness. 11/10 will send money to this guy like it means nothing just to learn more due to how fascinating the experience is.</p>
-<p class="rv-date">Feb 8, 2024</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:6" aria-label="Read the full review from ANON from Twitter"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-joseph-johnston">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="467" class="review-img" src="assets/review-joseph-johnston.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Joseph Johnston</p>
-<p class="rv-role">Speaker; CEO, Initiate Connections</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael came and spoke to our community of professional speakers and knocked the roof off the place! He gave a very clear avenue to properly conveying their message as professional speakers to the world and when on stage. Thanks so much would HIGHLY recommend Michael to anyone looking to up their game!</p>
-<p class="rv-date">Jan 17, 2024</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:7" aria-label="Read the full review from Joseph Johnston"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-steve-english">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="716" class="review-img" src="assets/review-steve-english.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Steve English</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael is a truly powerful and gifted human and coach! His guidance helped me to develop a deep confidence in myself and choose a path going forward for how I showcase my body and voice to the world around me. In a few short months, I have lost 25 pounds of necessary weight (more to come and more muscle to build too) and I have embraced a more confident and decisive voice within my business. I have seen outflows of this in other areas of my life as well — mostly through better connection to my wife and children. Michael lives what he teaches and is a truly impressive person. As a coach he held up a mirror so I could see my next moves and popped in like a ninja with tips/skills that I could utilize in training my body and my voice. Thanks again Michael! You’ve mad a huge impact on me.</p>
-<p class="rv-date">Oct 31, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:8" aria-label="Read the full review from Steve English"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-frank">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="467" class="review-img" src="assets/review-frank.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Frank</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael was great. I went in to this wanting to have a stronger more assertive voice and after one session I feel like a different man when I’m talking now. I’m planning on doing a follow up session in a few weeks to see how my progress is. Highly recommend!</p>
-<p class="rv-date">Sep 12, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:9" aria-label="Read the full review from Frank"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-rommel">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="674" class="review-img" src="assets/review-rommel.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Rommel</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I’m an SDR who’s been struggling to hit quotas. It’s always been my goal to eventually be one of the top sales reps on the leaderboard at my organization. But I had no idea how to get there and what steps to take to achieve that goal. Michael diagnosed the problem and laid out an action plan to help me bridge the gap between where I am currently and where I want to get to. He provided me with a framework, workflow, new perspective, and actionable advice that will go a long way. He genuinely wants to help you, and his coaching ability is fucking phenomenal. I wish I could’ve found out about him earlier because the specific knowledge I learned from him would’ve been useful in my current role.</p>
-<p class="rv-date">Aug 6, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:10" aria-label="Read the full review from Rommel"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-ashley-perez">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1005" class="review-img" src="assets/review-ashley-perez.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Ashley Perez</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>What a professional! I felt honored to be coached by Michael.</p>
-<p>I’m a business owner &amp; real estate investor who was excited to spend a session with Michael learning tools and techniques that would make me a better visual presenter &amp; communicator on social media.</p>
-<p>I was struggling with the fear of consistently posting and not coming off authentic. Michael helped make clear the objective &amp; true intention for consistent effective communication.</p>
-<p>I feel lighter and confident I will deliver better &amp; more effective content to my audience after having spent time with Michael.</p>
-<p>My favorite part about this though was how interactive it was.</p>
-<p>Thanks for sharing your wealth of knowledge and I would recommend anyone looking to refine the techniques behind effective communication.</p>
-<p class="rv-date">Jul 15, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:11" aria-label="Read the full review from Ashley Perez"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-ryan-alvarez">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="550" class="review-img" src="assets/review-ryan-alvarez.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Ryan Alvarez</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Before Michael I was felt like I didn’t have a starting point, or the tools needed to outline my plans. Michael provided an outline and helped me talk through my problems and guided me to having clarity. This will save me tons of time and stress and allow me to be more productive. He made it very simple with no pressure. I’d recommend anyone looking to uncover roadblocks and improve themselves to work with Michael.</p>
-<p class="rv-date">Jul 14, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:12" aria-label="Read the full review from Ryan Alvarez"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-brandon-lariz">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="840" class="review-img" src="assets/review-brandon-lariz.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Brandon Lariz</p>
-<p class="rv-role">Enterprise SDR, Abnormal AI</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael having experience in the cyber security space initially piqued my interest and led me to reach out.</p>
-<p>I am an Enterprise SDR at a fast growing start up. I have always had issues with imposter syndrome or lack of accountability. Michael helped me make little perspective and workflow tweaks that went a long way.</p>
-<p>After my first session with Michael <mark>I booked my first cold call at my new company</mark>. After my <mark>second session with Michael I booked 5 meetings that week, 3 of which were C-level execs.</mark></p>
-<p>I know if I continue to implement Michael’s workflows and mindset I will flourish. I highly recommend working with Michael.</p>
-<p class="rv-date">Jul 6, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:13" aria-label="Read the full review from Brandon Lariz"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-bowtiednightowl">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="550" class="review-img" src="assets/review-bowtiednightowl.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">BowTiedNightOwl</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Michael did the voiceover for our course DeFi Academy. As anons, we needed someone trustworthy who could be the voice of our content and Michael stepped in to help out. He was responsive, met our (often changing) deadlines and gave us over 7 hours of high quality, professional voiceovers across 40 lessons. Michael is an expert, and having him narrate our course took it to the next level. I’m confident his coaching services would be an asset for anyone looking to improve their voice.</p>
-<p class="rv-date">Jul 6, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:14" aria-label="Read the full review from BowTiedNightOwl"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-jackson">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1957" class="review-img" src="assets/review-jackson.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Jackson</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>My name is Jackson and I am a Senior Account Executive at a prominent startup. I have a Master of Social Work and have been in social services my whole career.</p>
-<p>Sales is a new experience for me but I have been successful due to my passion for the industry.</p>
-<p>However, I recently started losing deals and my motivation and discipline began to decline. I was relying on my personality and the few courses and books I had read to guide my sales process. I am also in recovery and have been sober for over 7 years. Selling was starting to stress me out and I couldn’t afford to burn out.</p>
-<p>I needed help with my pitch, cold call script, and a new mindset. I met with Michael and he was incredibly helpful. He didn’t judge me for not having a sales process. He listened to me and took notes, and then helped me come up with a sales process, closing format, and mission statement. He also encouraged me to create a podcast to help me stand out.</p>
-<p>Michael is a great listener and he genuinely wants to help you succeed. He helped me realize that one of the reasons I was struggling in sales was because my self-esteem was tied to my output. He helped me to become more confident and in control of my sales process.</p>
-<p>Working with Michael was the best money I’ve spent all year. He helped me to become more efficient with my time and to make an impact while selling without stress. More importantly, I promoted the subject but we spoke about spirituality and he recommended a few books. He broke down his view on spirituality in a way after 36 years on this planet it finally made sense to me.</p>
-<p>Specific benefits of working with Michael:<br>Developed a sales process that is tailored to my specific needs and industry.<br>Helped me to create a more effective cold call script.<br>Gave me the confidence tools to stand out from the competition, i.e. podcast, and interviewing referrals.<br>Helped me to develop a mission statement that aligns with my personal values that keeps God at the center.<br>He provided me with the tools and resources I need to succeed in sales.</p>
-<p>Overall, I am very grateful for the help that Michael has provided me. He is a valuable asset to anyone who is serious about taking their brand and business to the next level.</p>
-<p class="rv-date">Jun 20, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:15" aria-label="Read the full review from Jackson"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-spartanpsyche">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="591" class="review-img" src="assets/review-spartanpsyche.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">SP</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I go by @SpartanPsyche on twitter. I run a transformation coaching company &amp; recently was suggested Michael for a voice over work by one of my acquaintances. Michael was absolutely on the dot with the tone of voice &amp; tempo I was looking for. He was professional, very easy to work with &amp; delivered my project well before time - without the need for any edits or changes. It was perfect. Surely consider going to him for any voice over work OR if you need some training with improving your vocal skills yourself. 5 stars all around.</p>
-<p class="rv-date">May 23, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:16" aria-label="Read the full review from SP"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-lia-the-trader">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="509" class="review-img" src="assets/review-lia-the-trader.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Lia the Trader</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I’m Lia, and I’m a trading psychology coach. Got introduced to him through my content creator. Michael was an excellent coach. English is my 4th language and I learned a lot in our session. Can’t wait to apply it in my speech and videos. Michael is also creative and helped me brainstorm some fun topics for my vlog. Would work with him again.</p>
-<p class="rv-date">May 5, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:17" aria-label="Read the full review from Lia the Trader"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-crop" id="rv-jay">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="1171" class="review-img" src="assets/review-jay.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Jay</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>I’ve worked with Michael twice now - first time as an agency owner, <mark>second time to land an Account Executive role in Tech Sales.</mark></p>
-<p>Immediately apparent was Michael’s coaching ability. he took the time to really understand WHY I wanted to improve.</p>
-<p>He then took that motivation and helped me focus on it, so <mark>I developed more conviction in what I was saying.</mark></p>
-<p>Before, I thought I had to rely on a script or was worried about saying the wrong thing.</p>
-<p>After working with Michael, I can tap into tonality that makes whatever I’m saying sound right without thinking.</p>
-<p><mark>His coaching has helped me close deals and got me into several final stage tech interviews that I was completely under qualified for, before landing a dream role at a fast growing unicorn.</mark></p>
-<p>Most importantly - it’s changed what I previously thought was possible just by speaking.</p>
-<p class="rv-date">Apr 27, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:18" aria-label="Read the full review from Jay"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-jatin-naran">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="426" class="review-img" src="assets/review-jatin-naran.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Jatin Naran</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>It was a great session and Michael provided practical tips which gave me instant positive results. I have already seen a major difference in my voice and how i deliver content.</p>
-<p class="rv-date">Apr 25, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:19" aria-label="Read the full review from Jatin Naran"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-brent-deterding">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="426" class="review-img" src="assets/review-brent-deterding.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Brent Deterding</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>As a frequent podcast guest and speaker, finding and using the right tone is important. Michael helped me develop my tone using my natural voice. Highly recommend!</p>
-<p class="rv-date">Apr 18, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:20" aria-label="Read the full review from Brent Deterding"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review" id="rv-divy-kandala">
-<div class="rv-win">
-<img loading="lazy" decoding="async" width="1100" height="509" class="review-img" src="assets/review-divy-kandala.jpg" alt="">
-<div class="review-txt">
-<p class="rv-name">Divy Kandala</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p>Working with Michael was fantastic! The call was super fun and gave me a bunch of easy to implement techniques to help refine my voice. As a result I no longer have a tired/sore voice after a long day of zoom calls and my voice is much clearer and carries better.</p>
-<p class="rv-date">Apr 17, 2023</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:21" aria-label="Read the full review from Divy Kandala"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-text" id="rv-quoll">
-<div class="rv-win">
-<div class="review-txt">
-<p class="rv-name">Quoll</p>
-<p class="rv-role">SDR at a startup</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p class="rv-title">SDR breaks out of slump, books call with decision maker in 24 hours after Tonality Training workshop</p>
-<p>I’m an SDR at a startup no one has ever heard of leading the team in meetings but recently I fell into a slump feeling burnt out.</p>
-<p>I was having issues getting past those first 30 seconds of the call. Lots of hang ups and frustrating days not getting prospects to open up.</p>
-<p>I knew my tone was more of a liability than an asset. I watched Michael’s free webinar and saw the crazy progress one attendee had and figured why not give it a shot.</p>
-<p><mark>Within 24 hours of my consult, I booked a qualified meeting with a DM.</mark></p>
-<p>Michael genuinely cares about helping you solve your problems. He doesn’t see you as a $ sign and Michael wants to fix whatever problem you may have. Incredible human, truly an original.</p>
-<p>Book time now before he raises his prices. Yes, he’s that f***ing good.</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:22" aria-label="Read the full review from Quoll"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-<figure class="review is-text" id="rv-sam-weist">
-<div class="rv-win">
-<div class="review-txt">
-<p class="rv-name">Sam Weist</p>
-<p class="rv-stars" role="img" aria-label="5 out of 5 stars">★★★★★</p>
-<p class="rv-title">SDR communicates confidently with internal leadership and hits the top of the leaderboard</p>
-<p>I’ve had a great experience working with MCH on tonality and sales scripts. My manager noticed the difference immediately and complimented me on how confident I sounded. <mark>I am leading my team in closed won and have the opportunity to move over to larger, more complex deals.</mark> Now I can look forward to listening to my calls, knowing that I will sound crisp and articulate.</p>
-</div>
-</div>
-<button type="button" class="rv-open" data-read="r:23" aria-label="Read the full review from Sam Weist"><span class="rv-cta">Read the full review<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button>
-</figure>
-</div>
-</details>
-</div>
-<div class="vwrap" style="display: flex; flex-direction: column; gap: 18px;">
-<p class="rh">Watch the testimonials</p>
-<ul class="vlist is-short" id="video-list">
-<li><button type="button" class="vrow" data-video="edlatimore" aria-label="Play Ed Latimore’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Ed Latimore</span><span class="vrole">Author and Speaker</span></span></button></li><li><button type="button" class="vrow" data-video="raj" aria-label="Play Raj’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Raj</span><span class="vrole">COO, Investor, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="michael" aria-label="Play Michael’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Michael</span><span class="vrole">VC-backed CEO and Founder</span></span></button></li><li><button type="button" class="vrow" data-video="harrison" aria-label="Play Harrison’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Harrison</span><span class="vrole">Executive Recruitment Firm Principal</span></span></button></li><li><button type="button" class="vrow" data-video="adam" aria-label="Play Adam’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Adam</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="scott" aria-label="Play Scott’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="kellen" aria-label="Play Kellen’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Kellen</span><span class="vrole">Founder, Chief Growth Officer</span></span></button></li><li><button type="button" class="vrow" data-video="max" aria-label="Play Max’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Max</span><span class="vrole">Real Estate Development</span></span></button></li><li><button type="button" class="vrow" data-video="andres" aria-label="Play Andres’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Andres</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="riley" aria-label="Play Riley’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Riley</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="jay" aria-label="Play Jay’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jay</span><span class="vrole">TV News Anchor</span></span></button></li><li><button type="button" class="vrow" data-video="kade" aria-label="Play Kade’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Kade</span><span class="vrole">Top 1% TikTok Shop</span></span></button></li><li><button type="button" class="vrow" data-video="jimmy" aria-label="Play Jimmy’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jimmy</span><span class="vrole">Executive</span></span></button></li><li><button type="button" class="vrow" data-video="doug" aria-label="Play Doug’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Doug</span><span class="vrole">CPA, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="sam" aria-label="Play Sam’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Sam</span><span class="vrole">Corporate Sales, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="natalie" aria-label="Play Natalie’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Natalie</span><span class="vrole">Group Workshop Facilitator</span></span></button></li><li><button type="button" class="vrow" data-video="jonathan" aria-label="Play Jonathan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jonathan</span><span class="vrole">Associate General Counsel, Director of Sales</span></span></button></li><li><button type="button" class="vrow" data-video="brian" aria-label="Play Brian’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Brian</span><span class="vrole">VP of Sales</span></span></button></li><li><button type="button" class="vrow" data-video="eric" aria-label="Play Eric’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Eric</span><span class="vrole">DeFi Business Development</span></span></button></li><li><button type="button" class="vrow" data-video="scottvoice" aria-label="Play Scott’s public speaking coaching video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO (public speaking coaching)</span></span></button></li><li><button type="button" class="vrow" data-video="rose" aria-label="Play Rose’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Rose</span><span class="vrole">Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="eddy" aria-label="Play Eddy’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Eddy</span><span class="vrole">Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="christy" aria-label="Play Christy’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Christy</span><span class="vrole">Hypnotherapist, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="adampartner" aria-label="Play Adam’s video, client and partner"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Adam</span><span class="vrole">Client and Partner</span></span></button></li><li><button type="button" class="vrow" data-video="patrick" aria-label="Play Patrick’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Patrick</span><span class="vrole">Coach and Parent</span></span></button></li><li><button type="button" class="vrow" data-video="mark" aria-label="Play Mark’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Mark</span><span class="vrole">Coach</span></span></button></li><li><button type="button" class="vrow" data-video="debbie" aria-label="Play Debbie’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Debbie</span></span></button></li><li><button type="button" class="vrow" data-video="chris" aria-label="Play Chris’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Chris</span><span class="vrole">Software Engineer</span></span></button></li><li><button type="button" class="vrow" data-video="jared" aria-label="Play Jared’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jared</span></span></button></li><li><button type="button" class="vrow" data-video="presentation" aria-label="Play the presentation skills client’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Client</span><span class="vrole">Presentation Skills</span></span></button></li><li><button type="button" class="vrow" data-video="dylan" aria-label="Play Dylan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Dylan</span><span class="vrole">@serialsales, Workshop Attendee and Organizer</span></span></button></li><li><button type="button" class="vrow" data-video="trevor" aria-label="Play Trevor’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Trevor</span><span class="vrole">Group Workshop Participant</span></span></button></li><li><button type="button" class="vrow" data-video="salesleader" aria-label="Play the Sales Leader’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Sales Leader</span></span></button></li><li><button type="button" class="vrow" data-video="strategicae" aria-label="Play the Fortune 1000 Strategic AE’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Fortune 1000 Strategic AE</span></span></button></li><li><button type="button" class="vrow" data-video="sakul" aria-label="Play Sakul’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Sakul</span><span class="vrole">Enterprise AE</span></span></button></li><li><button type="button" class="vrow" data-video="danny" aria-label="Play Danny’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Danny</span><span class="vrole">Insurance Sales</span></span></button></li><li><button type="button" class="vrow" data-video="bryan" aria-label="Play Bryan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Bryan</span><span class="vrole">Insurance Broker</span></span></button></li><li><button type="button" class="vrow" data-video="john" aria-label="Play John’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">John</span><span class="vrole">Sales</span></span></button></li><li><button type="button" class="vrow" data-video="paul" aria-label="Play Paul’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Paul</span><span class="vrole">Sales and Marketing</span></span></button></li><li><button type="button" class="vrow" data-video="brendan" aria-label="Play Brendan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Brendan</span><span class="vrole">Sales, Content Creator</span></span></button></li><li><button type="button" class="vrow" data-video="nelly" aria-label="Play Nelly’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Nelly</span><span class="vrole">BDR</span></span></button></li><li><button type="button" class="vrow" data-video="sdr" aria-label="Play the SDR’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">SDR</span></span></button></li><li><button type="button" class="vrow" data-video="marina" aria-label="Play Marina’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Marina</span><span class="vrole">Solutions Architect (Applied AI), Vellum AI</span></span></button></li><li><button type="button" class="vrow" data-video="spencer" aria-label="Play Spencer Applebaum’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Spencer Applebaum</span><span class="vrole">General Partner and Co-Head of Venture, Multicoin Capital</span></span></button></li>
+<ul class="vlist" id="video-list">
+<li><button type="button" class="vrow" data-video="edlatimore" aria-label="Play Ed Latimore’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Ed Latimore</span><span class="vrole">Author and Speaker</span></span></button></li><li><button type="button" class="vrow" data-video="raj" aria-label="Play Raj’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Raj</span><span class="vrole">COO, Investor, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="michael" aria-label="Play Michael’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Michael</span><span class="vrole">VC-backed CEO and Founder</span></span></button></li><li><button type="button" class="vrow" data-video="harrison" aria-label="Play Harrison’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Harrison</span><span class="vrole">Executive Recruitment Firm Principal</span></span></button></li><li><button type="button" class="vrow" data-video="adam" aria-label="Play Adam’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Adam</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="scott" aria-label="Play Scott’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="kellen" aria-label="Play Kellen’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Kellen</span><span class="vrole">Founder, Chief Growth Officer</span></span></button></li><li><button type="button" class="vrow" data-video="andres" aria-label="Play Andres’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Andres</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="riley" aria-label="Play Riley’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Riley</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="jay" aria-label="Play Jay’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jay</span><span class="vrole">TV News Anchor</span></span></button></li><li><button type="button" class="vrow" data-video="jimmy" aria-label="Play Jimmy’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jimmy</span><span class="vrole">Executive</span></span></button></li><li><button type="button" class="vrow" data-video="jonathan" aria-label="Play Jonathan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jonathan</span><span class="vrole">Associate General Counsel, Director of Sales</span></span></button></li><li><button type="button" class="vrow" data-video="scottvoice" aria-label="Play Scott’s public speaking coaching video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO (public speaking coaching)</span></span></button></li><li><button type="button" class="vrow" data-video="marina" aria-label="Play Marina’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Marina</span><span class="vrole">Solutions Architect (Applied AI), Vellum AI</span></span></button></li><li><button type="button" class="vrow" data-video="spencer" aria-label="Play Spencer Applebaum’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Spencer Applebaum</span><span class="vrole">General Partner and Co-Head of Venture, Multicoin Capital</span></span></button></li>
 </ul>
-<div style="border-top: 1px solid rgba(26,23,20,0.16);"><button type="button" class="more-btn" id="vids-more" aria-expanded="false" aria-controls="video-list">See all 44 client videos</button></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 18px;">
-<p class="rh" id="shots-title">Texts and posts</p>
-<div class="shots" role="region" aria-labelledby="shots-title">
-<figure class="shot" id="sh-1"><div class="shot-win is-tall"><img loading="lazy" decoding="async" width="1000" height="1617" src="assets/testimonial-zach-pogrob-instagram.jpg" alt="Instagram story from Zach Pogrob, shown writing on a wall of handwritten quotes. His captions read: Strong voice session today with @michaelhewitt23. Becoming a powerful speaker, online/offline, in events and just in life, is a huge goal of mine. And massively important to the mission of spreading Obsession. For anyone leading a movement it’s maybe the most important skill. Recommend learning from / booking session with him if you talk to humans."></div><figcaption class="cap">Zach Pogrob, on Instagram</figcaption><button type="button" class="shot-open" data-read="s:0" aria-label="View larger: Zach Pogrob, on Instagram"><span class="shot-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button></figure>
-<figure class="shot" id="sh-2"><div class="shot-win"><img loading="lazy" decoding="async" width="1000" height="687" src="assets/testimonial-client-text-quota.jpg" alt="Text message from a client: Hey dude guess what. Second month into my AE role and I hit 125% of quota! Just wanted to thank you for the mentorship and coaching and for helping me feel more confident in my voice and how I interact with people!! Michael’s reply: DUDE"></div><figcaption class="cap">A client, by text</figcaption><button type="button" class="shot-open" data-read="s:1" aria-label="View larger: A client, by text"><span class="shot-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button></figure>
-<figure class="shot" id="sh-3"><div class="shot-win"><img loading="lazy" decoding="async" width="1000" height="774" src="assets/testimonial-gabe-pluguez-x.jpg" alt="Post on X from Gabe Pluguez: Our brother @MichaelHewitt23 just did a live training for DK on how to make your voice sound more masculine (without sounding weird) and it was awesome. Every man who’s in any kind of leadership role could benefit from what he teaches. Highly recommend."></div><figcaption class="cap">Gabe Pluguez, on X</figcaption><button type="button" class="shot-open" data-read="s:2" aria-label="View larger: Gabe Pluguez, on X"><span class="shot-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button></figure>
-<figure class="shot" id="sh-4"><div class="shot-win"><img loading="lazy" decoding="async" width="1000" height="762" src="assets/testimonial-client-text-amens.jpg" alt="Text thread with a client. Client: Appreciate that response dude. Felt a lot better today and got some audible amens while up there, which is usually a good sign. Still gotta get it to be more of a daily habit. Michael: NICE! That ever happened before? How’d that feel? Client: Has not happened before. Felt good, more calm. Not calm in general, but more than before."></div><figcaption class="cap">A client, by text</figcaption><button type="button" class="shot-open" data-read="s:3" aria-label="View larger: A client, by text"><span class="shot-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"></path></svg></span></button></figure>
-</div>
 </div>
 <div><a class="btn" href="apply/">Schedule a consultation</a></div>
 </div>
 </section>
 
 <section id="about" aria-labelledby="about-title" style="background: #FAF7F1;">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); align-items: start; gap: 32px clamp(48px, 7vw, 112px);">
-<div style="display: flex; flex-direction: column; gap: 28px;">
-<h2 id="about-title" class="d h2" style="font-size: clamp(32px, 4.22vw, 56px); line-height: 1;">Michael Hewitt</h2>
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
+<p class="rh">About</p>
+<h2 id="about-title" class="d h2">I’m a natural on stage. I’m also a natural rambler.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); align-items: start; gap: 32px clamp(48px, 7vw, 112px);">
 <figure style="margin: 0; max-width: 440px;">
 <img loading="lazy" decoding="async" width="1072" height="1240" src="assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 1072 / 1240; object-fit: cover; background: #E6DFD2;">
 </figure>
-</div>
 <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
 <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #1A1714;">I started coaching in 2015 as both a creative outlet and a way to make extra cash alongside my budding stage career. After I graduated top of my Master of Music class at Rice University and earned accolades and return engagements at leading operatic and musical theatre houses (WNO at The Kennedy Center, Arena Stage, Glimmerglass Festival), the coronavirus pandemic paused all stage work indefinitely.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #1A1714;">I pivoted to cybersecurity sales, where I quickly found my stride as a full-cycle Account Executive, first as a pre-IPO hire at a sales-heavy organization and later as employee #36 at one struggling to find PMF.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #1A1714;">After simultaneously being laid off and hitting rock bottom in my former marriage, I committed to building this practice, Command a Room, with the message that “your voice tells the world who you are” and the mission of helping people reclaim agency they’ve lost so they can do what they’re built to do.</p>
 <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 10px;">
-<p class="t" style="font-size: 22px; line-height: 1.5; color: #1A1714;">Find your voice.</p>
-<p class="t" style="font-size: 22px; line-height: 1.5; color: #1A1714;">Unleash your voice.</p>
 <p class="t" style="font-size: 22px; line-height: 1.5; color: #1A1714;">Go forth, and speak BOLDLY</p>
 </div>
 <div style="display: flex; align-items: center; gap: 14px; padding-top: 6px;">
@@ -906,12 +631,17 @@ body.modal-open{overflow:hidden}
 </div>
 </div>
 </div>
+</div>
 </section>
 
 <section id="apply" class="dark" aria-labelledby="apply-title" style="background: #1A1714; color: #F3EEE4;">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(48px, 7vw, 112px);">
 <div style="display: flex; flex-direction: column; gap: 24px;">
-<h2 id="apply-title" class="d h2" style="color: #F3EEE4;">Close the gap between what you know and how you sound.</h2>
+<div style="display: flex; flex-direction: column; gap: 22px;">
+<p class="rh">Engagements</p>
+<h2 id="apply-title" class="d h2" style="color: #F3EEE4;">Get your identity to catch up to your resume.</h2>
+</div>
+<p class="lead">Close the gap between what you know and how you sound.</p>
 <p style="margin: 0; font-size: 20px; line-height: 1.55;">Work one-on-one with Michael through the rooms that matter: the raise, the promotion, board meetings, investor calls, podcast and panel appearances, the speaking circuit, and internal conversations.</p>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9C1B4;">Engagements are offered selectively. For a team or a firm, mention it when you schedule.</p>
 <a class="btn-l" href="apply/" style="align-self: flex-start;">Schedule a consultation</a>
@@ -931,9 +661,9 @@ body.modal-open{overflow:hidden}
 <div style="display: flex; flex-direction: column; gap: 4px;">
 <p style="margin: 0 0 6px;"><span class="lockup" style="padding: 0;"><span class="lk-name">Michael Hewitt</span><span class="lk-mark">Command a Room</span></span></p>
 <p style="margin: 0;">© 2026 Executive Influence Systems LLC. New York.</p>
-<p class="colophon">The lines at the top of the page are the overtones of a sung low G. The red band is the singer’s formant, the resonance that carries an unamplified voice over a full orchestra.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 0 24px;">
+<a href="wall-of-love/" style="padding: 13px 0;">Wall of Love</a>
 <a href="mailto:michael@michaelhewitt.com" style="padding: 13px 0;">michael@michaelhewitt.com</a>
 <a href="https://www.linkedin.com/in/michaelhewitt23/" style="padding: 13px 0;">LinkedIn</a>
 <a href="https://podcasts.apple.com/us/podcast/the-sound-of-leadership-self-actualize-through/id1725026646" style="padding: 13px 0;">The Sound of Leadership</a>
@@ -949,17 +679,6 @@ body.modal-open{overflow:hidden}
 </div>
 <div id="video-player"></div>
 </div>
-</div>
-<div id="reader" class="reader dark" role="dialog" aria-modal="true" aria-labelledby="rd-title" tabindex="-1" hidden>
-<div class="rd-top">
-<p class="rd-title" id="rd-title"><span class="rd-name" id="rd-name"></span><span class="rd-role" id="rd-role"></span></p>
-<p class="rd-count" id="rd-count"></p>
-<button type="button" class="rd-x" id="rd-close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
-</div>
-<p class="sr" aria-live="polite" id="rd-live"></p>
-<div class="rd-body" id="rd-body"></div>
-<button type="button" class="rd-nav rd-prev" id="rd-prev" aria-label="Previous"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg></button>
-<button type="button" class="rd-nav rd-next" id="rd-next" aria-label="Next"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg></button>
 </div>
 </div>
 </body>

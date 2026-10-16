@@ -34,7 +34,8 @@ a:hover{color:#7A2E22}
 .skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#1A1714;color:#F3EEE4;font-size:16px;text-decoration:none}
 .skip:focus{top:12px}
 .rv{animation:rv .8s cubic-bezier(.2,.7,.2,1) both}
-.rv-2{animation-delay:.1s}.rv-3{animation-delay:.2s}
+.rv-2{animation-delay:.1s}
+.rv-3{animation-delay:.2s}
 @keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .hero-title{font-size:clamp(33px,5.9vw,84px);line-height:0.98;letter-spacing:-0.022em;text-wrap:balance;max-width:14.2em}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:stretch}
@@ -61,23 +62,16 @@ textarea.in{min-height:116px;resize:vertical}
 .opt input{flex-shrink:0;width:18px;height:18px;margin:3px 0 0;accent-color:#7A2E22;cursor:pointer}
 .opt:hover{color:#7A2E22}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,4vw,48px)}
-@media (max-width: 639px){
-.btn{width:100%}
-.two{grid-template-columns:minmax(0,1fr)}
-.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 10%!important}
-}
+@media (max-width: 639px){.btn{width:100%}.two{grid-template-columns:minmax(0,1fr)}.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 10%!important}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{animation:none}.btn{transition:none}}
-
 /* type pass: Bodoni Moda and Jost, as on the business cards */
 .d{letter-spacing:-0.012em}
 .h2{letter-spacing:-0.018em}
 .hero-title{font-size:clamp(36px,6.37vw,91px);letter-spacing:-0.02em;line-height:1.02}
 .btn,.btn-l{font-size:16px}
 @media (min-width: 900px){.hero-title{font-variation-settings:'opsz' 60;letter-spacing:-0.024em}}
-.t,.lead,.rh,.rows>li,.cs-title,.mcol dt,.mcol .sub,.facts dd{font-variation-settings:'opsz' 28;letter-spacing:-0.01em}
-.mtab-h{font-weight:400}
-.mtab-l{font-size:clamp(19px,1.7vw,24px);font-weight:400;letter-spacing:-0.01em}
-.body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by,.colophon{text-wrap:pretty}
+.t,.lead,.rh,.rows>li,.cs-title,.facts dd{font-variation-settings:'opsz' 28;letter-spacing:-0.01em}
+.body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by{text-wrap:pretty}
 .nw{white-space:nowrap}
 .quote{text-indent:-0.42em}
 .lockup{display:inline-flex;align-items:baseline;gap:16px;padding:10px 0;color:#1A1714;text-decoration:none;white-space:nowrap}
@@ -88,17 +82,13 @@ textarea.in{min-height:116px;resize:vertical}
 @media (max-width: 559px){.lockup{flex-direction:column;align-items:flex-start;gap:6px;padding:8px 0}.lk-name{font-size:20px}.lk-mark{font-size:10.5px;letter-spacing:0.28em}}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
 .ot-ribbon>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.colophon{margin:0;max-width:46em;font-size:13px;line-height:1.55;color:#5C554C}
 /* photos with clients, in black and white like the hero portrait: beside Eric's name, under Ben's review */
 .cs-ph{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"q q" "ph by" "ph go";column-gap:18px;row-gap:14px;align-content:start;align-items:start}
 .cs-ph>.t{grid-area:q}
 .cs-ph>.cs-photo{grid-area:ph}
 .cs-ph>.by{grid-area:by}
 .cs-ph>div{grid-area:go}
-.cs-photo,.rv-note>img{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
-.rv-note{margin:0;display:flex;align-items:flex-start;gap:18px}
-.rv-note>.cap{margin:0}
-@media (min-width: 1100px){.reviews-feat>.rv-note{grid-column:1;grid-row:2}.reviews-feat>#rv-brian-m-lockheed{grid-column:2;grid-row:1}}
+.cs-photo{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E6DFD2}
 img{max-width:100%;height:auto}
 [hidden]{display:none!important}
 </style>
@@ -141,7 +131,7 @@ img{max-width:100%;height:auto}
 </div>
 <div class="hero-grid">
 <figure class="rv rv-3" style="margin: 0; min-width: 0;">
-<img width="1072" height="1240" fetchpriority="high" class="hero-photo" src="../assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; background: #E6DFD2;">
+<img fetchpriority="high" width="1072" height="1240" class="hero-photo" src="../assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; background: #E6DFD2;">
 </figure>
 <div class="rv rv-2 hero-copy">
 <div>
@@ -239,9 +229,9 @@ img{max-width:100%;height:auto}
 <div style="display: flex; flex-direction: column; gap: 4px;">
 <p style="margin: 0 0 6px;"><span class="lockup" style="padding: 0;"><span class="lk-name">Michael Hewitt</span><span class="lk-mark">Command a Room</span></span></p>
 <p style="margin: 0;">© 2026 Executive Influence Systems LLC. New York.</p>
-<p class="colophon">The lines at the top of the page are the overtones of a sung low G. The red band is the singer’s formant, the resonance that carries an unamplified voice over a full orchestra.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 0 24px;">
+<a href="../wall-of-love/" style="padding: 13px 0;">Wall of Love</a>
 <a href="mailto:michael@michaelhewitt.com" style="padding: 13px 0;">michael@michaelhewitt.com</a>
 <a href="https://www.linkedin.com/in/michaelhewitt23/" style="padding: 13px 0;">LinkedIn</a>
 <a href="https://podcasts.apple.com/us/podcast/the-sound-of-leadership-self-actualize-through/id1725026646" style="padding: 13px 0;">The Sound of Leadership</a>
