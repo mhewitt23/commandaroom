@@ -41,7 +41,7 @@
     });
   }
   // keep Tab inside an open dialog
-  function trap(box, ev) {
+  function trapFocus(box, ev) {
     var stops = Array.prototype.filter.call(box.querySelectorAll('button, a[href]'), function (el) { return el.getClientRects().length > 0; });
     if (!stops.length) { return; }
     var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
@@ -119,17 +119,17 @@
       prev.setAttribute('aria-disabled', at > 0 ? 'false' : 'true');
       next.setAttribute('aria-disabled', end ? 'true' : 'false');
     }
-    function syncSoon() { if (!frameId) { frameId = window.requestAnimationFrame(syncCarousel); } }
+    function syncOnNextFrame() { if (!frameId) { frameId = window.requestAnimationFrame(syncCarousel); } }
     function moveCarousel(direction) {
       if ((direction < 0 && at === 0) || (direction > 0 && end)) { return; }
       track.scrollBy({ left: direction * slideStep(), behavior: still.matches ? 'auto' : 'smooth' });
     }
-    track.addEventListener('scroll', syncSoon, { passive: true });
+    track.addEventListener('scroll', syncOnNextFrame, { passive: true });
     prev.addEventListener('click', function () { moveCarousel(-1); });
     next.addEventListener('click', function () { moveCarousel(1); });
     // phones: a long review is clamped and opens in place; one that fits loses its button
     var more = track.querySelectorAll('[data-cq-more]');
-    function fitMore() {
+    function markReviewsThatFit() {
       Array.prototype.forEach.call(more, function (button) {
         var slide = button.closest('.cq-slide'), quote = slide.querySelector('.cq-q');
         if (slide.classList.contains('is-open')) { return; }
@@ -146,30 +146,30 @@
         if (!open && slide.getBoundingClientRect().top < 72) { slide.scrollIntoView({ block: 'start' }); }
       });
     });
-    window.addEventListener('resize', function () { syncSoon(); fitMore(); });
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { syncCarousel(); fitMore(); }); }
-    syncCarousel(); fitMore();
+    window.addEventListener('resize', function () { syncOnNextFrame(); markReviewsThatFit(); });
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { syncCarousel(); markReviewsThatFit(); }); }
+    syncCarousel(); markReviewsThatFit();
   }
 
   // testimonial cards (Wall of Love): fade only where the text runs past the card
   var wins = document.querySelectorAll('.rv-win');
-  function fitWins() {
+  function markCardsThatFit() {
     Array.prototype.forEach.call(wins, function (win) {
       if (!win.getClientRects().length) { return; }
       win.classList.toggle('is-fit', win.scrollHeight <= win.clientHeight + 2);
     });
   }
   if (wins.length) {
-    fitWins();
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitWins); }
+    markCardsThatFit();
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(markCardsThatFit); }
     var fitTimer = null;
-    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitWins, 150); });
+    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(markCardsThatFit, 150); });
   }
 
   // the reader (Wall of Love): one testimonial at a time, full size, with previous and next
   var rdEl = document.getElementById('reader');
   var readsEl = document.getElementById('reads');
-  var reads = null;
+  var readerSets = null;   // {r: the written reviews, s: the texts and posts}, from the JSON on the page
   var PLAY = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>';
   var rdBody = document.getElementById('rd-body');
   var rdName = document.getElementById('rd-name');
@@ -178,8 +178,8 @@
   var rdLive = document.getElementById('rd-live');
   var rdSet = 'r', rdIndex = 0, rdBack = null;
   var narrow = window.matchMedia('(max-width: 759px)');
-  function rdShow() {
-    var list = reads[rdSet], item = list[rdIndex], total = list.length;
+  function renderReader() {
+    var list = readerSets[rdSet], item = list[rdIndex], total = list.length;
     rdName.textContent = item.name;
     rdRole.textContent = item.role ? ', ' + item.role : '';
     rdCount.textContent = (rdIndex + 1) + ' of ' + total;
@@ -201,7 +201,7 @@
         if (item.video) {
           var watch = document.createElement('button');
           watch.type = 'button'; watch.className = 'linkbtn'; watch.innerHTML = PLAY + 'Watch ' + item.first + '\u2019s video';
-          watch.addEventListener('click', function () { var back = rdBack; rdHide(false); openVideo(item.video, back); });
+          watch.addEventListener('click', function () { var back = rdBack; closeReader(false); openVideo(item.video, back); });
           row.appendChild(watch);
         }
         if (item.link) {
@@ -220,26 +220,30 @@
       });
     }
   }
-  function rdOpen(set, index) {
+  function openReader(set, index) {
     rdBack = document.activeElement; rdSet = set; rdIndex = index;
-    rdShow();
+    renderReader();
     rdEl.hidden = false; document.body.classList.add('modal-open'); setInert(rdEl, true);
     rdEl.focus();
   }
-  function rdHide(restore) {
+  function closeReader(restore) {
     rdEl.hidden = true; rdBody.innerHTML = ''; document.body.classList.remove('modal-open'); setInert(rdEl, false);
     if (restore !== false && rdBack && rdBack.focus) { rdBack.focus(); }
   }
-  function rdStep(step) { var total = reads[rdSet].length; rdIndex = (rdIndex + step + total) % total; rdShow(); }
+  function stepReader(step) { var total = readerSets[rdSet].length; rdIndex = (rdIndex + step + total) % total; renderReader(); }
   if (rdEl && readsEl) {
-    reads = JSON.parse(readsEl.textContent);
+    // a list that can't be read leaves the cards as they are, and the rest of the page keeps working
+    try { readerSets = JSON.parse(readsEl.textContent); }
+    catch (err) { if (window.console) { console.warn('wall: the reader list could not be read', err); } }
+  }
+  if (readerSets) {
     Array.prototype.forEach.call(document.querySelectorAll('[data-read]'), function (el) {
-      el.addEventListener('click', function () { var parts = el.getAttribute('data-read').split(':'); rdOpen(parts[0], +parts[1]); });
+      el.addEventListener('click', function () { var parts = el.getAttribute('data-read').split(':'); openReader(parts[0], +parts[1]); });
     });
-    document.getElementById('rd-close').addEventListener('click', function () { rdHide(); });
-    document.getElementById('rd-prev').addEventListener('click', function () { rdStep(-1); });
-    document.getElementById('rd-next').addEventListener('click', function () { rdStep(1); });
-    rdEl.addEventListener('click', function (ev) { if (ev.target === rdEl) { rdHide(); } });
+    document.getElementById('rd-close').addEventListener('click', function () { closeReader(); });
+    document.getElementById('rd-prev').addEventListener('click', function () { stepReader(-1); });
+    document.getElementById('rd-next').addEventListener('click', function () { stepReader(1); });
+    rdEl.addEventListener('click', function (ev) { if (ev.target === rdEl) { closeReader(); } });
     var touchX = null, touchY = 0;   // a sideways swipe moves to the next or previous testimonial
     rdEl.addEventListener('touchstart', function (ev) {
       if (ev.touches.length === 1) { touchX = ev.touches[0].clientX; touchY = ev.touches[0].clientY; } else { touchX = null; }
@@ -247,16 +251,16 @@
     rdEl.addEventListener('touchend', function (ev) {
       if (touchX === null) { return; }
       var touch = ev.changedTouches[0], deltaX = touch.clientX - touchX, deltaY = touch.clientY - touchY; touchX = null;
-      if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > 1.6 * Math.abs(deltaY)) { rdStep(deltaX < 0 ? 1 : -1); }
+      if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > 1.6 * Math.abs(deltaY)) { stepReader(deltaX < 0 ? 1 : -1); }
     }, { passive: true });
   }
 
   document.addEventListener('keydown', function (ev) {
     if (rdEl && !rdEl.hidden) {
-      if (ev.key === 'Escape') { rdHide(); }
-      else if (ev.key === 'ArrowRight') { ev.preventDefault(); rdStep(1); }
-      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); rdStep(-1); }
-      else if (ev.key === 'Tab') { trap(rdEl, ev); }
+      if (ev.key === 'Escape') { closeReader(); }
+      else if (ev.key === 'ArrowRight') { ev.preventDefault(); stepReader(1); }
+      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); stepReader(-1); }
+      else if (ev.key === 'Tab') { trapFocus(rdEl, ev); }
       return;
     }
     if (ev.key === 'Escape') {
