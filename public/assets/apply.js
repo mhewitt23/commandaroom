@@ -18,7 +18,10 @@
       anything_else: val('anything_else'),
       submitted_at: new Date().toISOString()
     };
-    var go = function () { window.location.href = NEXT; };
-    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(go).catch(go);
+    // The sheet's reply can't be read (no-cors), so success and failure look alike here. Either way the visitor
+    // goes on to pick a time, so a network hiccup never costs a booking; a failure is noted in the console.
+    var next = function () { window.location.href = NEXT; };
+    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(next, function (err) { if (window.console) { console.warn('apply: the form did not reach the sheet', err); } next(); });
   });
 })();

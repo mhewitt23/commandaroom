@@ -104,45 +104,45 @@
     var at = 0, end = false, frameId = 0;
     var still = window.matchMedia('(prefers-reduced-motion: reduce)');
     var phone = window.matchMedia('(max-width: 759px)');
-    function step() { return slides > 1 ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth; }
-    function sync() {
+    function slideStep() { return slides > 1 ? track.children[1].offsetLeft - track.children[0].offsetLeft : track.clientWidth; }
+    function syncCarousel() {
       frameId = 0;
-      at = Math.max(0, Math.min(slides - 1, Math.round(track.scrollLeft / (step() || 1))));
+      at = Math.max(0, Math.min(slides - 1, Math.round(track.scrollLeft / (slideStep() || 1))));
       end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
       count.textContent = (at + 1) + ' of ' + slides;
       prev.setAttribute('aria-disabled', at > 0 ? 'false' : 'true');
       next.setAttribute('aria-disabled', end ? 'true' : 'false');
     }
-    function later() { if (!frameId) { frameId = window.requestAnimationFrame(sync); } }
-    function go(d) {
+    function syncSoon() { if (!frameId) { frameId = window.requestAnimationFrame(syncCarousel); } }
+    function moveCarousel(d) {
       if ((d < 0 && at === 0) || (d > 0 && end)) { return; }
-      track.scrollBy({ left: d * step(), behavior: still.matches ? 'auto' : 'smooth' });
+      track.scrollBy({ left: d * slideStep(), behavior: still.matches ? 'auto' : 'smooth' });
     }
-    track.addEventListener('scroll', later, { passive: true });
-    prev.addEventListener('click', function () { go(-1); });
-    next.addEventListener('click', function () { go(1); });
+    track.addEventListener('scroll', syncSoon, { passive: true });
+    prev.addEventListener('click', function () { moveCarousel(-1); });
+    next.addEventListener('click', function () { moveCarousel(1); });
     // phones: a long review is clamped and opens in place; one that fits loses its button
     var more = track.querySelectorAll('[data-cq-more]');
     function fitMore() {
-      Array.prototype.forEach.call(more, function (b) {
-        var slide = b.closest('.cq-slide'), q = slide.querySelector('.cq-q');
+      Array.prototype.forEach.call(more, function (button) {
+        var slide = button.closest('.cq-slide'), q = slide.querySelector('.cq-q');
         if (slide.classList.contains('is-open')) { return; }
         slide.classList.remove('is-fit');
         slide.classList.toggle('is-fit', !phone.matches || q.scrollHeight <= q.clientHeight + 2);
       });
     }
-    Array.prototype.forEach.call(more, function (b) {
-      var slide = b.closest('.cq-slide');
-      b.addEventListener('click', function () {
+    Array.prototype.forEach.call(more, function (button) {
+      var slide = button.closest('.cq-slide');
+      button.addEventListener('click', function () {
         var open = slide.classList.toggle('is-open');
-        b.setAttribute('aria-expanded', open ? 'true' : 'false');
-        b.textContent = open ? 'Show less' : 'Read the full review';
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        button.textContent = open ? 'Show less' : 'Read the full review';
         if (!open && slide.getBoundingClientRect().top < 72) { slide.scrollIntoView({ block: 'start' }); }
       });
     });
-    window.addEventListener('resize', function () { later(); fitMore(); });
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { sync(); fitMore(); }); }
-    sync(); fitMore();
+    window.addEventListener('resize', function () { syncSoon(); fitMore(); });
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(function () { syncCarousel(); fitMore(); }); }
+    syncCarousel(); fitMore();
   }
 
   // testimonial cards (Wall of Love): fade only where the text runs past the card
