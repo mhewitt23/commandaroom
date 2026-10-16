@@ -12,23 +12,23 @@
   if (btn && menu && scrim) {
     btn.addEventListener('click', function () { setMenu(menu.hidden); });
     scrim.addEventListener('click', function () { setMenu(false); });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-close-menu]'), function (a) {
-      a.addEventListener('click', function () { setMenu(false); });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-close-menu]'), function (link) {
+      link.addEventListener('click', function () { setMenu(false); });
     });
   }
 
   // the homepage: Results and About light up while you read them
-  var links = document.querySelectorAll('[data-nav]');
-  if (links.length && 'IntersectionObserver' in window) {
+  var navLinks = document.querySelectorAll('[data-nav]');
+  if (navLinks.length && 'IntersectionObserver' in window) {
     var seen = {};
     var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+      entries.forEach(function (entry) { seen[entry.target.id] = entry.isIntersecting; });
       var on = '';
       ['results', 'about'].forEach(function (id) { if (seen[id]) { on = id; } });
-      Array.prototype.forEach.call(links, function (a) {
-        var hit = a.getAttribute('data-nav') === on;
-        a.classList.toggle('is-on', hit);
-        if (hit) { a.setAttribute('aria-current', 'location'); } else { a.removeAttribute('aria-current'); }
+      Array.prototype.forEach.call(navLinks, function (link) {
+        var hit = link.getAttribute('data-nav') === on;
+        link.classList.toggle('is-on', hit);
+        if (hit) { link.setAttribute('aria-current', 'location'); } else { link.removeAttribute('aria-current'); }
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     ['results', 'about'].forEach(function (id) { var el = document.getElementById(id); if (el) { spy.observe(el); } });
@@ -40,13 +40,14 @@
       if (on) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); }
     });
   }
+  // keep Tab inside an open dialog
   function trap(box, ev) {
-    var f = Array.prototype.filter.call(box.querySelectorAll('button, a[href]'), function (x) { return x.getClientRects().length > 0; });
-    if (!f.length) { return; }
-    var a = document.activeElement;
-    if (ev.shiftKey && (a === f[0] || a === box)) { ev.preventDefault(); f[f.length - 1].focus(); }
-    else if (!ev.shiftKey && a === f[f.length - 1]) { ev.preventDefault(); f[0].focus(); }
-    else if (!box.contains(a)) { ev.preventDefault(); f[0].focus(); }
+    var stops = Array.prototype.filter.call(box.querySelectorAll('button, a[href]'), function (el) { return el.getClientRects().length > 0; });
+    if (!stops.length) { return; }
+    var first = stops[0], last = stops[stops.length - 1], active = document.activeElement;
+    if (ev.shiftKey && (active === first || active === box)) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && active === last) { ev.preventDefault(); first.focus(); }
+    else if (!box.contains(active)) { ev.preventDefault(); first.focus(); }
   }
 
   // the video player
@@ -59,26 +60,31 @@
   var closeBtn = document.getElementById('video-close');
   var lastFocus = null;
   function embedUrl(src) {
-    var m;
-    if ((m = src.match(/vimeo\.com\/(\d+)(?:\/([0-9a-f]{6,})|\?h=([0-9a-f]+))?/))) { var h = m[2] || m[3]; return { url: 'https://player.vimeo.com/video/' + m[1] + '?' + (h ? 'h=' + h + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0', tall: false }; }
-    if ((m = src.match(/youtube\.com\/shorts\/([\w-]+)/))) { return { url: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0', tall: true }; }
-    if ((m = src.match(/[?&]v=([\w-]+)/))) { return { url: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?autoplay=1&rel=0', tall: false }; }
+    var match = src.match(/vimeo\.com\/(\d+)(?:\/([0-9a-f]{6,})|\?h=([0-9a-f]+))?/);
+    if (match) {
+      var hash = match[2] || match[3];
+      return { url: 'https://player.vimeo.com/video/' + match[1] + '?' + (hash ? 'h=' + hash + '&' : '') + 'autoplay=1&title=0&byline=0&portrait=0', tall: false };
+    }
+    match = src.match(/youtube\.com\/shorts\/([\w-]+)/);
+    if (match) { return { url: 'https://www.youtube-nocookie.com/embed/' + match[1] + '?autoplay=1&rel=0', tall: true }; }
+    match = src.match(/[?&]v=([\w-]+)/);
+    if (match) { return { url: 'https://www.youtube-nocookie.com/embed/' + match[1] + '?autoplay=1&rel=0', tall: false }; }
     return null;
   }
   function openVideo(key, back) {
-    var v = videos[key]; if (!v || !modal) { return; }
-    var e = embedUrl(v.src); if (!e) { return; }
+    var video = videos[key]; if (!video || !modal) { return; }
+    var embed = embedUrl(video.src); if (!embed) { return; }
     lastFocus = back || document.activeElement;
-    nameEl.textContent = v.name; roleEl.textContent = v.role ? ', ' + v.role : '';
-    modal.setAttribute('aria-label', 'Video: ' + v.name);
-    var shape = v.ratio === '4/5' ? 'r-45' : (e.tall ? 'r-916' : '');
+    nameEl.textContent = video.name; roleEl.textContent = video.role ? ', ' + video.role : '';
+    modal.setAttribute('aria-label', 'Video: ' + video.name);
+    var shape = video.ratio === '4/5' ? 'r-45' : (embed.tall ? 'r-916' : '');
     player.className = shape; frame.className = shape;
     player.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = e.url; f.title = 'Video: ' + v.name;
-    f.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-    f.setAttribute('allowfullscreen', '');
-    player.appendChild(f);
+    var iframe = document.createElement('iframe');
+    iframe.src = embed.url; iframe.title = 'Video: ' + video.name;
+    iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    player.appendChild(iframe);
     modal.hidden = false; document.body.classList.add('modal-open'); setInert(modal, true);
     closeBtn.focus();
   }
@@ -114,9 +120,9 @@
       next.setAttribute('aria-disabled', end ? 'true' : 'false');
     }
     function syncSoon() { if (!frameId) { frameId = window.requestAnimationFrame(syncCarousel); } }
-    function moveCarousel(d) {
-      if ((d < 0 && at === 0) || (d > 0 && end)) { return; }
-      track.scrollBy({ left: d * slideStep(), behavior: still.matches ? 'auto' : 'smooth' });
+    function moveCarousel(direction) {
+      if ((direction < 0 && at === 0) || (direction > 0 && end)) { return; }
+      track.scrollBy({ left: direction * slideStep(), behavior: still.matches ? 'auto' : 'smooth' });
     }
     track.addEventListener('scroll', syncSoon, { passive: true });
     prev.addEventListener('click', function () { moveCarousel(-1); });
@@ -125,10 +131,10 @@
     var more = track.querySelectorAll('[data-cq-more]');
     function fitMore() {
       Array.prototype.forEach.call(more, function (button) {
-        var slide = button.closest('.cq-slide'), q = slide.querySelector('.cq-q');
+        var slide = button.closest('.cq-slide'), quote = slide.querySelector('.cq-q');
         if (slide.classList.contains('is-open')) { return; }
         slide.classList.remove('is-fit');
-        slide.classList.toggle('is-fit', !phone.matches || q.scrollHeight <= q.clientHeight + 2);
+        slide.classList.toggle('is-fit', !phone.matches || quote.scrollHeight <= quote.clientHeight + 2);
       });
     }
     Array.prototype.forEach.call(more, function (button) {
@@ -148,16 +154,16 @@
   // testimonial cards (Wall of Love): fade only where the text runs past the card
   var wins = document.querySelectorAll('.rv-win');
   function fitWins() {
-    Array.prototype.forEach.call(wins, function (w) {
-      if (!w.getClientRects().length) { return; }
-      w.classList.toggle('is-fit', w.scrollHeight <= w.clientHeight + 2);
+    Array.prototype.forEach.call(wins, function (win) {
+      if (!win.getClientRects().length) { return; }
+      win.classList.toggle('is-fit', win.scrollHeight <= win.clientHeight + 2);
     });
   }
   if (wins.length) {
     fitWins();
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitWins); }
-    var fitT = null;
-    window.addEventListener('resize', function () { clearTimeout(fitT); fitT = setTimeout(fitWins, 150); });
+    var fitTimer = null;
+    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitWins, 150); });
   }
 
   // the reader (Wall of Love): one testimonial at a time, full size, with previous and next
@@ -170,49 +176,52 @@
   var rdRole = document.getElementById('rd-role');
   var rdCount = document.getElementById('rd-count');
   var rdLive = document.getElementById('rd-live');
-  var rdSet = 'r', rdI = 0, rdBack = null;
+  var rdSet = 'r', rdIndex = 0, rdBack = null;
   var narrow = window.matchMedia('(max-width: 759px)');
   function rdShow() {
-    var list = reads[rdSet], it = list[rdI], n = list.length;
-    rdName.textContent = it.name;
-    rdRole.textContent = it.role ? ', ' + it.role : '';
-    rdCount.textContent = (rdI + 1) + ' of ' + n;
-    rdLive.textContent = it.name + ', ' + (rdI + 1) + ' of ' + n;
-    rdBody.className = 'rd-body ' + (rdSet === 's' ? 'is-shot' : (it.src ? 'is-img' : 'is-text'));
-    rdBody.style.width = rdSet === 's' ? 'min(100%, 640px, calc((100vh - 190px) * ' + (it.w / it.h).toFixed(4) + '))' : '';
+    var list = reads[rdSet], item = list[rdIndex], total = list.length;
+    rdName.textContent = item.name;
+    rdRole.textContent = item.role ? ', ' + item.role : '';
+    rdCount.textContent = (rdIndex + 1) + ' of ' + total;
+    rdLive.textContent = item.name + ', ' + (rdIndex + 1) + ' of ' + total;
+    rdBody.className = 'rd-body ' + (rdSet === 's' ? 'is-shot' : (item.src ? 'is-img' : 'is-text'));
+    rdBody.style.width = rdSet === 's' ? 'min(100%, 640px, calc((100vh - 190px) * ' + (item.width / item.height).toFixed(4) + '))' : '';
     rdBody.innerHTML = '';
-    if (it.src) {
-      var im = document.createElement('img');
-      im.className = 'rd-img'; im.alt = it.alt || ''; im.width = it.w; im.height = it.h;
-      im.loading = 'lazy'; im.decoding = 'async'; im.src = it.src;
-      rdBody.appendChild(im);
+    if (item.src) {
+      var img = document.createElement('img');
+      img.className = 'rd-img'; img.alt = item.alt || ''; img.width = item.width; img.height = item.height;
+      img.loading = 'lazy'; img.decoding = 'async'; img.src = item.src;
+      rdBody.appendChild(img);
     }
     if (rdSet === 'r') {
-      var t = document.querySelector('#' + it.id + ' .review-txt');
-      if (t) { var d = document.createElement('div'); d.className = 'rd-txt'; d.innerHTML = t.innerHTML; rdBody.appendChild(d); }
-      if (it.video || it.link) {
+      var source = document.querySelector('#' + item.id + ' .review-txt');
+      if (source) { var copy = document.createElement('div'); copy.className = 'rd-txt'; copy.innerHTML = source.innerHTML; rdBody.appendChild(copy); }
+      if (item.video || item.link) {
         var row = document.createElement('div'); row.className = 'rd-links';
-        if (it.video) {
-          var vb = document.createElement('button');
-          vb.type = 'button'; vb.className = 'linkbtn'; vb.innerHTML = PLAY + 'Watch ' + it.first + '\u2019s video';
-          vb.addEventListener('click', function () { var back = rdBack; rdHide(false); openVideo(it.video, back); });
-          row.appendChild(vb);
+        if (item.video) {
+          var watch = document.createElement('button');
+          watch.type = 'button'; watch.className = 'linkbtn'; watch.innerHTML = PLAY + 'Watch ' + item.first + '\u2019s video';
+          watch.addEventListener('click', function () { var back = rdBack; rdHide(false); openVideo(item.video, back); });
+          row.appendChild(watch);
         }
-        if (it.link) {
-          var a = document.createElement('a');
-          a.href = it.link; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'View on Testimonial.to';
-          row.appendChild(a);
+        if (item.link) {
+          var link = document.createElement('a');
+          link.href = item.link; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'View on Testimonial.to';
+          row.appendChild(link);
         }
         rdBody.appendChild(row);
       }
     }
     rdEl.scrollTop = 0;
-    if (!(rdSet === 'r' && narrow.matches)) {
-      [-1, 1].forEach(function (k) { var nb = list[(rdI + k + n) % n]; if (nb.src) { var p = new Image(); p.src = nb.src; } });
+    if (!(rdSet === 'r' && narrow.matches)) {   // fetch the neighbors' images ahead of a swipe
+      [-1, 1].forEach(function (step) {
+        var neighbor = list[(rdIndex + step + total) % total];
+        if (neighbor.src) { var preload = new Image(); preload.src = neighbor.src; }
+      });
     }
   }
-  function rdOpen(set, i) {
-    rdBack = document.activeElement; rdSet = set; rdI = i;
+  function rdOpen(set, index) {
+    rdBack = document.activeElement; rdSet = set; rdIndex = index;
     rdShow();
     rdEl.hidden = false; document.body.classList.add('modal-open'); setInert(rdEl, true);
     rdEl.focus();
@@ -221,24 +230,24 @@
     rdEl.hidden = true; rdBody.innerHTML = ''; document.body.classList.remove('modal-open'); setInert(rdEl, false);
     if (restore !== false && rdBack && rdBack.focus) { rdBack.focus(); }
   }
-  function rdStep(k) { var n = reads[rdSet].length; rdI = (rdI + k + n) % n; rdShow(); }
+  function rdStep(step) { var total = reads[rdSet].length; rdIndex = (rdIndex + step + total) % total; rdShow(); }
   if (rdEl && readsEl) {
     reads = JSON.parse(readsEl.textContent);
     Array.prototype.forEach.call(document.querySelectorAll('[data-read]'), function (el) {
-      el.addEventListener('click', function () { var v = el.getAttribute('data-read').split(':'); rdOpen(v[0], +v[1]); });
+      el.addEventListener('click', function () { var parts = el.getAttribute('data-read').split(':'); rdOpen(parts[0], +parts[1]); });
     });
     document.getElementById('rd-close').addEventListener('click', function () { rdHide(); });
     document.getElementById('rd-prev').addEventListener('click', function () { rdStep(-1); });
     document.getElementById('rd-next').addEventListener('click', function () { rdStep(1); });
     rdEl.addEventListener('click', function (ev) { if (ev.target === rdEl) { rdHide(); } });
-    var tx = null, ty = 0;
+    var touchX = null, touchY = 0;   // a sideways swipe moves to the next or previous testimonial
     rdEl.addEventListener('touchstart', function (ev) {
-      if (ev.touches.length === 1) { tx = ev.touches[0].clientX; ty = ev.touches[0].clientY; } else { tx = null; }
+      if (ev.touches.length === 1) { touchX = ev.touches[0].clientX; touchY = ev.touches[0].clientY; } else { touchX = null; }
     }, { passive: true });
     rdEl.addEventListener('touchend', function (ev) {
-      if (tx === null) { return; }
-      var t = ev.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty; tx = null;
-      if (Math.abs(dx) > 60 && Math.abs(dx) > 1.6 * Math.abs(dy)) { rdStep(dx < 0 ? 1 : -1); }
+      if (touchX === null) { return; }
+      var touch = ev.changedTouches[0], deltaX = touch.clientX - touchX, deltaY = touch.clientY - touchY; touchX = null;
+      if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > 1.6 * Math.abs(deltaY)) { rdStep(deltaX < 0 ? 1 : -1); }
     }, { passive: true });
   }
 

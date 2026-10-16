@@ -12,7 +12,7 @@
     var data = {
       name: val('name'), email: val('email'), phone: val('phone'), role: val('role'), linkedin: val('linkedin'), location: val('location'),
       challenge: val('challenge'),
-      resonates: Array.prototype.map.call(form.querySelectorAll('input[name="resonates"]:checked'), function (cb) { return cb.value; }).join(', '),
+      resonates: Array.prototype.map.call(form.querySelectorAll('input[name="resonates"]:checked'), function (box) { return box.value; }).join(', '),
       event: val('event'), impact: val('impact'),
       coach_history: picked('coach_history'), availability: picked('availability'), investment: picked('investment'),
       anything_else: val('anything_else'),
