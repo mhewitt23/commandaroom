@@ -21,29 +21,29 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&amp;family=Jost:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#F3EEE4}
 a{color:#1A1714;text-underline-offset:0.25em;text-decoration-thickness:1px}
 a:hover{color:#7A2E22}
-.d{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-weight:400;margin:0;color:#1A1714}
-.t{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;margin:0}
-.rh{margin:0;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-style:italic;font-size:23px;line-height:1.3;color:#1A1714}
-.step{margin:0;font-size:15px;line-height:1.4;color:#5C554C}
-.skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#1A1714;color:#F3EEE4;font-size:16px;text-decoration:none}
+.d{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-weight:400;margin:0;color:#1A1714}
+.t{font-family:'Libre Caslon Text',Georgia,serif;margin:0}
+.rh{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-style:italic;font-size:21px;line-height:1.3;color:#1A1714}
+.step{margin:0;font-size:14px;line-height:1.4;color:#5C554C}
+.skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#1A1714;color:#F3EEE4;font-size:15px;text-decoration:none}
 .skip:focus{top:12px}
 .rv{animation:rv .8s cubic-bezier(.2,.7,.2,1) both}
 .rv-2{animation-delay:.1s}
 .rv-3{animation-delay:.2s}
 @keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.hero-title{font-size:clamp(33px,5.9vw,84px);line-height:0.98;letter-spacing:-0.022em;text-wrap:balance;max-width:14.2em}
+.hero-title{font-size:clamp(38px,6.7vw,96px);line-height:0.98;letter-spacing:-0.022em;text-wrap:balance;max-width:14.2em}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:stretch}
 .hero-copy{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
 .hero-copy>div{display:flex;flex-direction:column;gap:22px}
-.lead{margin:0;font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(22px,2.09vw,29px);line-height:1.42;color:#1A1714;max-width:30em}
+.lead{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(20px,1.9vw,26px);line-height:1.42;color:#1A1714;max-width:30em}
 @media (max-width: 959px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#1A1714;color:#F3EEE4;text-decoration:none;font:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:background-color .15s ease}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#1A1714;color:#F3EEE4;text-decoration:none;font:inherit;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s ease}
 .btn:hover{background:#7A2E22;color:#F3EEE4}
 :focus-visible{outline:2px solid #7A2E22;outline-offset:4px}
 #top{overflow-x:clip}
@@ -51,35 +51,28 @@ a:hover{color:#7A2E22}
 fieldset{margin:0;padding:0;border:0;min-width:0}
 legend{padding:0}
 .fld{display:flex;flex-direction:column;gap:8px;min-width:0}
-.fld-l{margin:0;font-size:17px;line-height:1.4;font-weight:500;color:#1A1714}
-.help{margin:0;font-size:15px;line-height:1.5;color:#5C554C}
-.in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 0;border:0;border-bottom:1px solid rgba(26,23,20,0.4);border-radius:0;background:transparent;font:inherit;font-size:18px;line-height:1.5;color:#1A1714;-webkit-appearance:none;appearance:none}
+.fld-l{margin:0;font-size:16px;line-height:1.4;font-weight:500;color:#1A1714}
+.help{margin:0;font-size:14px;line-height:1.5;color:#5C554C}
+.in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 0;border:0;border-bottom:1px solid rgba(26,23,20,0.4);border-radius:0;background:transparent;font:inherit;font-size:17px;line-height:1.5;color:#1A1714;-webkit-appearance:none;appearance:none}
 .in::placeholder{color:#8E877B}
 .in:focus{outline:none;border-bottom:2px solid #1A1714;padding-bottom:9px}
 .in:focus-visible{outline:none}
 textarea.in{min-height:116px;resize:vertical}
-.opt{display:flex;align-items:flex-start;gap:14px;min-height:44px;padding:8px 0;font-size:17px;line-height:1.5;color:#1A1714;cursor:pointer}
+.opt{display:flex;align-items:flex-start;gap:14px;min-height:44px;padding:8px 0;font-size:16px;line-height:1.5;color:#1A1714;cursor:pointer}
 .opt input{flex-shrink:0;width:18px;height:18px;margin:3px 0 0;accent-color:#7A2E22;cursor:pointer}
 .opt:hover{color:#7A2E22}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,4vw,48px)}
 @media (max-width: 639px){.btn{width:100%}.two{grid-template-columns:minmax(0,1fr)}.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 10%!important}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{animation:none}.btn{transition:none}}
-/* type pass: Bodoni Moda and Jost, as on the business cards */
-.d{letter-spacing:-0.012em}
-.h2{letter-spacing:-0.018em}
-.hero-title{font-size:clamp(36px,6.37vw,91px);letter-spacing:-0.02em;line-height:1.02}
-.btn,.btn-l{font-size:16px}
-@media (min-width: 900px){.hero-title{font-variation-settings:'opsz' 60;letter-spacing:-0.024em}}
-.t,.lead,.rh,.rows>li,.cs-title,.facts dd{font-variation-settings:'opsz' 28;letter-spacing:-0.01em}
 .body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by{text-wrap:pretty}
 .nw{white-space:nowrap}
 .quote{text-indent:-0.42em}
 .lockup{display:inline-flex;align-items:baseline;gap:16px;padding:10px 0;color:#1A1714;text-decoration:none;white-space:nowrap}
 .lockup:hover{color:#1A1714}
 .lockup:hover .lk-name{color:#7A2E22}
-.lk-name{font-family:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;font-size:clamp(21px,1.9vw,25px);line-height:1;letter-spacing:0.005em;transition:color .15s ease}
-.lk-mark{font-family:'Jost',Futura,'Avenir Next',system-ui,sans-serif;font-size:11.5px;line-height:1;font-weight:500;letter-spacing:0.32em;text-transform:uppercase}
-@media (max-width: 559px){.lockup{flex-direction:column;align-items:flex-start;gap:6px;padding:8px 0}.lk-name{font-size:20px}.lk-mark{font-size:10.5px;letter-spacing:0.28em}}
+.lk-name{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-size:clamp(24px,2.16vw,28px);line-height:1;letter-spacing:0.005em;transition:color .15s ease}
+.lk-mark{font-family:'Hanken Grotesk','Helvetica Neue',system-ui,sans-serif;font-size:11.5px;line-height:1;font-weight:500;letter-spacing:0.32em;text-transform:uppercase}
+@media (max-width: 559px){.lockup{flex-direction:column;align-items:flex-start;gap:6px;padding:8px 0}.lk-name{font-size:23px}.lk-mark{font-size:10.5px;letter-spacing:0.28em}}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
 .ot-ribbon>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 /* photos with clients, in black and white like the hero portrait: beside Eric's name, under Ben's review */
@@ -95,13 +88,13 @@ img{max-width:100%;height:auto}
 <script src="../assets/apply.js" defer></script>
 </head>
 <body>
-<div id="top" style="width: 100%; min-height: 100vh; background: #F3EEE4; color: #1A1714; font-family: 'Jost', Futura, 'Avenir Next', system-ui, sans-serif; -webkit-font-smoothing: antialiased;">
+<div id="top" style="width: 100%; min-height: 100vh; background: #F3EEE4; color: #1A1714; font-family: 'Hanken Grotesk', 'Helvetica Neue', system-ui, sans-serif; -webkit-font-smoothing: antialiased;">
 <a class="skip" href="#application">Skip to the application</a>
 
 <header style="position: sticky; top: 0; z-index: 60; background: #F3EEE4; border-bottom: 1px solid rgba(26,23,20,0.16);">
 <div style="max-width: 1280px; height: 64px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px); display: flex; justify-content: space-between; align-items: center; gap: 24px;">
 <a class="lockup" href="../"><span class="lk-name">Michael Hewitt</span><span class="lk-mark">Command a Room</span></a>
-<p class="rh" style="font-size: 21px;">Apply</p>
+<p class="rh" style="font-size: 19px;">Apply</p>
 </div>
 </header>
 
@@ -126,7 +119,7 @@ img{max-width:100%;height:auto}
 </svg></div>
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(28px, 3.4vw, 48px) clamp(20px, 5vw, 64px) clamp(48px, 6vw, 88px); display: flex; flex-direction: column; gap: clamp(28px, 4vw, 56px);">
 <div class="rv" style="display: flex; flex-direction: column; gap: clamp(18px, 2vw, 28px);">
-<p style="margin: 0; font-size: 17px; line-height: 1.5; color: #3D3832;">Michael Hewitt, Executive Voice Coaching.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #3D3832;">Michael Hewitt, Executive Voice Coaching.</p>
 <h1 id="apply-hero-title" class="d hero-title">You already know what you’re capable of. Let’s make sure the room knows it too.</h1>
 </div>
 <div class="hero-grid">
@@ -138,7 +131,7 @@ img{max-width:100%;height:auto}
 <p class="lead">Tell a bit about what’s going on via the form below, and then pick a time for us to talk.</p>
 <div style="padding-top: 4px;"><a class="btn" href="#application">Apply Now</a></div>
 </div>
-<p class="t" style="font-style: italic; font-size: 21px; line-height: 1.45; color: #1A1714; max-width: 30em;">This takes about 3 minutes. After you submit, you’ll be taken to book an intro call.</p>
+<p class="t" style="font-style: italic; font-size: 19px; line-height: 1.45; color: #1A1714; max-width: 30em;">This takes about 3 minutes. After you submit, you’ll be taken to book an intro call.</p>
 </div>
 </div>
 </div>
@@ -150,14 +143,14 @@ img{max-width:100%;height:auto}
 <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
 
 <div style="display: flex; flex-direction: column; gap: 16px;">
-<h2 id="application-title" class="d" style="font-size: clamp(28px, 3.52vw, 48px); line-height: 1.06; letter-spacing: -0.01em;">Let’s see if we’re a fit.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3D3832;">Every field is required unless it says optional.</p>
+<h2 id="application-title" class="d" style="font-size: clamp(32px, 4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;">Let’s see if we’re a fit.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3832;">Every field is required unless it says optional.</p>
 </div>
 
 <form id="applicationForm" action="/apply/" method="post" novalidate="false" style="display: flex; flex-direction: column; gap: clamp(48px, 6vw, 72px);">
 
 <fieldset style="display: flex; flex-direction: column; gap: 28px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">1 of 4</span><span class="d" style="font-size: clamp(23px, 2.29vw, 30px); line-height: 1.1;">About You</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">1 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">About You</span></legend>
 <div class="two">
 <div class="fld"><label class="fld-l" for="name">Full name</label><input class="in" id="name" name="name" type="text" autocomplete="name" required></div>
 <div class="fld"><label class="fld-l" for="email">Email</label><input class="in" id="email" name="email" type="email" autocomplete="email" required></div>
@@ -169,7 +162,7 @@ img{max-width:100%;height:auto}
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">2 of 4</span><span class="d" style="font-size: clamp(23px, 2.29vw, 30px); line-height: 1.1;">Your Situation</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">2 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Your Situation</span></legend>
 <div class="fld"><label class="fld-l" for="challenge">What’s the main communication challenge you’re facing right now?</label><p class="help" id="challenge-help">Be specific. A situation, a pattern, a moment that keeps happening.</p><textarea class="in" id="challenge" aria-describedby="challenge-help" name="challenge" rows="4" required></textarea></div>
 <fieldset style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">Which of these resonate with you? (Select all that apply)</legend>
@@ -185,13 +178,13 @@ img{max-width:100%;height:auto}
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">3 of 4</span><span class="d" style="font-size: clamp(23px, 2.29vw, 30px); line-height: 1.1;">What’s At Stake</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">3 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">What’s At Stake</span></legend>
 <div class="fld"><label class="fld-l" for="event">Is there a specific event, milestone, or moment coming up that you want to be exceptional for?</label><p class="help" id="event-help">A conference talk, a fundraise, a podcast tour, a new role, a team you need to lead differently — anything with a deadline.</p><textarea class="in" id="event" aria-describedby="event-help" name="event" rows="3"></textarea></div>
 <div class="fld"><label class="fld-l" for="impact">What would change in your career or business if your communication matched your expertise?</label><p class="help" id="impact-help">Think results, not just feelings. Revenue, opportunities, reputation, trajectory.</p><textarea class="in" id="impact" aria-describedby="impact-help" name="impact" rows="3" required></textarea></div>
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">4 of 4</span><span class="d" style="font-size: clamp(23px, 2.29vw, 30px); line-height: 1.1;">Fit &amp; Readiness</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #1A1714;"><span class="step">4 of 4</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Fit &amp; Readiness</span></legend>
 <fieldset style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">Have you worked with a coach before? (Speaking, executive, performance — any kind)</legend>
 <label class="opt"><input type="radio" name="coach_history" value="yes_helpful">Yes, and it was helpful</label>
@@ -214,7 +207,7 @@ img{max-width:100%;height:auto}
 </fieldset>
 
 <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 8px;">
-<p style="margin: 0; max-width: 40em; font-size: 16px; line-height: 1.6; color: #5C554C;">After you submit, you’ll be taken to book an intro call. I review every application beforehand so we can make the most of our time together.</p>
+<p style="margin: 0; max-width: 40em; font-size: 15px; line-height: 1.6; color: #5C554C;">After you submit, you’ll be taken to book an intro call. I review every application beforehand so we can make the most of our time together.</p>
 <button class="btn" id="submitBtn" type="submit" style="align-self: flex-start;">Submit &amp; Book Your Call</button>
 </div>
 
@@ -225,7 +218,7 @@ img{max-width:100%;height:auto}
 </main>
 
 <footer>
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 36px clamp(20px, 5vw, 64px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; font-size: 15px; color: #5C554C;">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 36px clamp(20px, 5vw, 64px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; font-size: 14px; color: #5C554C;">
 <div style="display: flex; flex-direction: column; gap: 4px;">
 <p style="margin: 0 0 6px;"><span class="lockup" style="padding: 0;"><span class="lk-name">Michael Hewitt</span><span class="lk-mark">Command a Room</span></span></p>
 <p style="margin: 0;">© 2026 Executive Influence Systems LLC. New York.</p>
