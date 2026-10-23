@@ -306,6 +306,17 @@ header.menu-open .mb-open{display:contents}
 #video-player.r-45{aspect-ratio:4/5}
 #video-player.r-916{aspect-ratio:9/16}
 body.modal-open{overflow:hidden}
+/* featured stories (Wall of Love): the client's own line beside the full testimonial; on wide screens the line and the name stay in view while the story scrolls */
+.fs-row{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:24px;padding-top:28px;border-top:1px solid rgba(26,23,20,0.16)}
+.fs-side{display:flex;flex-direction:column;gap:28px}
+.fs-hook{max-width:10.5em}
+.fs-hook>span{display:block}
+.fs-hook>span:first-child{text-indent:-0.42em}
+.fs-ph{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:18px;align-items:start}
+.fs-main{display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.fs-text{margin:0;display:flex;flex-direction:column;gap:18px;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(18px,1.39vw,20px);line-height:1.6;color:#3D3832}
+.fs-text p{margin:0;text-indent:-0.4em;text-wrap:pretty}
+@media (min-width: 900px){.fs-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,4vw,56px)}.fs-side{position:sticky;top:96px;align-self:start}}
 </style>
 <script src="assets/site.js" defer></script>
 </head>
@@ -529,13 +540,13 @@ body.modal-open{overflow:hidden}
 <div class="cq-head">
 <p class="rh" id="cq-title">Read the testimonials</p>
 <div class="cq-ctrl">
-<p class="cq-count" id="cq-count" aria-hidden="true">1 of 5</p>
+<p class="cq-count" id="cq-count" aria-hidden="true">1 of 7</p>
 <button type="button" class="cq-btn" id="cq-prev" aria-label="Previous testimonial" aria-controls="cq-track" aria-disabled="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg></button>
 <button type="button" class="cq-btn" id="cq-next" aria-label="Next testimonial" aria-controls="cq-track" aria-disabled="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg></button>
 </div>
 </div>
 <div class="cq-track" id="cq-track" role="group" aria-label="Written testimonials" tabindex="0">
-<figure class="cq-slide is-long" id="cq-brian-m-lockheed" role="group" aria-roledescription="slide" aria-label="1 of 5">
+<figure class="cq-slide is-long" id="cq-brian-m-lockheed" role="group" aria-roledescription="slide" aria-label="1 of 7">
 <blockquote class="cq-q" id="cq-q-brian-m-lockheed">
 <p class="cq-title">Winning becomes easy</p>
 <p>Michael is <mark>able cut to the heart of an issue with surgical precision.</mark> He is able to rapidly assess a person, what unique needs they have and from there works with them to craft a solution. <mark>Winning becomes easy.</mark></p>
@@ -546,7 +557,16 @@ body.modal-open{overflow:hidden}
 <button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brian-m-lockheed">Read the full review</button>
 <figcaption class="cq-by"><span class="vname">Brian M.</span><span>Subcontract Program Manager, Lockheed Martin</span><span>Dec 5, 2025</span></figcaption>
 </figure>
-<figure class="cq-slide is-long" id="cq-ben-marx" role="group" aria-roledescription="slide" aria-label="2 of 5">
+<figure class="cq-slide is-long" id="cq-anita-kirkovska" role="group" aria-roledescription="slide" aria-label="2 of 7">
+<blockquote class="cq-q" id="cq-q-anita-kirkovska">
+<p class="cq-title">A stronger leader</p>
+<p>Working in a male-dominated industry as a woman means constantly learning how to own your space. It’s not just about finding your voice, but having the confidence to use it, <mark>command a room, and lead with conviction</mark>, without feeling the need to prove you belong there.</p>
+<p>Michael has played a huge role in helping me <mark>recognize the power I already had</mark> and learn how to own it. What started as speaking coaching became something far more meaningful. He challenged me to face my fears, trust my instincts, and find strength in my own voice rather than trying to fit someone else’s idea of a leader. <mark>I came to him to become a better speaker, and walked away a stronger leader.</mark></p>
+</blockquote>
+<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-anita-kirkovska">Read the full review</button>
+<figcaption class="cq-by"><span class="vname">Anita Kirkovska</span><span>Vellum AI</span></figcaption>
+</figure>
+<figure class="cq-slide is-long" id="cq-ben-marx" role="group" aria-roledescription="slide" aria-label="3 of 7">
 <blockquote class="cq-q" id="cq-q-ben-marx">
 <p>My name is Ben Marx and I’m head of engineering at Malbec Labs. I’ve actually been giving talks for over a decade, but <mark>working with Michael has exponentially improved how I can speak when giving a talk but also when having a conversation or meeting someone for the first time.</mark> I’ve always been an introvert and generally dreaded speaking in public but <mark>Michael has given me tools that I use to help me speak more confidently and with a greater stage presence than ever before.</mark></p>
 <p><mark>Working with him is so effective</mark> because he teaches to use your instrument like a voice and how to exercise and understand it. <mark>He approaches his teaching in a holistic and disciplined fashion</mark> which has worked really well for me because now that I have the tools I can recalibrate in real-time. To give a real example, instead of speaking quickly like I normally do, I can use the breath work and pacing he’s taught to actually tell a narrative and keep the audience---and me---engaged. <mark>It has helped ground me and these effects ripple throughout every facet of my life.</mark></p>
@@ -555,7 +575,7 @@ body.modal-open{overflow:hidden}
 <button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-ben-marx">Read the full review</button>
 <figcaption class="cq-by"><span class="vname">Ben Marx</span><span>Head of Engineering, Malbec Labs</span><span>Nov 15, 2025</span></figcaption>
 </figure>
-<figure class="cq-slide is-long" id="cq-brandon-lariz" role="group" aria-roledescription="slide" aria-label="3 of 5">
+<figure class="cq-slide is-long" id="cq-brandon-lariz" role="group" aria-roledescription="slide" aria-label="4 of 7">
 <blockquote class="cq-q" id="cq-q-brandon-lariz">
 <p>Michael having experience in the cyber security space initially piqued my interest and led me to reach out.</p>
 <p>I am an Enterprise SDR at a fast growing start up. I have always had issues with imposter syndrome or lack of accountability. Michael helped me make little perspective and workflow tweaks that went a long way.</p>
@@ -565,14 +585,24 @@ body.modal-open{overflow:hidden}
 <button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brandon-lariz">Read the full review</button>
 <figcaption class="cq-by"><span class="vname">Brandon Lariz</span><span>Enterprise SDR, Abnormal AI</span><span>Jul 6, 2023</span></figcaption>
 </figure>
-<figure class="cq-slide is-short" id="cq-joshua-steinman" role="group" aria-roledescription="slide" aria-label="4 of 5">
+<figure class="cq-slide is-long" id="cq-ishrak-hossein" role="group" aria-roledescription="slide" aria-label="5 of 7">
+<blockquote class="cq-q" id="cq-q-ishrak-hossein">
+<p class="cq-title">It wasn’t my company’s product.<br>I’d just been a worse version of myself.</p>
+<p><mark>You got me out of a rut.</mark> I did really well in my last job, then came into this one too overconfident about my abilities. In just four sessions, I realized I’d stopped doing the things I knew and used to do. <mark>I’d been operating at 25% of what I used to be</mark>, and without your coaching, I wouldn’t have seen it.</p>
+<p>I learned that <mark>a lot of how you speak comes down to what you’re thinking.</mark> Now I go in with a goldfish mentality: I forget the last bad call and get excited about the prospect in front of me, and it comes through in how I speak. I think about the purpose of every call, which helps me lead. I’d been unconfident because I had little to no idea what I was talking about. A little more prep changed how I sound. And in the moment, I’m actually listening instead of thinking about what to say next.</p>
+<p>I can clearly see what I’d stopped doing, so I can start doing it again right away, and I have a huge list of things to keep working on. I even ask myself the questions you asked me. <mark>I honestly wouldn’t have realized any of it on my own</mark>, scrolling Twitter, watching more videos, or asking AI.</p>
+</blockquote>
+<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-ishrak-hossein">Read the full review</button>
+<figcaption class="cq-by"><span class="vname">Ishrak Hossein</span><span>SDR</span></figcaption>
+</figure>
+<figure class="cq-slide is-short" id="cq-joshua-steinman" role="group" aria-roledescription="slide" aria-label="6 of 7">
 <blockquote class="cq-q" id="cq-q-joshua-steinman">
 <p>Michael was great to work with.</p>
 <p>His experience both in the performing arts and tech sales is unique, and <mark>helped us focus our efforts on storytelling for our prospective customers.</mark></p>
 </blockquote>
 <figcaption class="cq-by"><span class="vname">Joshua Steinman</span><span>CEO and co-founder, Galvanick</span><span>May 23, 2024</span></figcaption>
 </figure>
-<figure class="cq-slide is-short" id="cq-joseph-johnston" role="group" aria-roledescription="slide" aria-label="5 of 5">
+<figure class="cq-slide is-short" id="cq-joseph-johnston" role="group" aria-roledescription="slide" aria-label="7 of 7">
 <blockquote class="cq-q" id="cq-q-joseph-johnston">
 <p>Michael came and spoke to our community of professional speakers and knocked the roof off the place! He gave a very clear avenue to properly conveying their message as professional speakers to the world and when on stage. Thanks so much would HIGHLY recommend Michael to anyone looking to up their game!</p>
 </blockquote>
