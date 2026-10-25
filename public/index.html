@@ -319,6 +319,17 @@ body.modal-open{overflow:hidden}
 .fs-text{margin:0;display:flex;flex-direction:column;gap:18px;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(18px,1.39vw,20px);line-height:1.6;color:#3D3832}
 .fs-text p{margin:0;text-indent:-0.4em;text-wrap:pretty}
 @media (min-width: 900px){.fs-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,4vw,56px)}.fs-side{position:sticky;top:96px;align-self:start}}
+/* shorter homepage (October 25): the firms sit in the hero, the method is one dark band, results end on the Wall of Love */
+.hero-firms{margin-top:14px}
+.hero-firms .firms-list{display:grid;grid-template-columns:repeat(3,max-content);justify-content:start;gap:10px clamp(24px,3vw,40px)}
+@media (min-width: 960px) and (max-width: 1099px){.hero-firms .firms-list{grid-template-columns:repeat(2,max-content)}}
+@media (max-width: 759px){.hero-firms .firms-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}}
+.dark .mf-a{color:#C9C1B4;border-bottom-color:rgba(243,238,228,0.3)}
+.dark .mf-a:hover{color:#F3EEE4;border-bottom-color:#F3EEE4}
+.m-one{width:min(100%,360px);margin-top:10px}
+.r-end{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px}
+.r-more{display:inline-block;padding:13px 0;font-size:16px;font-weight:500}
+@media (max-width: 899px){.about-ph img{aspect-ratio:4 / 3!important;object-position:50% 0%}}
 </style>
 <script src="assets/site.js" defer></script>
 </head>
@@ -365,6 +376,10 @@ body.modal-open{overflow:hidden}
 <p class="lead">There’s a gap between what you know and how you sound. That gap is costing you.</p>
 <p class="body">One-on-one coaching for founders, GPs, and senior operators whose next rooms are decided by how they sound. Leadership teams, too.</p>
 <div style="padding-top: 4px;"><a class="btn" href="apply/">Schedule a consultation</a></div>
+<div class="firms hero-firms" role="group" aria-label="Clients">
+<p class="firms-l">Clients from</p>
+<ul class="firms-list"><li>Lockheed Martin</li><li>Multicoin Capital</li><li>Abnormal AI</li><li>Vellum AI</li><li>Malbec Labs</li><li>Galvanick</li></ul>
+</div>
 </div>
 </div>
 </div>
@@ -372,15 +387,6 @@ body.modal-open{overflow:hidden}
 </section>
 
 <main id="main">
-<section aria-label="Clients">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px);">
-<div class="firms">
-<p class="firms-l">Clients from</p>
-<ul class="firms-list"><li>Lockheed Martin</li><li>Multicoin Capital</li><li>Abnormal AI</li><li>Vellum AI</li><li>Malbec Labs</li><li>Galvanick</li></ul>
-</div>
-</div>
-</section>
-
 <section id="proof" aria-labelledby="proof-title">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(52px, 8vw, 112px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px);">
 <h2 id="proof-title" class="rh">In their words</h2>
@@ -427,29 +433,16 @@ body.modal-open{overflow:hidden}
 </div>
 </div>
 
-<section id="signal" class="dark" aria-labelledby="signal-title" style="background: #1A1714; color: #F3EEE4;">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(64px, 10vw, 144px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
+<section id="method" class="dark" aria-labelledby="method-title" style="background: #1A1714; color: #F3EEE4;">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
 <div style="display: flex; flex-direction: column; gap: 22px;">
-<h2 id="signal-title" class="d sig-h" style="color: #F3EEE4;"><span>Command is not volume.</span> <span>Command is signal.</span></h2>
+<p class="rh">The method</p>
+<h2 id="method-title" class="d sig-h" style="color: #F3EEE4;"><span>Command is not volume.</span> <span>Command is signal.</span></h2>
 </div>
 <div class="sig-body">
-<p class="lead">Tone is the signal that’s present in what is otherwise noise.</p>
+<p class="lead">Your voice tells the world who you are. When you speak, you lead.</p>
+<a class="mf-a m-one" href="method/"><span>See the method</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 </div>
-</div>
-</section>
-
-<section id="method" aria-labelledby="method-title" style="background: #FAF7F1;">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(28px, 3.5vw, 44px);">
-<div style="display: flex; flex-direction: column; gap: 22px; max-width: 880px;">
-<p class="rh">The method</p>
-<h2 id="method-title" class="d h2">Your voice tells the world who you are. When you speak, you lead.</h2>
-</div>
-<p class="lead" style="max-width: 36em; font-size: clamp(19px, 1.5vw, 21px); color: #3D3832;">But when you perform something instead of embodying it, your frame collapses internally and externally. A solid voice goes nowhere without a relevant message built on true confidence.</p>
-<nav class="m-links" aria-label="The method in full">
-<a class="mf-a" href="method/#resonances"><span>The Three Resonances</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
-<a class="mf-a" href="method/#skills"><span>The Seven Skills of Tonality</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
-<a class="mf-a" href="method/#message"><span>The Message and The Mission</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
-</nav>
 </div>
 </section>
 
@@ -472,83 +465,7 @@ body.modal-open{overflow:hidden}
 <figcaption class="by"><span class="vname">Ben Marx</span>Head of Engineering, Malbec Labs</figcaption>
 </figure>
 </div>
-<div class="cq" role="region" aria-roledescription="carousel" aria-labelledby="cq-title">
-<div class="cq-head">
-<p class="rh" id="cq-title">Read the testimonials</p>
-<div class="cq-ctrl">
-<p class="cq-count" id="cq-count" aria-hidden="true">1 of 7</p>
-<button type="button" class="cq-btn" id="cq-prev" aria-label="Previous testimonial" aria-controls="cq-track" aria-disabled="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg></button>
-<button type="button" class="cq-btn" id="cq-next" aria-label="Next testimonial" aria-controls="cq-track" aria-disabled="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg></button>
-</div>
-</div>
-<div class="cq-track" id="cq-track" role="group" aria-label="Written testimonials" tabindex="0">
-<figure class="cq-slide is-long" id="cq-brian-m-lockheed" role="group" aria-roledescription="slide" aria-label="1 of 7">
-<blockquote class="cq-q" id="cq-q-brian-m-lockheed">
-<p class="cq-title">Winning becomes easy</p>
-<p>Michael is <mark>able cut to the heart of an issue with surgical precision.</mark> He is able to rapidly assess a person, what unique needs they have and from there works with them to craft a solution. <mark>Winning becomes easy.</mark></p>
-<p>I’m a young professional in a program management leadership role within one of our nation’s largest defense companies. My job is to deliver results to the our customer, and that means performing at the highest level to earn their business. With a portfolio over $800m, my customers are our nation’s warfighters, and involves a diverse set of customers within the DOW &amp; IC. They are the best of the best and demand excellence from industry. <mark>Working with Michael helped ensure I meet the mark.</mark></p>
-<p>Michael is unique in that his breadth of knowledge spans multiple disciplines. I came to Michael to learn about the mechanics of voice (ex. “how do I project to a large audience without “yelling”?) but through our conversations gained a deeper appreciation and insight into human psychology (you can command a room with your presence alone).</p>
-<p>I would recommend anyone who already has the deep burning need to be the best version of themselves to work with him.</p>
-</blockquote>
-<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brian-m-lockheed">Read the full review</button>
-<figcaption class="cq-by"><span class="vname">Brian M.</span><span>Subcontract Program Manager, Lockheed Martin</span><span>Dec 5, 2025</span></figcaption>
-</figure>
-<figure class="cq-slide is-long" id="cq-anita-kirkovska" role="group" aria-roledescription="slide" aria-label="2 of 7">
-<blockquote class="cq-q" id="cq-q-anita-kirkovska">
-<p class="cq-title">A stronger leader</p>
-<p>Working in a male-dominated industry as a woman means constantly learning how to own your space. It’s not just about finding your voice, but having the confidence to use it, <mark>command a room, and lead with conviction</mark>, without feeling the need to prove you belong there.</p>
-<p>Michael has played a huge role in helping me <mark>recognize the power I already had</mark> and learn how to own it. What started as speaking coaching became something far more meaningful. He challenged me to face my fears, trust my instincts, and find strength in my own voice rather than trying to fit someone else’s idea of a leader. <mark>I came to him to become a better speaker, and walked away a stronger leader.</mark></p>
-</blockquote>
-<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-anita-kirkovska">Read the full review</button>
-<figcaption class="cq-by"><span class="vname">Anita Kirkovska</span><span>Head of Growth, Vellum AI</span></figcaption>
-</figure>
-<figure class="cq-slide is-long" id="cq-ben-marx" role="group" aria-roledescription="slide" aria-label="3 of 7">
-<blockquote class="cq-q" id="cq-q-ben-marx">
-<p>My name is Ben Marx and I’m head of engineering at Malbec Labs. I’ve actually been giving talks for over a decade, but <mark>working with Michael has exponentially improved how I can speak when giving a talk but also when having a conversation or meeting someone for the first time.</mark> I’ve always been an introvert and generally dreaded speaking in public but <mark>Michael has given me tools that I use to help me speak more confidently and with a greater stage presence than ever before.</mark></p>
-<p><mark>Working with him is so effective</mark> because he teaches to use your instrument like a voice and how to exercise and understand it. <mark>He approaches his teaching in a holistic and disciplined fashion</mark> which has worked really well for me because now that I have the tools I can recalibrate in real-time. To give a real example, instead of speaking quickly like I normally do, I can use the breath work and pacing he’s taught to actually tell a narrative and keep the audience---and me---engaged. <mark>It has helped ground me and these effects ripple throughout every facet of my life.</mark></p>
-<p>Vocal communication is the core of so much of what we do as people that anyone could benefit from Michael’s teaching because he treats the voice as an instrument to be practiced, exercised, and refined <mark>yielding a more confident, more present individual.</mark></p>
-</blockquote>
-<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-ben-marx">Read the full review</button>
-<figcaption class="cq-by"><span class="vname">Ben Marx</span><span>Head of Engineering, Malbec Labs</span><span>Nov 15, 2025</span></figcaption>
-</figure>
-<figure class="cq-slide is-long" id="cq-brandon-lariz" role="group" aria-roledescription="slide" aria-label="4 of 7">
-<blockquote class="cq-q" id="cq-q-brandon-lariz">
-<p>Michael having experience in the cyber security space initially piqued my interest and led me to reach out.</p>
-<p>I am an Enterprise SDR at a fast growing start up. I have always had issues with imposter syndrome or lack of accountability. Michael helped me make little perspective and workflow tweaks that went a long way.</p>
-<p>After my first session with Michael <mark>I booked my first cold call at my new company</mark>. After my <mark>second session with Michael I booked 5 meetings that week, 3 of which were C-level execs.</mark></p>
-<p>I know if I continue to implement Michael’s workflows and mindset I will flourish. I highly recommend working with Michael.</p>
-</blockquote>
-<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-brandon-lariz">Read the full review</button>
-<figcaption class="cq-by"><span class="vname">Brandon Lariz</span><span>Enterprise SDR, Abnormal AI</span><span>Jul 6, 2023</span></figcaption>
-</figure>
-<figure class="cq-slide is-long" id="cq-ishrak-hossein" role="group" aria-roledescription="slide" aria-label="5 of 7">
-<blockquote class="cq-q" id="cq-q-ishrak-hossein">
-<p class="cq-title">It wasn’t my company’s product.<br>I’d just been a worse version of myself.</p>
-<p><mark>You got me out of a rut.</mark> I did really well in my last job, then came into this one too overconfident about my abilities. In just four sessions, I realized I’d stopped doing the things I knew and used to do. <mark>I’d been operating at 25% of what I used to be</mark>, and without your coaching, I wouldn’t have seen it.</p>
-<p>I learned that <mark>a lot of how you speak comes down to what you’re thinking.</mark> Now I go in with a goldfish mentality: I forget the last bad call and get excited about the prospect in front of me, and it comes through in how I speak. I think about the purpose of every call, which helps me lead. I’d been unconfident because I had little to no idea what I was talking about. A little more prep changed how I sound. And in the moment, I’m actually listening instead of thinking about what to say next.</p>
-<p>I can clearly see what I’d stopped doing, so I can start doing it again right away, and I have a huge list of things to keep working on. I even ask myself the questions you asked me. <mark>I honestly wouldn’t have realized any of it on my own</mark>, scrolling Twitter, watching more videos, or asking AI.</p>
-</blockquote>
-<button type="button" class="linkbtn cq-more" data-cq-more="" aria-expanded="false" aria-controls="cq-q-ishrak-hossein">Read the full review</button>
-<figcaption class="cq-by"><span class="vname">Ishrak Hossein</span><span>SDR</span></figcaption>
-</figure>
-<figure class="cq-slide is-short" id="cq-joshua-steinman" role="group" aria-roledescription="slide" aria-label="6 of 7">
-<blockquote class="cq-q" id="cq-q-joshua-steinman">
-<p>Michael was great to work with.</p>
-<p>His experience both in the performing arts and tech sales is unique, and <mark>helped us focus our efforts on storytelling for our prospective customers.</mark></p>
-</blockquote>
-<figcaption class="cq-by"><span class="vname">Joshua Steinman</span><span>CEO and co-founder, Galvanick</span><span>May 23, 2024</span></figcaption>
-</figure>
-<figure class="cq-slide is-short" id="cq-joseph-johnston" role="group" aria-roledescription="slide" aria-label="7 of 7">
-<blockquote class="cq-q" id="cq-q-joseph-johnston">
-<p>Michael came and spoke to our community of professional speakers and knocked the roof off the place! He gave a very clear avenue to properly conveying their message as professional speakers to the world and when on stage. Thanks so much would HIGHLY recommend Michael to anyone looking to up their game!</p>
-</blockquote>
-<figcaption class="cq-by"><span class="vname">Joseph Johnston</span><span>Speaker; CEO, Initiate Connections</span><span>Jan 17, 2024</span></figcaption>
-</figure>
-</div>
-</div>
-<div class="vwrap" style="display: flex; flex-direction: column; gap: 18px;">
-<p class="rh">Watch the testimonials</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px clamp(32px, 4vw, 56px); padding-bottom: 28px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 40px clamp(32px, 4vw, 56px);">
 <figure class="cs-ph" style="margin: 0;">
 <p class="t" style="font-size: clamp(20px, 1.7vw, 23px); line-height: 1.4;">He was rambling on partnership calls, including one with Visa. He closed the next three deals.</p>
 <img loading="lazy" decoding="async" class="cs-photo" src="assets/eric-and-michael.jpg" alt="Eric and Michael Hewitt" width="800" height="640">
@@ -561,11 +478,7 @@ body.modal-open{overflow:hidden}
 <div><button type="button" class="linkbtn" data-video="brian"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg>Watch Brian’s video</button></div>
 </figure>
 </div>
-<ul class="vlist" id="video-list">
-<li><button type="button" class="vrow" data-video="edlatimore" aria-label="Play Ed Latimore’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Ed Latimore</span><span class="vrole">Author and Speaker</span></span></button></li><li><button type="button" class="vrow" data-video="raj" aria-label="Play Raj’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Raj</span><span class="vrole">COO, Investor, Entrepreneur</span></span></button></li><li><button type="button" class="vrow" data-video="michael" aria-label="Play Michael’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Michael</span><span class="vrole">VC-backed CEO and Founder</span></span></button></li><li><button type="button" class="vrow" data-video="harrison" aria-label="Play Harrison’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Harrison</span><span class="vrole">Executive Recruitment Firm Principal</span></span></button></li><li><button type="button" class="vrow" data-video="adam" aria-label="Play Adam’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Adam</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="scott" aria-label="Play Scott’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO</span></span></button></li><li><button type="button" class="vrow" data-video="kellen" aria-label="Play Kellen’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Kellen</span><span class="vrole">Founder, Chief Growth Officer</span></span></button></li><li><button type="button" class="vrow" data-video="andres" aria-label="Play Andres’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Andres</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="riley" aria-label="Play Riley’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Riley</span><span class="vrole">Founder</span></span></button></li><li><button type="button" class="vrow" data-video="jay" aria-label="Play Jay’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jay</span><span class="vrole">TV News Anchor</span></span></button></li><li><button type="button" class="vrow" data-video="jimmy" aria-label="Play Jimmy’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jimmy</span><span class="vrole">Executive</span></span></button></li><li><button type="button" class="vrow" data-video="jonathan" aria-label="Play Jonathan’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Jonathan</span><span class="vrole">Associate General Counsel, Director of Sales</span></span></button></li><li><button type="button" class="vrow" data-video="scottvoice" aria-label="Play Scott’s public speaking coaching video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Scott</span><span class="vrole">CEO (public speaking coaching)</span></span></button></li><li><button type="button" class="vrow" data-video="marina" aria-label="Play Marina’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Marina</span><span class="vrole">Solutions Architect (Applied AI), Vellum AI</span></span></button></li><li><button type="button" class="vrow" data-video="spencer" aria-label="Play Spencer Applebaum’s video"><span class="vplay"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M7 4.5v15l13-7.5z"></path></svg></span><span class="vtext"><span class="vname">Spencer Applebaum</span><span class="vrole">General Partner and Co-Head of Venture, Multicoin Capital</span></span></button></li>
-</ul>
-</div>
-<div><a class="btn" href="apply/">Schedule a consultation</a></div>
+<div class="r-end"><a class="btn" href="apply/">Schedule a consultation</a><a class="r-more" href="wall-of-love/">Read and watch more on the Wall of Love</a></div>
 </div>
 </section>
 
@@ -573,15 +486,14 @@ body.modal-open{overflow:hidden}
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
 <div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
 <p class="rh">About</p>
-<h2 id="about-title" class="d h2">I’m a natural on stage. I had to fix my rambling.</h2>
+<h2 id="about-title" class="d h2">I’m a natural on stage. I’ve spent a decade teaching it.</h2>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); align-items: start; gap: 32px clamp(48px, 7vw, 112px);">
-<figure style="margin: 0; max-width: 440px;">
+<figure class="about-ph" style="margin: 0; max-width: 440px;">
 <img loading="lazy" decoding="async" width="1072" height="1240" src="assets/michael-hewitt-terrace.jpg" alt="Michael Hewitt laughing on a terrace at sunset, in a black T-shirt against a peach wall" style="display: block; width: 100%; aspect-ratio: 1072 / 1240; object-fit: cover; background: #E6DFD2;">
 </figure>
 <div style="display: flex; flex-direction: column; gap: 20px; max-width: 640px;">
-<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #1A1714;">I started coaching in 2015 as both a creative outlet and a way to make extra cash alongside my budding stage career. After I graduated top of my Master of Music class at Rice University and earned accolades and return engagements at leading operatic and musical theatre houses (WNO at The Kennedy Center, Arena Stage, Glimmerglass Festival), the coronavirus pandemic paused all stage work indefinitely.</p>
-<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #1A1714;">I pivoted to cybersecurity sales, where I quickly found my stride as a full-cycle Account Executive, first as a pre-IPO hire at a sales-heavy organization and later as employee #36 at one struggling to find PMF.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.65; color: #1A1714;">I started coaching in 2015, alongside my stage career: top of my Master of Music class at Rice University, then return engagements at WNO at The Kennedy Center, Arena Stage, and Glimmerglass Festival. When the pandemic paused all stage work, I pivoted to cybersecurity sales and quickly found my stride as a full-cycle Account Executive, first as a pre-IPO hire and later as employee #36.</p>
 <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #1A1714;">After simultaneously being laid off and hitting rock bottom in my former marriage, I committed to building this practice, Command a Room, with the message that “your voice tells the world who you are” and the mission of helping people reclaim agency they’ve lost so they can do what they’re built to do.</p>
 <div style="display: flex; flex-direction: column; gap: 2px; padding-top: 10px;">
 <p class="t" style="font-size: 20px; line-height: 1.5; color: #1A1714;">Go forth, and speak BOLDLY</p>
@@ -589,17 +501,6 @@ body.modal-open{overflow:hidden}
 <div style="display: flex; align-items: center; gap: 14px; padding-top: 6px;">
 <span class="t" aria-hidden="true" style="font-size: 24px; line-height: 1; color: #1A1714;">—</span>
 <img loading="lazy" decoding="async" width="900" height="410" src="assets/signature.png" alt="Michael Hewitt’s signature" style="display: block; width: 230px; max-width: 70%; height: auto;">
-</div>
-</div>
-<div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 20px; padding-top: clamp(24px, 4vw, 48px);">
-<p class="rh">On stage</p>
-<div class="stage-gallery" tabindex="0" role="region" aria-label="More stage photographs">
-<div class="stage-row">
-<figure class="sp-l"><img loading="lazy" decoding="async" width="1600" height="1066" src="assets/stage-la-traviata.jpg" alt="Michael Hewitt singing in white tie in La traviata with Washington National Opera at The Kennedy Center" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 50%; background: #E6DFD2;"><figcaption class="cap"><i>La traviata</i>, Washington National Opera at The Kennedy Center</figcaption></figure>
-<figure class="sp-p"><img loading="lazy" decoding="async" width="1200" height="1800" src="assets/stage-carnegie-hall.jpg" alt="Michael Hewitt in a black sweater, singing beside a grand piano in a wood-panelled recital hall" style="display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; object-position: 50% 50%; background: #E6DFD2;"><figcaption class="cap">Carnegie Hall</figcaption></figure>
-<figure class="sp-k"><img loading="lazy" decoding="async" width="1440" height="1080" src="assets/stage-kennedy-center.jpg" alt="Michael Hewitt and fellow singers on stage at the Kennedy Center Opera House, looking out at the empty house under its crystal chandelier" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 50%; background: #E6DFD2;"><figcaption class="cap">Kennedy Center Opera House</figcaption></figure>
-<figure class="sp-l"><img loading="lazy" decoding="async" width="1600" height="1066" src="assets/stage-west-side-story.jpg" alt="Michael Hewitt in West Side Story with the National Symphony Orchestra" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 50%; background: #E6DFD2;"><figcaption class="cap"><i>West Side Story</i>, National Symphony Orchestra</figcaption></figure>
-</div>
 </div>
 </div>
 </div>
@@ -613,7 +514,6 @@ body.modal-open{overflow:hidden}
 <p class="rh">Engagements</p>
 <h2 id="apply-title" class="d h2" style="color: #F3EEE4;">Get your identity to catch up to your resume.</h2>
 </div>
-<p class="lead">Close the gap between what you know and how you sound.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.55;">Work one-on-one with Michael through the rooms that matter: the raise, the promotion, board meetings, investor calls, podcast and panel appearances, the speaking circuit, and internal conversations.</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #C9C1B4;">Engagements are offered selectively. For a team or a firm, mention it when you schedule.</p>
 <a class="btn-l" href="apply/" style="align-self: flex-start;">Schedule a consultation</a>
