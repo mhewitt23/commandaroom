@@ -309,6 +309,16 @@ body.modal-open{overflow:hidden}
 .fs-text{margin:0;display:flex;flex-direction:column;gap:18px;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(18px,1.39vw,20px);line-height:1.6;color:#3D3832}
 .fs-text p{margin:0;text-indent:-0.4em;text-wrap:pretty}
 @media (min-width: 900px){.fs-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(32px,4vw,56px)}.fs-side{position:sticky;top:96px;align-self:start}}
+/* the method as an outline (October 27): names, order, outcomes, and proof; the diagrams and drills are for clients */
+.tr-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,4vw,56px)}
+.tr-list>li{display:flex;flex-direction:column;gap:6px;padding:20px 0 22px;border-top:1px solid rgba(26,23,20,0.16)}
+.tr-n{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-size:clamp(27px,2.39vw,33px);line-height:1.1;color:#1A1714;letter-spacing:-0.012em}
+.tr-list>li>span+span{font-size:16px;line-height:1.6;color:#3D3832}
+@media (max-width: 759px){.tr-list{grid-template-columns:minmax(0,1fr)}}
+.m-proof{margin:0;display:flex;flex-direction:column;gap:14px;max-width:44em}
+.m-proof blockquote{margin:0}
+.m-proof blockquote p{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:#1A1714;text-indent:-0.4em;text-wrap:pretty}
+.mm-one{max-width:640px}
 </style>
 <script src="../assets/site.js" defer></script>
 </head>
@@ -348,6 +358,7 @@ body.modal-open{overflow:hidden}
 <h1 id="method-page-title" class="d page-title">I help the sound of your voice match the expertise in your head.</h1>
 </div>
 <p class="lead" style="max-width: 40em;">We coordinate the voice so that your voice has more options, more colors that you can use to paint. Then we figure out the other stuff. With what intention are you showing up? What’s the mindset? What’s at stake for you personally?</p>
+<p class="body" style="max-width: 40em;">This is the outline. Clients get the full curriculum: every diagram, drill, and worksheet.</p>
 <nav class="toc" aria-label="On this page"><a href="#resonances">The Three Resonances</a><a href="#skills">The Seven Skills of Tonality</a><a href="#message">The Message and The Mission</a></nav>
 </div>
 </section>
@@ -359,14 +370,14 @@ body.modal-open{overflow:hidden}
 <h2 id="resonances-title" class="d h2">Where all three meet is The Frequency of Truth.</h2>
 </div>
 <p class="body" style="max-width: 44em;">Asking yourself better questions is only part of the equation. There is also the courage and honesty with which you answer, and the urgency and accountability with which you take action on those answers. This, in addition to the coordination of your voice, is what creates your sound.</p>
-<figure style="margin: 0; display: flex; flex-direction: column; gap: 16px;">
-<img loading="lazy" decoding="async" width="3840" height="2160" src="../assets/the-three-resonances.png" alt="The Three Resonances. Resonance is two sources creating something new. Three overlapping circles: The Voice, how you sound, through vocal vibration and the vocal tract that shapes the sound; The Thought, what you say, through an expressed idea and relevance to the audience; and The Life, how you live, through what you say and what you do. Where all three meet is The Frequency of Truth." style="display: block; width: 100%; height: auto; border: 1px solid rgba(26,23,20,0.12);">
-<figcaption class="diagram-note" style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.5; color: #3D3832;">
-<p style="margin: 0;"><span class="t" style="font-size: 17px; color: #1A1714;">The Voice,</span> how you sound: vocal vibration and the vocal tract that shapes the sound.</p>
-<p style="margin: 0;"><span class="t" style="font-size: 17px; color: #1A1714;">The Thought,</span> what you say: an expressed idea and relevance to the audience.</p>
-<p style="margin: 0;"><span class="t" style="font-size: 17px; color: #1A1714;">The Life,</span> how you live: what you say and what you do.</p>
-<p style="margin: 0;">Where all three meet is <span class="t" style="font-size: 17px; color: #7A2E22;">The Frequency of Truth.</span></p>
-</figcaption>
+<ul class="tr-list" role="list">
+<li><span class="tr-n">The Voice</span><span>How you sound.</span></li>
+<li><span class="tr-n">The Thought</span><span>What you say.</span></li>
+<li><span class="tr-n">The Life</span><span>How you live.</span></li>
+</ul>
+<figure class="m-proof">
+<blockquote><p>“I came to Michael to learn about the mechanics of voice… but through our conversations gained a deeper appreciation and insight into human psychology.”</p></blockquote>
+<figcaption class="by"><span class="vname">Brian M.</span>Subcontract Program Manager, Lockheed Martin</figcaption>
 </figure>
 </div>
 </section>
@@ -380,14 +391,18 @@ body.modal-open{overflow:hidden}
 </div>
 <p class="body" style="max-width: 44em;">This follows a curriculum. What I teach is The Seven Skills of Tonality. It’s my own IP, and it’s what we work on during every session. I always start in order, especially with the first one. Skills one and two are literally how we speak, how we make sounds. Skills three through seven are pretty squishy and intangible, and intention, I think, is the biggest linchpin in there.</p>
 <ol class="skills" role="list">
-<li><span class="sk-n" aria-hidden="true">1</span><h3 class="sk-h">Resonance</h3><p>We conflate pitch with the quality of depth. Depth is a quality that comes from resonance. Resonance is when two things with a sympathetic vibration meet, and that sympathetic vibration creates something new. Your voice can become more than it already is without you having to do any affectations, like lowering it.</p></li>
-<li><span class="sk-n" aria-hidden="true">2</span><h3 class="sk-h">Articulation</h3><p>Literal articulation is the coordination by which we make the sounds that form words. Tone is just the absence of noise in every syllable. Figurative articulation is how concisely you make your point.</p></li>
-<li><span class="sk-n" aria-hidden="true">3</span><h3 class="sk-h">Imagination</h3><p>Being aware of and then mapping to yourself what you experience, so that you can recreate it, so that you can identify when it’s not there, and so that you can get it back when you want it.</p></li>
-<li><span class="sk-n" aria-hidden="true">4</span><h3 class="sk-h">Mindset</h3><p>Our mindset is the transcription of the dialog that’s running in your brain. It’s largely a story. That’s going to change how you speak and how you sound, but it’s also going to change your level of conviction to lead people.</p></li>
-<li><span class="sk-n" aria-hidden="true">5</span><h3 class="sk-h">Intention</h3><p>Micro: what’s the specific action that we want somebody to take? It’s not “I want them to be happy.” I want them to raise their hand. Macro: I am only speaking so that I can help you win.</p></li>
-<li><span class="sk-n" aria-hidden="true">6</span><h3 class="sk-h">Subtext</h3><p>It’s not an emotion, it’s an action. Are you pleading, are you scolding, are you inviting? Subtext is the consistent undercurrent, what’s embedded in the words without actually explicitly being in there.</p></li>
-<li><span class="sk-n" aria-hidden="true">7</span><h3 class="sk-h">Stakes</h3><p>What happens if that action is not taken, for them, for you, for everybody? You see somebody across the street, and they are about to get hit by a bus. If they take one more step, what do you say?</p></li>
+<li><span class="sk-n" aria-hidden="true">1</span><h3 class="sk-h">Resonance</h3><p>More depth, without pushing your voice down.</p></li>
+<li><span class="sk-n" aria-hidden="true">2</span><h3 class="sk-h">Articulation</h3><p>Every syllable clean, and every point made in fewer words.</p></li>
+<li><span class="sk-n" aria-hidden="true">3</span><h3 class="sk-h">Imagination</h3><p>Find your best sound, then get it back whenever you want it.</p></li>
+<li><span class="sk-n" aria-hidden="true">4</span><h3 class="sk-h">Mindset</h3><p>Change the story in your head, and your conviction to lead comes through.</p></li>
+<li><span class="sk-n" aria-hidden="true">5</span><h3 class="sk-h">Intention</h3><p>Know exactly what you want them to do, and speak so they win.</p></li>
+<li><span class="sk-n" aria-hidden="true">6</span><h3 class="sk-h">Subtext</h3><p>The undercurrent beneath your words, chosen on purpose.</p></li>
+<li><span class="sk-n" aria-hidden="true">7</span><h3 class="sk-h">Stakes</h3><p>The room feels what happens if they don’t act.</p></li>
 </ol>
+<figure class="m-proof">
+<blockquote><p>“He treats the voice as an instrument to be practiced, exercised, and refined yielding a more confident, more present individual.”</p></blockquote>
+<figcaption class="by"><span class="vname">Ben Marx</span>Head of Engineering, Malbec Labs</figcaption>
+</figure>
 </div>
 </section>
 
@@ -398,27 +413,15 @@ body.modal-open{overflow:hidden}
 <h2 id="message-title" class="d h2">Communicating a message is not saying 10,000 things one time. It’s saying one thing 10,000 different ways.</h2>
 </div>
 <p class="body" style="max-width: 44em;">The message and the mission is one of my favorite things to teach. Anytime I go on a podcast, or just talk to somebody, it doesn’t matter where we are, I’ve got this whole philosophy that I can tie the conversation back to.</p>
-<figure style="margin: 0;">
-<img loading="lazy" decoding="async" width="3840" height="2000" src="../assets/the-message-and-the-mission.png" alt="The Message and The Mission, drawn as a house. The roof is The Message, the belief through which you see the world. The beam is The Mission, the results you deliver. Three pillars hold the house, the way you deliver the results: each a saying you live by, proven by its rooms: the story, the picture, and the next question." style="display: block; width: 100%; height: auto; border: 1px solid rgba(26,23,20,0.12);">
-</figure>
-<div class="mm-cols">
-<div>
+<div class="mm-one">
 <h3 class="mm-h">Mine</h3>
 <dl class="mm-dl"><div><dt>The message</dt><dd>Your voice tells the world who you are.</dd></div><div><dt>The mission</dt><dd>Helping people reclaim the agency they’ve lost, so they can go do what they were built for.</dd></div><div><dt>The pillars</dt><dd><p><b>Intention.</b> Speak so that others will win, not so that you’re validated. Be of service or be of self.</p><p><b>Creativity.</b> Create from a state of play. Creativity is an invitation to connect.</p><p><b>The Body.</b> Your body is your business card.</p></dd></div></dl>
+<p class="body" style="margin-top: 20px;">Clients build theirs with me, line by line.</p>
 </div>
-<div>
-<h3 class="mm-h">Yours</h3>
-<ol class="mm-steps" role="list">
-<li>If we interviewed your employees, co-founders, partners, and family, what would be the common themes?</li>
-<li>What do you recognize of yourself in those themes?</li>
-<li>And so what? What did those things do for you?</li>
-<li>What kind of people are you helping? Who’s the little guy, against who?</li>
-<li>When did you feel that way in your life?</li>
-<li>Keep on drilling down. Simplify that even more.</li>
-<li>Put these ideas into your subconscious. Have your notes app handy, or just a pen and paper.</li>
-</ol>
-</div>
-</div>
+<figure class="m-proof">
+<blockquote><p>“I’m less impulsive after working with you. I learned how to structure a thought in my brain.”</p></blockquote>
+<figcaption class="by"><span class="vname">Marina</span>Solutions Architect (Applied AI), Vellum AI</figcaption>
+</figure>
 </div>
 </section>
 
@@ -429,13 +432,11 @@ body.modal-open{overflow:hidden}
 <p class="rh">Engagements</p>
 <h2 id="apply-title" class="d h2" style="color: #F3EEE4;">Get your identity to catch up to your resume.</h2>
 </div>
-<p class="lead">Close the gap between what you know and how you sound.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.55;">Work one-on-one with Michael through the rooms that matter: the raise, the promotion, board meetings, investor calls, podcast and panel appearances, the speaking circuit, and internal conversations.</p>
 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #C9C1B4;">Engagements are offered selectively. For a team or a firm, mention it when you schedule.</p>
 <a class="btn-l" href="../apply/" style="align-self: flex-start;">Schedule a consultation</a>
 </div>
 <dl class="facts" style="margin: 0; display: flex; flex-direction: column; border-top: 1px solid rgba(243,238,228,0.25); align-self: start;">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(243,238,228,0.25);"><dt style="flex-shrink: 0;">Sessions</dt><dd class="t" style="margin: 0;">Consider me on retainer, not hourly. An hour a week minimum.</dd></div>
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(243,238,228,0.25);"><dt style="flex-shrink: 0;">Between sessions</dt><dd class="t" style="margin: 0;">Every interview, panel, podcast, and pitch reviewed</dd></div>
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(243,238,228,0.25);"><dt style="flex-shrink: 0;">High-stakes rooms</dt><dd class="t" style="margin: 0;">Prepped, rehearsed live, and debriefed</dd></div>
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(243,238,228,0.25);"><dt style="flex-shrink: 0;">Where</dt><dd class="t" style="margin: 0;">Zoom or in person</dd></div>
