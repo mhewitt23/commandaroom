@@ -319,6 +319,18 @@ body.modal-open{overflow:hidden}
 .m-proof blockquote{margin:0}
 .m-proof blockquote p{margin:0;font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:#1A1714;text-indent:-0.4em;text-wrap:pretty}
 .mm-one{max-width:640px}
+/* the offer in three parts (October 28) */
+.offer{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.offer>li{display:flex;flex-direction:column;gap:6px;padding:18px 0 20px;border-top:1px solid rgba(243,238,228,0.22)}
+.offer-k{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-size:clamp(24px,2.1vw,30px);line-height:1.1;letter-spacing:-0.01em;color:#F3EEE4}
+.offer-v{font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:#E6DFD2;text-wrap:pretty}
+.offer.light>li{border-top-color:rgba(26,23,20,0.16)}
+.offer.light>li:last-child{border-bottom:1px solid rgba(26,23,20,0.16)}
+.offer.light .offer-k{color:#1A1714}
+.offer.light .offer-v{color:#3D3832}
+.m-wide{width:min(100%,560px);margin-top:14px}
+.m-proofs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px clamp(32px,4vw,56px);align-items:start}
+.m-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}
 </style>
 <script src="../assets/site.js" defer></script>
 </head>
@@ -357,13 +369,65 @@ body.modal-open{overflow:hidden}
 <p class="rh">The method</p>
 <h1 id="method-page-title" class="d page-title">I help the sound of your voice match the expertise in your head.</h1>
 </div>
-<p class="lead" style="max-width: 40em;">We coordinate the voice so that your voice has more options, more colors that you can use to paint. Then we figure out the other stuff. With what intention are you showing up? What’s the mindset? What’s at stake for you personally?</p>
-<p class="body" style="max-width: 40em;">This is the outline. Clients get the full curriculum: every diagram, drill, and worksheet.</p>
-<nav class="toc" aria-label="On this page"><a href="#resonances">The Three Resonances</a><a href="#skills">The Seven Skills of Tonality</a><a href="#message">The Message and The Mission</a></nav>
+<p class="lead" style="max-width: 40em;">This is the overview: where you start, where you end up, and how we get there. The full method, and the research behind it, are yours on request.</p>
+<div class="m-cta"><a class="btn" href="request/">Request the full method</a></div>
+<nav class="toc" aria-label="On this page"><a href="#start">Where you start</a><a href="#end">Where you end up</a><a href="#how">How we get there</a></nav>
 </div>
 </section>
 
-<section id="resonances" aria-labelledby="resonances-title" style="border-top: 1px solid rgba(26,23,20,0.16);">
+<section id="start" aria-labelledby="start-title" style="border-top: 1px solid rgba(26,23,20,0.16);">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
+<p class="rh">Where you start</p>
+<h2 id="start-title" class="d h2">What’s actually in the way?</h2>
+</div>
+<ul class="rows" style="max-width: 880px;">
+<li>A voice that’s strained, weak, nasal, or gives out, and doesn’t command attention or respect.</li><li>Rambling. You build the plane while you’re flying it without a clear destination in sight, answering a question nobody asked, and not responding to the one they did with relevance and clarity.</li><li>Stage fright and/or hesitation in critical moments, and losing perspective when you get challenged. If you speak, you don’t represent your expertise and vision in a way that represents them or you.</li><li>Self-consciousness. You’re monitoring how you sound and come across, instead of hearing the question and connecting with the person.</li>
+</ul>
+</div>
+</section>
+
+<section id="end" aria-labelledby="end-title" style="background: #FAF7F1;">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
+<p class="rh">Where you end up</p>
+<h2 id="end-title" class="d h2">Your voice, your message, and your nerves.</h2>
+</div>
+<div style="max-width: 880px;">
+<ul class="offer light" role="list">
+<li><span class="offer-k">Your voice</span><span class="offer-v">Ease, attractiveness, durability, and being heard without shouting or forcing.</span></li>
+<li><span class="offer-k">Your message</span><span class="offer-v">Relevant to the question and the person asking. Can they tell you your point, and understand what’s in it for them?</span></li>
+<li><span class="offer-k">Your nerves</span><span class="offer-v">We take them down, and build you up to shine in the moment.</span></li>
+</ul>
+</div>
+<div class="m-proofs">
+<figure class="m-proof">
+<blockquote><p>“I came to Michael to learn about the mechanics of voice… but through our conversations gained a deeper appreciation and insight into human psychology.”</p></blockquote>
+<figcaption class="by"><span class="vname">Brian M.</span>Subcontract Program Manager, Lockheed Martin</figcaption>
+</figure>
+<figure class="m-proof">
+<blockquote><p>“He treats the voice as an instrument to be practiced, exercised, and refined yielding a more confident, more present individual.”</p></blockquote>
+<figcaption class="by"><span class="vname">Ben Marx</span>Head of Engineering, Malbec Labs</figcaption>
+</figure>
+<figure class="m-proof">
+<blockquote><p>“I’m less impulsive after working with you. I learned how to structure a thought in my brain.”</p></blockquote>
+<figcaption class="by"><span class="vname">Marina</span>Solutions Architect (Applied AI), Vellum AI</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section id="how" aria-labelledby="how-title" style="border-top: 1px solid rgba(26,23,20,0.16);">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px) 0; display: flex; flex-direction: column; gap: clamp(28px, 3.5vw, 40px);">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
+<p class="rh">How we get there</p>
+<h2 id="how-title" class="d h2">This follows a curriculum.</h2>
+</div>
+<p class="lead" style="max-width: 40em;">We coordinate the voice so that your voice has more options, more colors that you can use to paint. Then we figure out the other stuff. With what intention are you showing up? What’s the mindset? What’s at stake for you personally?</p>
+</div>
+</section>
+
+<section id="resonances" aria-labelledby="resonances-title">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 9vw, 128px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(36px, 4.5vw, 56px);">
 <div style="display: flex; flex-direction: column; gap: 22px; max-width: 980px;">
 <p class="rh">The Three Resonances</p>
@@ -375,10 +439,6 @@ body.modal-open{overflow:hidden}
 <li><span class="tr-n">The Thought</span><span>What you say.</span></li>
 <li><span class="tr-n">The Life</span><span>How you live.</span></li>
 </ul>
-<figure class="m-proof">
-<blockquote><p>“I came to Michael to learn about the mechanics of voice… but through our conversations gained a deeper appreciation and insight into human psychology.”</p></blockquote>
-<figcaption class="by"><span class="vname">Brian M.</span>Subcontract Program Manager, Lockheed Martin</figcaption>
-</figure>
 </div>
 </section>
 
@@ -389,7 +449,7 @@ body.modal-open{overflow:hidden}
 <h2 id="skills-title" class="d h2">Monotone is a failure to lead your listeners’ attention.</h2>
 <p class="lead">It is not how much you can vocally dance.</p>
 </div>
-<p class="body" style="max-width: 44em;">This follows a curriculum. What I teach is The Seven Skills of Tonality. It’s my own IP, and it’s what we work on during every session. I always start in order, especially with the first one. Skills one and two are literally how we speak, how we make sounds. Skills three through seven are pretty squishy and intangible, and intention, I think, is the biggest linchpin in there.</p>
+<p class="body" style="max-width: 44em;">What I teach is The Seven Skills of Tonality. It’s my own IP, and it’s what we work on during every session. I always start in order, especially with the first one. Skills one and two are literally how we speak, how we make sounds. Skills three through seven are pretty squishy and intangible, and intention, I think, is the biggest linchpin in there.</p>
 <ol class="skills" role="list">
 <li><span class="sk-n" aria-hidden="true">1</span><h3 class="sk-h">Resonance</h3><p>More depth, without pushing your voice down.</p></li>
 <li><span class="sk-n" aria-hidden="true">2</span><h3 class="sk-h">Articulation</h3><p>Every syllable clean, and every point made in fewer words.</p></li>
@@ -399,10 +459,6 @@ body.modal-open{overflow:hidden}
 <li><span class="sk-n" aria-hidden="true">6</span><h3 class="sk-h">Subtext</h3><p>The undercurrent beneath your words, chosen on purpose.</p></li>
 <li><span class="sk-n" aria-hidden="true">7</span><h3 class="sk-h">Stakes</h3><p>The room feels what happens if they don’t act.</p></li>
 </ol>
-<figure class="m-proof">
-<blockquote><p>“He treats the voice as an instrument to be practiced, exercised, and refined yielding a more confident, more present individual.”</p></blockquote>
-<figcaption class="by"><span class="vname">Ben Marx</span>Head of Engineering, Malbec Labs</figcaption>
-</figure>
 </div>
 </section>
 
@@ -418,10 +474,13 @@ body.modal-open{overflow:hidden}
 <dl class="mm-dl"><div><dt>The message</dt><dd>Your voice tells the world who you are.</dd></div><div><dt>The mission</dt><dd>Helping people reclaim the agency they’ve lost, so they can go do what they were built for.</dd></div><div><dt>The pillars</dt><dd><p><b>Intention.</b> Speak so that others will win, not so that you’re validated. Be of service or be of self.</p><p><b>Creativity.</b> Create from a state of play. Creativity is an invitation to connect.</p><p><b>The Body.</b> Your body is your business card.</p></dd></div></dl>
 <p class="body" style="margin-top: 20px;">Clients build theirs with me, line by line.</p>
 </div>
-<figure class="m-proof">
-<blockquote><p>“I’m less impulsive after working with you. I learned how to structure a thought in my brain.”</p></blockquote>
-<figcaption class="by"><span class="vname">Marina</span>Solutions Architect (Applied AI), Vellum AI</figcaption>
-</figure>
+</div>
+</section>
+
+<section aria-label="Request the full method" style="border-top: 1px solid rgba(26,23,20,0.16);">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(48px, 7vw, 96px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: 24px;">
+<p class="lead" style="max-width: 30em;">The full method, and the research behind it, are yours on request.</p>
+<div class="m-cta"><a class="btn" href="request/">Request the full method</a></div>
 </div>
 </section>
 

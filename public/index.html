@@ -330,6 +330,16 @@ body.modal-open{overflow:hidden}
 .r-end{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px}
 .r-more{display:inline-block;padding:13px 0;font-size:16px;font-weight:500}
 @media (max-width: 899px){.about-ph img{aspect-ratio:4 / 3!important;object-position:50% 0%}}
+/* the offer in three parts (October 28) */
+.offer{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.offer>li{display:flex;flex-direction:column;gap:6px;padding:18px 0 20px;border-top:1px solid rgba(243,238,228,0.22)}
+.offer-k{font-family:'Libre Caslon Display','Big Caslon',Georgia,serif;font-size:clamp(24px,2.1vw,30px);line-height:1.1;letter-spacing:-0.01em;color:#F3EEE4}
+.offer-v{font-family:'Libre Caslon Text',Georgia,serif;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:#E6DFD2;text-wrap:pretty}
+.offer.light>li{border-top-color:rgba(26,23,20,0.16)}
+.offer.light>li:last-child{border-bottom:1px solid rgba(26,23,20,0.16)}
+.offer.light .offer-k{color:#1A1714}
+.offer.light .offer-v{color:#3D3832}
+.m-wide{width:min(100%,560px);margin-top:14px}
 </style>
 <script src="assets/site.js" defer></script>
 </head>
@@ -427,7 +437,7 @@ body.modal-open{overflow:hidden}
 <h2 id="gap-title" class="d h2">What’s actually in the way?</h2>
 </div>
 <ul class="rows">
-<li>The voice that got you here is the one holding you back.</li><li>You’re stuck in your head.</li><li>You don’t have enough reps off-script.</li><li>Your nervous system takes over before your expertise can.</li><li>You sound like everyone else.</li>
+<li>A voice that’s strained, weak, nasal, or gives out, and doesn’t command attention or respect.</li><li>Rambling. You build the plane while you’re flying it without a clear destination in sight, answering a question nobody asked, and not responding to the one they did with relevance and clarity.</li><li>Stage fright and/or hesitation in critical moments, and losing perspective when you get challenged. If you speak, you don’t represent your expertise and vision in a way that represents them or you.</li><li>Self-consciousness. You’re monitoring how you sound and come across, instead of hearing the question and connecting with the person.</li>
 </ul>
 </section>
 </div>
@@ -440,8 +450,12 @@ body.modal-open{overflow:hidden}
 <h2 id="method-title" class="d sig-h" style="color: #F3EEE4;"><span>Command is not volume.</span> <span>Command is signal.</span></h2>
 </div>
 <div class="sig-body">
-<p class="lead">Your voice tells the world who you are. When you speak, you lead.</p>
-<a class="mf-a m-one" href="method/"><span>See the method</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
+<ul class="offer" role="list">
+<li><span class="offer-k">Your voice</span><span class="offer-v">Ease, attractiveness, durability, and being heard without shouting or forcing.</span></li>
+<li><span class="offer-k">Your message</span><span class="offer-v">Relevant to the question and the person asking. Can they tell you your point, and understand what’s in it for them?</span></li>
+<li><span class="offer-k">Your nerves</span><span class="offer-v">We take them down, and build you up to shine in the moment.</span></li>
+</ul>
+<a class="mf-a m-one m-wide" href="method/request/"><span>See the method, and the research behind it</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16M14 6l6 6-6 6"></path></svg></a>
 </div>
 </div>
 </section>
