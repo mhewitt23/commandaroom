@@ -15,23 +15,22 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#EFE5D0">
+<meta name="theme-color" content="#FBECD6">
 <link rel="icon" href="../../favicon.ico" sizes="32x32">
 <link rel="icon" href="../../favicon.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;display=swap">
+<link rel="preload" href="../../assets/fonts/bebas-neue.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/barlow-500.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 html{scroll-behavior:smooth}
-body{margin:0;background:#EFE5D0}
-a{color:#000000;text-underline-offset:0.25em;text-decoration-thickness:1px}
-a:hover{color:#000000}
-.d{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:400;margin:0;color:#000000}
+body{margin:0;background:#FBECD6}
+a{color:var(--ink);text-underline-offset:0.25em;text-decoration-thickness:1px}
+a:hover{color:var(--ink)}
+.d{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:400;margin:0;color:var(--ink)}
 .t{font-family:'Barlow','Helvetica Neue',Arial,sans-serif;margin:0}
-.rh{margin:0;font-family:'Barlow','Helvetica Neue',Arial,sans-serif;font-style:italic;font-size:21px;line-height:1.3;color:#000000}
-.step{margin:0;font-size:14px;line-height:1.4;color:#5C554C}
-.skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#000000;color:#EFE5D0;font-size:15px;text-decoration:none}
+.rh{margin:0;font-family:'Barlow','Helvetica Neue',Arial,sans-serif;font-style:italic;font-size:21px;line-height:1.3;color:var(--ink)}
+.step{margin:0;font-size:14px;line-height:1.4;color:var(--ink)}
+.skip{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 16px;background:#0203D7;color:#FBECD6;font-size:15px;text-decoration:none}
 .skip:focus{top:12px}
 .rv{animation:rv .8s cubic-bezier(.2,.7,.2,1) both}
 .rv-2{animation-delay:.1s}
@@ -41,36 +40,36 @@ a:hover{color:#000000}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:stretch}
 .hero-copy{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
 .hero-copy>div{display:flex;flex-direction:column;gap:22px}
-.lead{margin:0;font-family:'Barlow','Helvetica Neue',Arial,sans-serif;font-size:clamp(20px,1.9vw,26px);line-height:1.42;color:#000000;max-width:30em}
+.lead{margin:0;font-family:'Barlow','Helvetica Neue',Arial,sans-serif;font-size:clamp(20px,1.9vw,26px);line-height:1.42;color:var(--body);max-width:30em}
 @media (max-width: 959px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#000000;color:#EFE5D0;text-decoration:none;font:inherit;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s ease}
-.btn:hover{background:#000000;color:#EFE5D0}
-:focus-visible{outline:2px solid #000000;outline-offset:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border:0;background:#0203D7;color:#FBECD6;text-decoration:none;font:inherit;font-size:16px;font-weight:500;cursor:pointer;transition:background-color .15s ease}
+.btn:hover{background:#0203D7;color:#FBECD6}
+:focus-visible{outline:2px solid #0203D7;outline-offset:4px}
 #top{overflow-x:clip}
 [id]{scroll-margin-top:80px}
 fieldset{margin:0;padding:0;border:0;min-width:0}
 legend{padding:0}
 .fld{display:flex;flex-direction:column;gap:8px;min-width:0}
-.fld-l{margin:0;font-size:16px;line-height:1.4;font-weight:500;color:#000000}
-.help{margin:0;font-size:14px;line-height:1.5;color:#5C554C}
-.in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 0;border:0;border-bottom:1px solid rgba(0,0,0,0.4);border-radius:0;background:transparent;font:inherit;font-size:17px;line-height:1.5;color:#000000;-webkit-appearance:none;appearance:none}
-.in::placeholder{color:#8A7F65}
-.in:focus{outline:none;border-bottom:2px solid #000000;padding-bottom:9px}
+.fld-l{margin:0;font-size:16px;line-height:1.4;font-weight:500;color:var(--ink)}
+.help{margin:0;font-size:14px;line-height:1.5;color:var(--body)}
+.in{display:block;width:100%;box-sizing:border-box;min-height:48px;margin:0;padding:10px 0;border:0;border-bottom:1px solid rgba(2,3,215,0.4);border-radius:0;background:transparent;font:inherit;font-size:17px;line-height:1.5;color:var(--body);-webkit-appearance:none;appearance:none}
+.in::placeholder{color:#0203D7}
+.in:focus{outline:none;border-bottom:2px solid #0203D7;padding-bottom:9px}
 .in:focus-visible{outline:none}
 textarea.in{min-height:116px;resize:vertical}
-.opt{display:flex;align-items:flex-start;gap:14px;min-height:44px;padding:8px 0;font-size:16px;line-height:1.5;color:#000000;cursor:pointer}
-.opt input{flex-shrink:0;width:18px;height:18px;margin:3px 0 0;accent-color:#000000;cursor:pointer}
-.opt:hover{color:#000000}
+.opt{display:flex;align-items:flex-start;gap:14px;min-height:44px;padding:8px 0;font-size:16px;line-height:1.5;color:var(--body);cursor:pointer}
+.opt input{flex-shrink:0;width:18px;height:18px;margin:3px 0 0;accent-color:#0203D7;cursor:pointer}
+.opt:hover{color:var(--body)}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,4vw,48px)}
 @media (max-width: 639px){.btn{width:100%}.two{grid-template-columns:minmax(0,1fr)}.hero-photo{aspect-ratio:4 / 3!important;object-position:50% 10%!important}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{animation:none}.btn{transition:none}}
 .body,.body-s,.creds>li,.cap,.cs-q p,.lead,.by{text-wrap:pretty}
 .nw{white-space:nowrap}
 .quote{text-indent:-0.42em}
-.lockup{display:inline-flex;align-items:baseline;gap:16px;padding:10px 0;color:#000000;text-decoration:none;white-space:nowrap}
-.lockup:hover{color:#000000}
-.lockup:hover .lk-name{color:#000000}
-.lk-name{font-family:'Oswald','Arial Narrow',sans-serif;font-size:clamp(24px,2.16vw,28px);line-height:1;letter-spacing:0.005em;transition:color .15s ease}
+.lockup{display:inline-flex;align-items:baseline;gap:16px;padding:10px 0;color:var(--ink);text-decoration:none;white-space:nowrap}
+.lockup:hover{color:var(--ink)}
+.lockup:hover .lk-name{color:var(--ink)}
+.lk-name{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-size:clamp(24px,2.16vw,28px);line-height:1;letter-spacing:0.005em;transition:color .15s ease}
 .lk-mark{font-family:'Barlow','Helvetica Neue',Arial,sans-serif;font-size:11.5px;line-height:1;font-weight:500;letter-spacing:0.32em;text-transform:uppercase}
 @media (max-width: 559px){.lockup{flex-direction:column;align-items:flex-start;gap:6px;padding:8px 0}.lk-name{font-size:23px}.lk-mark{font-size:10.5px;letter-spacing:0.28em}}
 .ot-ribbon{position:relative;height:clamp(76px,9vw,132px);overflow:hidden}
@@ -81,39 +80,39 @@ textarea.in{min-height:116px;resize:vertical}
 .cs-ph>.cs-photo{grid-area:ph}
 .cs-ph>.by{grid-area:by}
 .cs-ph>div{grid-area:go}
-.cs-photo{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#E3D6BB}
+.cs-photo{display:block;width:clamp(150px,14vw,200px);height:auto;aspect-ratio:5 / 4;object-fit:cover;background:#FFF6E4}
 img{max-width:100%;height:auto}
 [hidden]{display:none!important}
 .lead{max-width:34em}
 /* cream card (November 7): the business card's cream and black, its condensed caps, and the embossed winged sword */
-::selection{background:#000000;color:#EFE5D0}
+::selection{background:#0203D7;color:#FBECD6}
 .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .d{font-weight:700;text-transform:uppercase;letter-spacing:0.004em}
 .hero-title{font-size:clamp(40px,5.2vw,76px);line-height:1;letter-spacing:0.004em;max-width:none}
 .h2{line-height:1.02;letter-spacing:0.004em}
 .sig-h,.page-title{letter-spacing:0.004em!important}
 .page-title{line-height:1}
-.eyebrow,.rh{margin:0;font-family:'Oswald','Arial Narrow',sans-serif;font-style:normal;font-weight:500;font-size:15px;line-height:1.4;letter-spacing:0.16em;text-transform:uppercase;color:#000000}
-.dark .rh{color:#EFE5D0}
+.eyebrow,.rh{margin:0;font-family:'Bebas Neue','Arial Narrow',sans-serif;font-style:normal;font-weight:500;font-size:15px;line-height:1.4;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink)}
+.dark .rh{color:#FBECD6}
 .quote,.th-q,.hang{font-weight:500;font-style:italic;letter-spacing:0.01em;text-indent:-0.3em}
 .quote{font-size:clamp(22px,2.5vw,34px);line-height:1.14}
 .th-q{font-size:clamp(22px,2.2vw,30px);line-height:1.18}
 .fs-hook>span:first-child{text-indent:-0.3em}
 .lead{font-weight:500;line-height:1.4}
 .rows>li{font-weight:500}
-.by .vname{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.08em}
-.nav{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.14em;text-transform:uppercase}
-.btn,.btn-l,.hcta{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background-color .15s ease,color .15s ease,box-shadow .15s ease}
-.btn:hover,.hcta:hover{background:transparent;color:#000000;box-shadow:inset 0 0 0 2px #000000}
-.btn-l:hover{background:transparent;color:#EFE5D0;box-shadow:inset 0 0 0 2px #EFE5D0}
+.by .vname{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.08em}
+.nav{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:500;font-size:14px;letter-spacing:0.14em;text-transform:uppercase}
+.btn,.btn-l,.hcta{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:background-color .15s ease,color .15s ease,box-shadow .15s ease}
+.btn:hover,.hcta:hover{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px #0203D7}
+.btn-l:hover{background:transparent;color:#FBECD6;box-shadow:inset 0 0 0 2px #FBECD6}
 a:hover,.linkbtn:hover{text-decoration-thickness:2px}
-.poster:hover .play-sq{background:#3B352C!important}
+.poster:hover .play-sq{background:#0203D7!important}
 .poster:hover .play-tx{text-decoration:underline;text-underline-offset:0.25em}
 .mlink{text-transform:uppercase;font-weight:600;letter-spacing:0.04em}
 .mlink.is-on{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:0.3em}
 .lockup{align-items:center}
-.lk-name{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.28em;font-size:12.5px;order:2}
-.lk-mark{font-family:'Oswald','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(22px,1.9vw,27px);letter-spacing:0.15em;text-transform:uppercase;order:1}
+.lk-name{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:0.28em;font-size:12.5px;order:2}
+.lk-mark{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(22px,1.9vw,27px);letter-spacing:0.15em;text-transform:uppercase;order:1}
 .lk-dot{font-size:0.58em;vertical-align:0.21em;margin:0 0.03em}
 /* the wordmark is wider than the old lockup: below desktop it stacks over the name and the header CTA shortens sooner */
 @media (max-width: 959px){.lockup{flex-direction:column;align-items:flex-start;gap:5px;padding:8px 0}.lk-mark{font-size:20px;letter-spacing:0.12em}.lk-name{font-size:10px;letter-spacing:0.26em}}
@@ -131,14 +130,82 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 .hero-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:center}
 .emblem{display:block;width:100%;height:auto}
 @media (max-width: 959px){.hero-top{grid-template-columns:minmax(0,1fr)}.emblem{order:-1;max-width:420px}}
+/* blue card (November 10): the final card. Blue ink on warm cream, the card's condensed caps at its weight and tracking, slanted caps for quotes, the embossed sword from the final proof. */
+@font-face{font-family:'Bebas Neue';font-style:normal;font-weight:100 900;font-display:swap;src:url('../../assets/fonts/bebas-neue.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url('../../assets/fonts/barlow-400.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:500;font-display:swap;src:url('../../assets/fonts/barlow-500.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url('../../assets/fonts/barlow-600.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:700;font-display:swap;src:url('../../assets/fonts/barlow-700.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:italic;font-weight:400;font-display:swap;src:url('../../assets/fonts/barlow-400-italic.woff2') format('woff2')}
+@font-face{font-family:'Barlow';font-style:italic;font-weight:500;font-display:swap;src:url('../../assets/fonts/barlow-500-italic.woff2') format('woff2')}
+:root{--ink:#0203D7;--paper:#FBECD6;--paper-l:#FFF6E4;--body:#0203D7;--cw:0.033em;--tr:0.115em;--tr-d:0.05em}
+#top{font-weight:500}
+/* the card's lettering: Bebas Neue, thickened by --cw to the weight the card prints at, tracked like the card (--tr on labels, --tr-d on display lines) */
+.d,.eyebrow,.rh,.nav,.btn,.btn-l,.hcta,.menu-btn,.mlink,.lk-name,.lk-mark,.by .vname,.firms-l,.firms-list>li,.offer-k,.mf-h,.mf-a,.sk-n,.sk-h,.mm-h,.mm-steps>li::before,.play-tx,.facts dt,.mm-dl dt,.step,.fld-l,.tr-n{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;-webkit-text-stroke-width:var(--cw)}
+.t,.lead,.body,.body-s{-webkit-text-stroke-width:0}
+.d{letter-spacing:var(--tr-d)}
+.hero-title{font-size:clamp(46px,6vw,88px);line-height:0.96;letter-spacing:var(--tr-d)}
+.h2{font-size:clamp(38px,4.6vw,64px);line-height:0.98;letter-spacing:var(--tr-d)}
+.sig-h{font-size:clamp(42px,7.3vw,104px);line-height:0.96}
+.page-title{font-size:clamp(45px,6.4vw,92px);line-height:0.96}
+.sig-h,.page-title{letter-spacing:var(--tr-d)!important}
+.eyebrow,.rh{font-size:18px;line-height:1.25;letter-spacing:var(--tr)}
+/* slanted caps, like the tagline on the back of the card */
+.quote,.th-q,.d.hang{font-style:italic;letter-spacing:var(--tr-d);text-indent:-0.39em}
+.quote{font-size:clamp(26px,2.9vw,40px);line-height:1.06}
+.th-q{font-size:clamp(26px,2.55vw,35px);line-height:1.08}
+@media (min-width: 760px){.v-second .quote{font-size:clamp(25px,2.8vw,35px);line-height:1.08}.v-third .quote{font-size:clamp(23px,2.3vw,30px);line-height:1.1}}
+.fs-hook{font-style:italic}
+.fs-hook>span:first-child{text-indent:-0.39em}
+/* review screenshots are white images: multiplied onto the light paper they print on the card stock like everything else */
+.review-img,.shot-win img{mix-blend-mode:multiply}
+.by .vname{font-size:20px;line-height:1.2;letter-spacing:0.1em}
+.cq-by .vname{font-size:19px}
+.nav{font-size:17px;letter-spacing:var(--tr)}
+.btn,.btn-l{font-size:19px;letter-spacing:var(--tr)}
+.btn,.btn-l,.hcta{padding-top:0.1em!important}
+/* full-width buttons on phones count their padding inside the width, so they stop at the margin */
+.btn,.btn-l{box-sizing:border-box}
+.dnav .btn{font-size:17px!important}
+.hcta{font-size:16px;letter-spacing:var(--tr)}
+.menu-btn{font-size:17px;letter-spacing:var(--tr)}
+.mlink{font-size:30px;letter-spacing:var(--tr-d)}
+.lk-mark{font-size:clamp(23px,2.2vw,31px);letter-spacing:var(--tr)}
+.lk-name{font-size:14.5px;letter-spacing:0.2em}
+.lk-dot{font-size:0.66em;vertical-align:0.18em;margin:0}
+@media (max-width: 959px){.lk-mark{font-size:23px;letter-spacing:var(--tr)}.lk-name{font-size:12px;letter-spacing:0.2em}}
+@media (max-width: 479px){.lk-mark{font-size:21px;letter-spacing:var(--tr)}.lk-name{font-size:11px;letter-spacing:0.2em}}
+@media (max-width: 389px){.lk-mark{font-size:19px;letter-spacing:var(--tr)}.lk-name{font-size:10.5px;letter-spacing:0.2em}}
+header a.rh{font-size:16px!important;letter-spacing:var(--tr)}
+.firms-l{font-size:16px;line-height:1.3;letter-spacing:var(--tr)}
+.firms-list>li{font-size:clamp(21px,1.75vw,25px);line-height:1.15;letter-spacing:0.09em}
+.offer-k{font-size:clamp(28px,2.45vw,35px);letter-spacing:var(--tr-d)}
+.mf-h,.mf-a{font-size:clamp(25px,2.25vw,31px);letter-spacing:var(--tr-d)}
+.sk-h,.mm-h,.tr-n{letter-spacing:var(--tr-d)}
+.sk-h,.tr-n{font-size:clamp(31px,2.75vw,38px)}
+.mm-h{font-size:clamp(35px,3.15vw,45px)}
+.sk-n{font-size:clamp(47px,4.2vw,60px)}
+.mm-steps>li::before{font-size:28px;line-height:1.1}
+/* forms: underlined cream fields, blue rules, labels in the card's caps */
+.step{font-size:16px;letter-spacing:var(--tr)}
+.fld-l{font-size:19px;line-height:1.25;letter-spacing:0.09em}
+.in{font-weight:500}
+.in::placeholder{color:rgba(2,3,215,0.68);opacity:1}
+.play-tx{font-size:17px!important;letter-spacing:var(--tr);padding-top:0.1em!important}
+.v-third .play-tx{font-size:16px!important}
+@media (max-width: 359px){.vids .play-tx{font-size:16px!important}}
+.facts dt{font-size:16px;letter-spacing:var(--tr)}
+.mm-dl dt{font-size:16px;letter-spacing:var(--tr)}
+/* the emblem gets half the hero on wide screens, the way it holds the front of the card */
+@media (min-width: 960px){.hero-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 </style>
 <script src="../../assets/request.js" defer></script>
 </head>
 <body>
-<div id="top" style="width: 100%; min-height: 100vh; background: #EFE5D0; color: #000000; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+<div id="top" style="width: 100%; min-height: 100vh; background: #FBECD6; color: var(--body); font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased;">
 <a class="skip" href="#request">Skip to the request</a>
 
-<header style="position: sticky; top: 0; z-index: 60; background: #EFE5D0; border-bottom: 1px solid rgba(0,0,0,0.16);">
+<header style="position: sticky; top: 0; z-index: 60; background: #FBECD6; border-bottom: 1px solid rgba(2,3,215,0.26);">
 <div style="max-width: 1280px; height: 64px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 5vw, 64px); display: flex; justify-content: space-between; align-items: center; gap: 24px;">
 <a class="lockup" href="../../"><span class="lk-name">Michael Hewitt</span><span class="lk-mark"><span aria-hidden="true">Command<span class="lk-dot">•</span>a<span class="lk-dot">•</span>Room</span><span class="vh">Command a Room</span></span></a>
 <a class="rh" href="../" style="font-size: 19px; text-decoration: none;">The method</a>
@@ -151,23 +218,23 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 <p class="eyebrow">Michael Hewitt, Executive Voice Coaching.</p>
 <h1 id="request-hero-title" class="d hero-title rv">The full method, and the research behind it.</h1>
 <p class="lead rv rv-2">Tell me a little about you and what’s going on, and I’ll send you the full method and the research behind it, personally.</p>
-<p class="t rv rv-3" style="font-style: italic; font-size: 19px; line-height: 1.45; color: #000000;">This takes about two minutes.</p>
+<p class="t rv rv-3" style="font-style: italic; font-size: 19px; line-height: 1.45; color: var(--body);">This takes about two minutes.</p>
 </div>
 </section>
 
-<section id="request" aria-labelledby="request-title" style="background: #F4EEE2; border-top: 1px solid rgba(0,0,0,0.16);">
+<section id="request" aria-labelledby="request-title" style="background: #FFF6E4; border-top: 1px solid rgba(2,3,215,0.26);">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 8vw, 112px) clamp(20px, 5vw, 64px);">
 <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px);">
 
 <div id="request-intro" style="display: flex; flex-direction: column; gap: 16px;">
-<h2 id="request-title" class="d" style="font-size: clamp(32px, 4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;">Request the full method.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3832;">Every field is required unless it says optional.</p>
+<h2 id="request-title" class="d" style="font-size: clamp(37px, 4.64vw, 63px); line-height: 1.00; letter-spacing: var(--tr-d);">Request the full method.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--body);">Every field is required unless it says optional.</p>
 </div>
 
 <form id="requestForm" action="/method/request/" method="post" style="display: flex; flex-direction: column; gap: clamp(48px, 6vw, 72px);">
 
 <fieldset style="display: flex; flex-direction: column; gap: 28px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #000000;"><span class="step">1 of 3</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">About you</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #0203D7;"><span class="step">1 of 3</span><span class="d" style="font-size: clamp(30px, 3.02vw, 39px); line-height: 1.04;">About you</span></legend>
 <div class="two">
 <div class="fld"><label class="fld-l" for="name">Full name</label><input class="in" id="name" name="name" type="text" autocomplete="name" required></div>
 <div class="fld"><label class="fld-l" for="email">Email</label><input class="in" id="email" name="email" type="email" autocomplete="email" required></div>
@@ -178,7 +245,7 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #000000;"><span class="step">2 of 3</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Where you are, and where you want to be</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #0203D7;"><span class="step">2 of 3</span><span class="d" style="font-size: clamp(30px, 3.02vw, 39px); line-height: 1.04;">Where you are, and where you want to be</span></legend>
 <fieldset id="problems" style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">What are you running into? (Select all that apply)</legend>
 <label class="opt"><input type="checkbox" name="problems" value="voice">A voice that’s strained, weak, nasal, or gives out</label>
@@ -191,7 +258,7 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 </fieldset>
 
 <fieldset style="display: flex; flex-direction: column; gap: 32px;">
-<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #000000;"><span class="step">3 of 3</span><span class="d" style="font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1;">Timing and budget</span></legend>
+<legend style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 28px; margin-bottom: 4px; width: 100%; border-bottom: 2px solid #0203D7;"><span class="step">3 of 3</span><span class="d" style="font-size: clamp(30px, 3.02vw, 39px); line-height: 1.04;">Timing and budget</span></legend>
 <fieldset style="display: flex; flex-direction: column; gap: 6px;">
 <legend class="fld-l" style="margin-bottom: 8px;">When would you want to start?</legend>
 <label class="opt"><input type="radio" name="timeline" value="2_weeks" required>Within the next two weeks</label>
@@ -211,17 +278,17 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 </fieldset>
 
 <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 8px;">
-<p style="margin: 0; max-width: 40em; font-size: 15px; line-height: 1.6; color: #5C554C;">I read every request myself, and I’ll send the full method to you personally.</p>
+<p style="margin: 0; max-width: 40em; font-size: 15px; line-height: 1.6; color: var(--body);">I read every request myself, and I’ll send the full method to you personally.</p>
 <button class="btn" id="submitBtn" type="submit" style="align-self: flex-start;">Request the full method</button>
-<p id="request-error" role="alert" hidden style="margin: 0; max-width: 40em; font-size: 15px; line-height: 1.6; color: #000000;">That didn’t go through. Email me at <a href="mailto:michael@michaelhewitt.com">michael@michaelhewitt.com</a> and I’ll send it.</p>
+<p id="request-error" role="alert" hidden style="margin: 0; max-width: 40em; font-size: 15px; line-height: 1.6; color: var(--body);">That didn’t go through. Email me at <a href="mailto:michael@michaelhewitt.com">michael@michaelhewitt.com</a> and I’ll send it.</p>
 </div>
 
 </form>
 
 <div id="request-thanks" hidden tabindex="-1" style="display: flex; flex-direction: column; gap: 20px;">
-<h2 class="d" style="font-size: clamp(32px, 4vw, 54px); line-height: 1.06; letter-spacing: -0.01em;">Thank you<span id="thanks-name"></span>.</h2>
+<h2 class="d" style="font-size: clamp(37px, 4.64vw, 63px); line-height: 1.00; letter-spacing: var(--tr-d);">Thank you<span id="thanks-name"></span>.</h2>
 <p class="lead">I’ll send you the full method and the research behind it, personally.</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3832;">Want to talk sooner? <a href="../../apply/">Schedule a consultation</a>.</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: var(--body);">Want to talk sooner? <a href="../../apply/">Schedule a consultation</a>.</p>
 </div>
 
 </div>
@@ -230,7 +297,7 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 </main>
 
 <footer>
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 36px clamp(20px, 5vw, 64px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; font-size: 14px; color: #5C554C;">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: 36px clamp(20px, 5vw, 64px) 40px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; font-size: 14px; color: var(--body);">
 <div style="display: flex; flex-direction: column; gap: 4px;">
 <p style="margin: 0 0 6px;"><span class="lockup" style="padding: 0;"><span class="lk-name">Michael Hewitt</span><span class="lk-mark"><span aria-hidden="true">Command<span class="lk-dot">•</span>a<span class="lk-dot">•</span>Room</span><span class="vh">Command a Room</span></span></span></p>
 <p style="margin: 0;">© 2026 Executive Influence Systems LLC. New York.</p>

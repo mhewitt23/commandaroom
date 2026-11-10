@@ -396,7 +396,7 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 :root{--ink:#0203D7;--paper:#FBECD6;--paper-l:#FFF6E4;--body:#0203D7;--cw:0.033em;--tr:0.115em;--tr-d:0.05em}
 #top{font-weight:500}
 /* the card's lettering: Bebas Neue, thickened by --cw to the weight the card prints at, tracked like the card (--tr on labels, --tr-d on display lines) */
-.d,.eyebrow,.rh,.nav,.btn,.btn-l,.hcta,.menu-btn,.mlink,.lk-name,.lk-mark,.by .vname,.firms-l,.firms-list>li,.offer-k,.mf-h,.mf-a,.sk-n,.sk-h,.mm-h,.mm-steps>li::before,.play-tx,.facts dt,.mm-dl dt{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;-webkit-text-stroke-width:var(--cw)}
+.d,.eyebrow,.rh,.nav,.btn,.btn-l,.hcta,.menu-btn,.mlink,.lk-name,.lk-mark,.by .vname,.firms-l,.firms-list>li,.offer-k,.mf-h,.mf-a,.sk-n,.sk-h,.mm-h,.mm-steps>li::before,.play-tx,.facts dt,.mm-dl dt,.step,.fld-l,.tr-n{font-family:'Bebas Neue','Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;-webkit-text-stroke-width:var(--cw)}
 .t,.lead,.body,.body-s{-webkit-text-stroke-width:0}
 .d{letter-spacing:var(--tr-d)}
 .hero-title{font-size:clamp(46px,6vw,88px);line-height:0.96;letter-spacing:var(--tr-d)}
@@ -410,12 +410,17 @@ footer .lockup{flex-direction:row;align-items:center;gap:16px}
 .quote{font-size:clamp(26px,2.9vw,40px);line-height:1.06}
 .th-q{font-size:clamp(26px,2.55vw,35px);line-height:1.08}
 @media (min-width: 760px){.v-second .quote{font-size:clamp(25px,2.8vw,35px);line-height:1.08}.v-third .quote{font-size:clamp(23px,2.3vw,30px);line-height:1.1}}
+.fs-hook{font-style:italic}
 .fs-hook>span:first-child{text-indent:-0.39em}
+/* review screenshots are white images: multiplied onto the light paper they print on the card stock like everything else */
+.review-img,.shot-win img{mix-blend-mode:multiply}
 .by .vname{font-size:20px;line-height:1.2;letter-spacing:0.1em}
 .cq-by .vname{font-size:19px}
 .nav{font-size:17px;letter-spacing:var(--tr)}
 .btn,.btn-l{font-size:19px;letter-spacing:var(--tr)}
 .btn,.btn-l,.hcta{padding-top:0.1em!important}
+/* full-width buttons on phones count their padding inside the width, so they stop at the margin */
+.btn,.btn-l{box-sizing:border-box}
 .dnav .btn{font-size:17px!important}
 .hcta{font-size:16px;letter-spacing:var(--tr)}
 .menu-btn{font-size:17px;letter-spacing:var(--tr)}
@@ -431,7 +436,16 @@ header a.rh{font-size:16px!important;letter-spacing:var(--tr)}
 .firms-list>li{font-size:clamp(21px,1.75vw,25px);line-height:1.15;letter-spacing:0.09em}
 .offer-k{font-size:clamp(28px,2.45vw,35px);letter-spacing:var(--tr-d)}
 .mf-h,.mf-a{font-size:clamp(25px,2.25vw,31px);letter-spacing:var(--tr-d)}
-.sk-h,.mm-h{letter-spacing:var(--tr-d)}
+.sk-h,.mm-h,.tr-n{letter-spacing:var(--tr-d)}
+.sk-h,.tr-n{font-size:clamp(31px,2.75vw,38px)}
+.mm-h{font-size:clamp(35px,3.15vw,45px)}
+.sk-n{font-size:clamp(47px,4.2vw,60px)}
+.mm-steps>li::before{font-size:28px;line-height:1.1}
+/* forms: underlined cream fields, blue rules, labels in the card's caps */
+.step{font-size:16px;letter-spacing:var(--tr)}
+.fld-l{font-size:19px;line-height:1.25;letter-spacing:0.09em}
+.in{font-weight:500}
+.in::placeholder{color:rgba(2,3,215,0.68);opacity:1}
 .play-tx{font-size:17px!important;letter-spacing:var(--tr);padding-top:0.1em!important}
 .v-third .play-tx{font-size:16px!important}
 @media (max-width: 359px){.vids .play-tx{font-size:16px!important}}
