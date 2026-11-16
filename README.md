@@ -11,7 +11,11 @@ What is where
   - `assets/`               photos, diagrams, testimonial screenshots, the share image, and the two scripts
   - `404.html`              the page for addresses that do not exist
   - icons, `robots.txt`, `sitemap.xml`
-- `server.js`               the small server Railway runs: serves `public/` and redirects `/assessment`
+- `voicemastery/`           the Voice Mastery course site, served at www.voicemastery.com
+  - `index.html`            the sales page (its pre-order buttons go to Stripe checkout)
+  - `welcome/index.html`    where buyers land after paying (posts their intake to the same Google Sheet, marked "Voice Mastery course intake")
+  - `assets/`               its photos, share image, and intake script
+- `server.js`               the small server Railway runs: serves `public/` for commandaroom.com and `voicemastery/` for www.voicemastery.com (voicemastery.com without www moves to www), and redirects `/assessment`
 - `package.json`            tells Railway to run `node server.js`
 
 Updating the site
