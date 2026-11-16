@@ -48,6 +48,13 @@ app.get('/assessment', (req, res) => {
     res.redirect('https://magnificent-flexibility-production-4c2b.up.railway.app');
 });
 
+// The Voice Mastery welcome page lived here before voicemastery.com had its own site; send any old link there.
+app.get(['/voice-mastery/welcome', '/voice-mastery/welcome/'], (req, res) => {
+    const queryStart = req.originalUrl.indexOf('?');
+    const query = queryStart === -1 ? '' : req.originalUrl.slice(queryStart);
+    res.redirect(301, 'https://' + VOICE_MASTERY_HOST + '/welcome/' + query);
+});
+
 // Photos, diagrams, and the two scripts.
 app.use('/assets', express.static(path.join(SITE, 'assets')));
 
