@@ -7,6 +7,7 @@ What is where
 - `public/`                 the website itself
   - `index.html`            the homepage
   - `apply/index.html`      the application page (posts to the Google Sheet, then opens Calendly)
+  - `voice-mastery/welcome/index.html`  where Voice Mastery course buyers land after paying (posts their intake to the same Google Sheet, marked "Voice Mastery course intake")
   - `assets/`               photos, diagrams, testimonial screenshots, the share image, and the two scripts
   - `404.html`              the page for addresses that do not exist
   - icons, `robots.txt`, `sitemap.xml`
