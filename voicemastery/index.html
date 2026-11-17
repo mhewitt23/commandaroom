@@ -32,13 +32,21 @@ a.vm-btn:hover{background:#7A2E22 !important;color:#F3EEE4 !important}
 a.vm-btn-l:hover{background:#FFFFFF !important;color:#7A2E22 !important}
 :focus-visible{outline:2px solid #7A2E22;outline-offset:4px}
 .vm-dark :focus-visible{outline-color:#F3EEE4}
-[id]{scroll-margin-top:24px}
+[id]{scroll-margin-top:84px}
 summary.vm-q{list-style:none;cursor:pointer}
 summary.vm-q::-webkit-details-marker{display:none}
 summary.vm-q::after{content:'+';flex:0 0 auto;font-family:'Hanken Grotesk','Helvetica Neue',system-ui,sans-serif;font-size:26px;font-weight:400;line-height:1;color:#7A2E22}
 details[open]>summary.vm-q::after{transform:rotate(45deg)}
 summary.vm-q:hover{color:#7A2E22 !important}
 @media (max-width:760px){.vm-links{display:none !important}}
+@media (max-width:600px){
+.vm-head>div{min-height:60px !important;padding-top:4px !important;padding-bottom:4px !important}
+.vm-emblem{max-width:120px !important}
+.vm-photo{aspect-ratio:4 / 3 !important}
+.vm-feature-lead{font-size:17px !important}
+.vm-feature-by{flex-direction:row !important;align-items:center !important;gap:16px !important}
+.vm-feature-photo{flex:0 0 112px;width:112px !important}
+}
 </style>
 </head>
 <body>
@@ -48,7 +56,7 @@ summary.vm-q:hover{color:#7A2E22 !important}
 <p style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; margin: 0 auto; padding: 11px clamp(20px, 5vw, 64px); font-size: 14px; line-height: 1.45; text-align: center; text-wrap: balance;">Pre-sale: $249 now. $599 when the course goes live on January 1. <a class="vm-light" href="https://buy.stripe.com/cNidR81yY9bi78r3ZzaIM3m" style="color: #F3EEE4; font-weight: 500; white-space: nowrap;">Pre-order</a></p>
 </div>
 
-<header style="border-bottom: 1px solid rgba(26,23,20,0.16);">
+<header class="vm-head" style="position: sticky; top: 0; z-index: 40; background: #F3EEE4; border-bottom: 1px solid rgba(26,23,20,0.16);">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; min-height: 72px; padding: 8px clamp(20px, 5vw, 64px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px;">
 <a href="#top" style="display: inline-flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 0; color: #1A1714; text-decoration: none; white-space: nowrap;">
 <span style="font-family: 'Libre Caslon Display', 'Big Caslon', Georgia, serif; font-size: 23px; line-height: 1; letter-spacing: 0.005em;">Michael Hewitt</span>
@@ -66,12 +74,12 @@ summary.vm-q:hover{color:#7A2E22 !important}
 <h1 id="hero-title" style="margin: 0; font-family: 'Libre Caslon Display', 'Big Caslon', Georgia, serif; font-weight: 400; font-size: clamp(42px, 5.4vw, 78px); line-height: 1; letter-spacing: -0.022em; text-wrap: balance; color: #1A1714;">Nobody has an annoying or an ugly voice. It’s just not optimized.</h1>
 </div>
 <div style="flex: 5 1 240px; min-width: 0;">
-<img src="/assets/emblem.webp" alt="" width="1532" height="688" style="display: block; width: 100%; max-width: clamp(200px, 36vw, 420px); height: auto;">
+<img class="vm-emblem" src="/assets/emblem.webp" alt="" width="1532" height="688" style="display: block; width: 100%; max-width: clamp(200px, 36vw, 420px); height: auto;">
 </div>
 </div>
 <div style="display: flex; flex-wrap: wrap-reverse; align-items: flex-end; gap: clamp(32px, 5vw, 80px);">
 <figure style="flex: 5 1 320px; min-width: 0; margin: 0;">
-<img src="/assets/carnegie.jpg" alt="Michael Hewitt singing in recital at Carnegie Hall, standing beside a grand piano" width="1200" height="1800" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; background: #E6DFD2;">
+<img class="vm-photo" src="/assets/carnegie.jpg" alt="Michael Hewitt singing in recital at Carnegie Hall, standing beside a grand piano" width="1200" height="1800" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; background: #E6DFD2;">
 <figcaption style="margin: 10px 0 0; font-size: 14px; line-height: 1.45; color: #5C554C;">In recital at Carnegie Hall.</figcaption>
 </figure>
 <div style="flex: 7 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
@@ -114,65 +122,65 @@ summary.vm-q:hover{color:#7A2E22 !important}
 </section>
 
 <section id="results" aria-labelledby="results-title" style="border-top: 1px solid rgba(26,23,20,0.16);">
-<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(44px, 6.5vw, 96px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(28px, 3.5vw, 44px);">
+<div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(44px, 6.5vw, 96px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; gap: clamp(20px, 3vw, 36px);">
 <div style="display: flex; flex-direction: column; gap: 6px;">
 <h2 id="results-title" style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.3; color: #1A1714; font-weight: 400;">In their words</h2>
 <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #5C554C;">From one-on-one coaching clients.</p>
 </div>
-<figure style="margin: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px clamp(32px, 5vw, 72px);">
-<blockquote style="flex: 7 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: clamp(16px, 2vw, 24px);">
-<p style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.45; color: #3D3832; max-width: 28em; text-wrap: pretty;">“Chatting with another CEO about how I can increase my gross margins, decrease my costs, all that, <span style="color: #1A1714; font-weight: 700;">I’ve got plenty of resources for that.</span></p>
+<figure style="margin: 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px clamp(32px, 5vw, 72px);">
+<blockquote style="flex: 7 1 420px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: clamp(12px, 1.6vw, 20px);">
+<p class="vm-feature-lead" style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.45; color: #3D3832; max-width: 28em; text-wrap: pretty;">“Chatting with another CEO about how I can increase my gross margins, decrease my costs, all that, <span style="color: #1A1714; font-weight: 700;">I’ve got plenty of resources for that.</span></p>
 <p style="margin: 0; font-family: 'Libre Caslon Display', 'Big Caslon', Georgia, serif; font-size: clamp(32px, 4.4vw, 60px); line-height: 1.04; letter-spacing: -0.015em; color: #1A1714; max-width: 13em; text-wrap: balance;">“Talking to somebody who can help me be heard, that’s where you come in.”</p>
 </blockquote>
-<figcaption style="flex: 5 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
-<img src="/assets/aaron-and-michael.jpg" alt="Aaron Smith and Michael Hewitt" width="1000" height="800" style="display: block; width: 100%; max-width: 460px; height: auto; aspect-ratio: 5 / 4; object-fit: cover; background: #E6DFD2;">
+<figcaption class="vm-feature-by" style="flex: 5 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<img class="vm-feature-photo" src="/assets/aaron-and-michael.jpg" alt="Aaron Smith and Michael Hewitt" width="1000" height="800" style="display: block; width: 100%; max-width: 460px; height: auto; aspect-ratio: 5 / 4; object-fit: cover; background: #E6DFD2;">
 <span style="display: flex; flex-direction: column; gap: 2px; font-size: 15px; line-height: 1.5; color: #5C554C;"><span style="font-size: 17px; font-weight: 600; color: #1A1714;">Aaron Smith</span>Founder &amp; CEO, Vetriq</span>
 </figcaption>
 </figure>
 <div style="columns: 300px 3; column-gap: clamp(28px, 3.4vw, 48px);">
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“When I came to you originally, <span style="color: #1A1714; font-weight: 600;">I had no confidence in my ability to do public speaking. I’m now signed up for three panels in one day in Singapore.</span> … My partner said it best… it was clear that my confidence and tone in public speaking is markedly different than it was nine or even six months ago.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Spencer Applebaum</span><span>General Partner and Co-Head of Venture, Multicoin Capital</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I had no confidence in my ability to do public speaking. I’m now signed up for three panels in one day in Singapore.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Spencer Applebaum</span>, General Partner and Co-Head of Venture, Multicoin Capital</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“He teaches in a relaxed, accessible way that makes the sessions something I look forward to. … <span style="color: #1A1714; font-weight: 600;">The result is that I now say yes to things I used to avoid.</span> … I’m more comfortable on stage and I come across better everywhere else.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Brian Smith</span><span>President, Jito Foundation</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“The result is that I now say yes to things I used to avoid.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Brian Smith</span>, President, Jito Foundation</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“… <span style="color: #1A1714; font-weight: 600;">he treats the voice as an instrument to be practiced, exercised, and refined</span> yielding a more confident, more present individual.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Ben Marx</span><span>Head of Engineering, Malbec Labs</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“… he treats the voice as an instrument to be practiced, exercised, and refined yielding a more confident, more present individual.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Ben Marx</span>, Head of Engineering, Malbec Labs</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“He challenged me to face my fears, trust my instincts, and <span style="color: #1A1714; font-weight: 600;">find strength in my own voice rather than trying to fit someone else’s idea of a leader.</span> I came to him to become a better speaker, and walked away a stronger leader.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Anita Kirkovska</span><span>Head of Growth, Vellum AI</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I came to him to become a better speaker, and walked away a stronger leader.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Anita Kirkovska</span>, Head of Growth, Vellum AI</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“I’m less impulsive after working with you. <span style="color: #1A1714; font-weight: 600;">I learned how to structure a thought in my brain.</span> … who doesn’t need a way of structuring their thoughts and presenting themselves better? Who’s not going to benefit from that?”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Marina</span><span>Solutions Architect (Applied AI), Vellum AI</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I’m less impulsive after working with you. I learned how to structure a thought in my brain.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Marina</span>, Solutions Architect (Applied AI), Vellum AI</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“I was afraid to speak on camera and put myself out there. … <span style="color: #1A1714; font-weight: 600;">I just talk in front of the camera now and I just let things rip</span>… There’s just so much that goes into voice that I wasn’t aware of.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Mark</span><span>Relationship coach</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I was afraid to speak on camera … I just talk in front of the camera now and I just let things rip.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Mark</span>, Relationship coach</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“As a result <span style="color: #1A1714; font-weight: 600;">I no longer have a tired/sore voice after a long day of zoom calls</span> and my voice is much clearer and carries better.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Divy Kandala</span><span>YC-backed founder</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I no longer have a tired/sore voice after a long day of zoom calls and my voice is much clearer and carries better.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Divy Kandala</span>, YC-backed founder</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“<span style="color: #1A1714; font-weight: 600;">I came to Michael to learn about the mechanics of voice</span> (ex. ‘how do I project to a large audience without “yelling”?’) but through our conversations gained a deeper appreciation and insight into human psychology (you can command a room with your presence alone).”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Brian M.</span><span>Subcontract Program Manager, Lockheed Martin</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“I came to Michael to learn about the mechanics of voice … you can command a room with your presence alone.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Brian M.</span>, Subcontract Program Manager, Lockheed Martin</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“Before I started working with Michael my voice was very monotone and <span style="color: #1A1714; font-weight: 600;">I thought I had a bad voice.</span> … Now I can have inflection in my voice, I can use my breath… so that I can speak more clearly and get my message across.”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Scott</span><span>CEO in construction</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“Before I started working with Michael my voice was very monotone and I thought I had a bad voice. … Now I can have inflection in my voice.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Scott</span>, CEO in construction</figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“I went in to this wanting to have a stronger more assertive voice and after one session <span style="color: #1A1714; font-weight: 600;">I feel like a different man when I’m talking now.</span>”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">Frank</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“… after one session I feel like a different man when I’m talking now.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">Frank</span></figcaption>
 </figure>
-<figure style="margin: 0; padding: 28px 0; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 14px; break-inside: avoid;">
-<blockquote style="margin: 0; font-size: 16px; line-height: 1.65; color: #3D3832; text-wrap: pretty;">“He’s honestly the GOAT in this entire space. <span style="color: #1A1714; font-weight: 600;">I don’t think you should work with anyone else if you’re looking to get into some sort of voice-related training.</span>”</blockquote>
-<figcaption style="display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.4; color: #5C554C;"><span style="font-size: 16px; font-weight: 600; color: #1A1714;">@BowTiedTikTok</span><span>Full-time creator, 40K on Instagram as @trafficbrokerr</span></figcaption>
+<figure style="margin: 0; padding: 16px 0 18px; border-top: 1px solid rgba(26,23,20,0.16); display: flex; flex-direction: column; gap: 6px; break-inside: avoid;">
+<blockquote style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.4; color: #1A1714; text-wrap: pretty;">“He’s honestly the GOAT in this entire space.”</blockquote>
+<figcaption style="margin: 0; font-size: 14px; line-height: 1.45; color: #5C554C; text-wrap: pretty;"><span style="font-weight: 600; color: #1A1714;">@BowTiedTikTok</span>, Full-time creator, 40K on Instagram as @trafficbrokerr</figcaption>
 </figure>
 </div>
 </div>
@@ -181,7 +189,7 @@ summary.vm-q:hover{color:#7A2E22 !important}
 <section id="about" aria-labelledby="about-title" style="background: #FAF7F1; border-top: 1px solid rgba(26,23,20,0.16);">
 <div style="max-width: 1280px; margin: 0 auto; box-sizing: border-box; padding: clamp(44px, 6.5vw, 96px) clamp(20px, 5vw, 64px); display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px clamp(32px, 5vw, 80px);">
 <figure style="flex: 5 1 300px; min-width: 0; margin: 0;">
-<img src="/assets/traviata-duet.jpg" alt="Michael Hewitt in a tailcoat on stage beside a soprano in La traviata at The Kennedy Center" width="1000" height="1412" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 6%; background: #E6DFD2;">
+<img class="vm-photo" src="/assets/traviata-duet.jpg" alt="Michael Hewitt in a tailcoat on stage beside a soprano in La traviata at The Kennedy Center" width="1000" height="1412" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 6%; background: #E6DFD2;">
 <figcaption style="margin: 10px 0 0; font-size: 14px; line-height: 1.45; color: #5C554C;">In <i>La traviata</i>, Washington National Opera at The Kennedy Center.</figcaption>
 </figure>
 <div style="flex: 7 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
